@@ -14,9 +14,10 @@ body {
 }
 
 table {
+    width : 650px;
     border-collapse: collapse;
     position : relative;
-    margin-left: 277px;
+    margin-left: 175px;
     top : 50px;
 }
 

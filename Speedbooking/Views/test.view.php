@@ -12,10 +12,10 @@ and open the template in the editor.
     </head>
     <body>
         <table>
-            <tr><th>id</th><th>Nom</th><th>Prénom</th></tr>
+            <tr><th>id</th><th>Nom</th><th>Prénom</th><th>Téléphone</th></tr>
         <?php
             foreach($data['devs'] as $key){
-                echo '<tr><th>'.$key['id'].'</th><td>'.$key['nomDev'].'</td><td>'.$key['prenomDev'].'</td></tr>';
+                echo '<tr><th>'.$key['id'].'</th><td>'.$key['nomDev'].'</td><td>'.$key['prenomDev'].'</td><td>'.$key['numTel'].'</td></tr>';
             }
         ?>
         </table>
