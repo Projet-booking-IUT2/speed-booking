@@ -1,19 +1,29 @@
 <!--
-Page d'affichage des dates.
+Page d'affichage des contacts.
 -header
--fiche Date (formulaire)
--Liste des dates existantes (aside)
-
+-fiche contacts (formulaire)
+-Liste des contacts existantes (aside)
+-footer
 --------------------------------------------------------------
-Par défaut, la page affiche la fiche du premier contact et a donc besoin des variables suivantes :
-
+Par défaut, la page affiche la fiche du premier contact. Mais l'user peut selectionner un autre contact via le aside
+La fiche a donc besoin des variables suivantes :
+$data['contact']
+          ['nom']
+          ['prenom']
+          ['mail']
+          ['tel']
+          ['site']
+          ['type']
+          ['notes']
+          ['maj']
+S'il n'y existe aucun contact, le controler ne doit pas créer de variable.
 
 A faire :
-- le aside avec la liste
+- les fonctions ajouter/supprimer/modifier
 - différentes alertes selon si le contact est à jour ou non.
 
 Améliorations :
--faire le footer
+
 
 -->
 <?php include('../Views/view.interne.header.php'); ?>
@@ -27,19 +37,71 @@ Améliorations :
     </div>
   </div>
 </header>
+<?php include('../Views/view.interne.contacts.aside.php'); ?>
 <div class="col-md-8">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h3 class="panel-title">Contact <?php echo $data['first_contact']; ?></h3>
+      <h3 class="panel-title">
+        <?php
+          if(isset ($data['contact'])) {
+            echo $data['contact']['nom']; echo $data['contact']['prenom'];
+          }
+          else {
+            echo "Nouveau contact :";
+          }
+
+        ?></h3>
     </div>
     <div class="panel-body">
       <form action="../controler/ctrl.interne.contact.php" method="post" class= " well form ">
+      <?php
+      //echo value=\"$data['contact']['nom']\" ";
+      if(isset ($data['contact'])) {
+          //formulaire rempli
+          ?>
+          <div class="row">
+                <div class="alert alert-info">
+                <strong>Infos sur la mise à jour</strong>
+                </div>
+          </div>
+          <div class="row">
+                <fieldset class="form-group">
+                  <label for="nom" class="control-label">Nom : </label>
+                  <input type="text" id="nom" class="form-control" name="c_nom" >
+                  <label for="prenom" class="col-md-2 control-label">Prénom : </label>
+                  <input type="text" id="prenom" class="form-control" name="c_prenom">
+                  <label for="mail" class="col-md-4 control-label">Mail : </label>
+                  <input type="email" id="mail" class="form-control" name="c_mail">
+                  <label for="tel" class="col-md-4 control-label">Tel : </label>
+                  <input type="tel" id="tel" class="form-control" placeholder="0614243464" name="c_tel">
+                  <label for="site" class="col-md-4 control-label">Site-web : </label>
+                  <input type="url" id="site" class="form-control" name="c_site">
+                </fieldset>
+          </div>
+          <div class="row">
+                <fieldset>
+                    <label for="select">Type : </label>
+                    <select id="select" class="form-control" name="c_type">
+                      <option>Organisateur</option>
+                      <option>Association</option>
+                      <option>Festival</option>
+                    </select>
+                    <label for="textarea" class="col-md-4 control-label">Notes :</label>
+                    <textarea id="textarea" class="form-control" rows="2" name="c_notes"></textarea>
+                    <div class="form-group">
+                        <label  class="col-md-4 control-label">Date de mise à jour minimum :</label>
+                        <input type="radio" name ="c_dureeMAJ" value="1_month">1 mois
+                        <input type="radio" name ="c_dureeMAJ" value="3_month" checked>3 mois
+                        <input type="radio" name ="c_dureeMAJ" value="6_month">6 mois
+                        <input type="radio" name ="c_dureeMAJ" value="12_month">12 mois
+                    </div>
+                </fieldset>
+            </div>
+        <?php }
+        else {
+          //formulaire vide
+        ?>
         <div class="row">
-              <div class="alert col-md-offset-2 col-md-8 col-md-offset-2 alert-info">
-              <strong>Infos sur la mise à jour</strong>
-              </div>
-      </div>
-      <div class="row">
               <fieldset class="form-group">
                 <label for="nom" class="control-label">Nom : </label>
                 <input type="text" id="nom" class="form-control" name="c_nom">
@@ -71,7 +133,10 @@ Améliorations :
                       <input type="radio" name ="c_dureeMAJ" value="12_month">12 mois
                   </div>
               </fieldset>
-        </div>
+          </div>
+        <?php }
+        ?>
+
         <div class="form-group">
           <button type="submit" class="btn btn-block btn-success"><span class="glyphicon glyphicon-send"></span> Envoyez</button>
         </div>
@@ -80,3 +145,4 @@ Améliorations :
   </div>
 </div>
 </section>
+<?php include('../Views/view.interne.footer.php'); ?>
