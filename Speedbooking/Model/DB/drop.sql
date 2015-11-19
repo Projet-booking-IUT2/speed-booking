@@ -1,0 +1,10 @@
+DROP VIEW Bookers;
+DROP VIEW Artistes;
+DROP VIEW Organisateurs;
+DROP VIEW Utilisateurs;
+DROP VIEW espaceEchangePerso;
+DROP TABLE Identifiants;
+DROP TABLE Participants;
+DROP TABLE espaceEchange;
+DROP TABLE Evenements;
+DROP TABLE Contacts;

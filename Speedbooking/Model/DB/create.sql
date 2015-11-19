@@ -9,13 +9,15 @@ CREATE TABLE Contacts (
 	adresse varchar(500),
 	derniere_maj date,
 	PRIMARY KEY (id),
-	CONSTRAINT chk_role check(type in ('organisateur','artiste','booker')
-));
+	CONSTRAINT chk_role check(type in ('organisateur','artiste','booker'))
+);
 
 CREATE TABLE Identifiants (
+	id int(6) not null,
     login varchar(30)not null,
     mdp varchar(2560) not null,
-    primary key(login)
+    primary key(id),
+    foreign key(id) references Contacts(id)
 );
 
 CREATE TABLE espaceEchange (
