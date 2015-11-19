@@ -28,7 +28,7 @@ Il y a une astuce en javascript pour le faire mais j'ai pas le temps tout de sui
       <meta name="author" content="">
       <link rel="icon" href="../../favicon.ico">
       <!-- Bootstrap -->
-      <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+      <link href="../Views/bootstrap/css/bootstrap.css" rel="stylesheet">
       <link href="index.css" rel="stylesheet">
       <title>Nom de l'agence de Booking</title>
     </head>

@@ -25,7 +25,7 @@ Améliorations :
               <h3 class="panel-title">Connectez-vous !</h3>
             </div>
             <div class="panel-body">
-              <form action="../controler/ctrl.externe.connexion.php" method="post" class= "form-horizontal col-md-offset-2 col-md-8 col-md-offset-2">
+                <form action="../Controler/portail.ctrl.php" method="post" class= "form-horizontal col-md-offset-2 col-md-8 col-md-offset-2">
                 <div class="row">
                     <div class="form-group">
                       <label for="id" class="col-md-4 control-label">Identifiant : </label>
