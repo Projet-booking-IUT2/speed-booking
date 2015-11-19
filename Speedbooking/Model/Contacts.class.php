@@ -18,13 +18,15 @@ class Contacts {
     public $adresse;
     public $telephone;
     public $mail;
+    public $date_maj;
     
-    public function _construct($nom,$prenom,$mail,$telephone,$adresse){
+    public function _construct($nom,$prenom,$mail,$telephone,$adresse,$dateMaj){
         $this->setNom($nom);
         $this->setPrenom($prenom);      
         $this->setAdresse($adresse);
         $this->setTelephone($telephone);
         $this->setMail($mail);
+        $this->setDate($dateMaj);
     }
     
     public function setNom($nom){
@@ -47,6 +49,10 @@ class Contacts {
         $this->mail=$mail;
     }
     
+    public function setDate($dateMaj){
+        $this->date_maj=$dateMaj;
+    }
+    
     public function getNom(){
         return $this->nom;
     }
@@ -65,6 +71,10 @@ class Contacts {
     
     public function getMail(){
         return $this->mail;
+    }
+    
+    public function detDate(){
+        return $this->date_maj;
     }
 }
 ?>
