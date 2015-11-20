@@ -9,6 +9,7 @@ CREATE TABLE Contacts (
 	adresse varchar(500),
 	derniere_maj date,
 	PRIMARY KEY (id),
+	CONSTRAINT chk_syntaxe_email check(email like %@%.%)
 	CONSTRAINT chk_role check(type in ('organisateur','artiste','booker'))
 );
 
@@ -18,6 +19,13 @@ CREATE TABLE Identifiants (
     mdp varchar(2560) not null,
     primary key(id),
     foreign key(id) references Contacts(id)
+);
+
+CREATE TABLE Groupes (
+	nom varchar(200),
+	artiste int(6),
+	primary key(nom,artiste),
+	foreign key(artiste) references Contact(id)
 );
 
 CREATE TABLE espaceEchange (
@@ -47,6 +55,7 @@ CREATE TABLE Participants (
 	foreign key(evenement) references Evenements(id)
 );
 
+
 CREATE VIEW Utilisateurs AS
 	SELECT * 
 	FROM Contacts c,Identifiants i 
@@ -58,10 +67,10 @@ CREATE VIEW Bookers AS
 	WHERE metier="booker";
 
 CREATE VIEW Artistes AS
-	SELECT *
-	FROM Contacts
-	WHERE metier="artiste";
-
+	SELECT c.id,c.nom,c.prenom,c.utilisateur,c.metier,c.email,c.telephone,c.adress,c.derniere_maj,g.nom
+	FROM Contacts c, Groupes g
+	WHERE metier="artiste" and c.id=g.artiste;
+	
 CREATE VIEW Organisateurs AS
 	SELECT *
 	FROM Contacts
