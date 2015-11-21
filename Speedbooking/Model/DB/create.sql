@@ -7,7 +7,7 @@ CREATE TABLE Contacts (
 	email varchar(75) unique not null,
 	telephone numeric(10),
 	adresse varchar(500),
-	derniere_maj date default CURDATE(),
+	derniere_maj date default now(),
 	
 	PRIMARY KEY (id),
 	CONSTRAINT chk_syntaxe_email check(email like %@%.%)
@@ -97,4 +97,4 @@ CREATE VIEW espaceEchangePerso AS
 CREATE VIEW EvenementsAVenir AS
 	SELECT *
 	FROM Evenements
-	WHERE date_evt>curdate();
+	WHERE date_evt>now();
