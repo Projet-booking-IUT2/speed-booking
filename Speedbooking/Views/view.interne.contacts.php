@@ -54,6 +54,8 @@ Améliorations :
     </div>
     <div class="panel-body">
       <form action="../controler/ctrl.interne.contact.php" method="post" class= " well form ">
+        <input type="text" id="nom" class="form-control" name="c_nom">
+
       <?php
       //echo value=\"$data['contact']['nom']\" ";
       if(isset ($data['contact'])) {
@@ -67,27 +69,34 @@ Améliorations :
           <div class="row">
                 <fieldset class="form-group">
                   <label for="nom" class="control-label">Nom : </label>
-                  <input type="text" id="nom" class="form-control" name="c_nom" >
+                  <input type="text" id="nom" class="form-control" name="c_nom" value ="<?php echo $data['contact']['nom'];?>">
                   <label for="prenom" class="col-md-2 control-label">Prénom : </label>
-                  <input type="text" id="prenom" class="form-control" name="c_prenom">
+                  <input type="text" id="prenom" class="form-control" name="c_prenom" value ="<?php echo $data['contact']['prenom'];?>">
                   <label for="mail" class="col-md-4 control-label">Mail : </label>
-                  <input type="email" id="mail" class="form-control" name="c_mail">
+                  <input type="email" id="mail" class="form-control" name="c_mail" value ="<?php echo $data['contact']['mail'];?>">
                   <label for="tel" class="col-md-4 control-label">Tel : </label>
-                  <input type="tel" id="tel" class="form-control" placeholder="0614243464" name="c_tel">
+                  <input type="tel" id="tel" class="form-control" placeholder="0614243464" name="c_tel" value ="<?php echo $data['contact']['tel'];?>">
                   <label for="site" class="col-md-4 control-label">Site-web : </label>
-                  <input type="url" id="site" class="form-control" name="c_site">
+                  <input type="url" id="site" class="form-control" name="c_site" value ="<?php echo $data['contact']['site'];?>">
                 </fieldset>
           </div>
           <div class="row">
                 <fieldset>
                     <label for="select">Type : </label>
                     <select id="select" class="form-control" name="c_type">
-                      <option>Organisateur</option>
+                     <?php
+                        if ($data['contact']['type'] == 'Organisateur') {
+                          echo "<option value=\"organisateur\" selected>Organisateur</option>";
+                        }
+                        else {
+                          echo "<option>Organisateur</option>";
+                        }
+                      ?>
                       <option>Association</option>
                       <option>Festival</option>
                     </select>
                     <label for="textarea" class="col-md-4 control-label">Notes :</label>
-                    <textarea id="textarea" class="form-control" rows="2" name="c_notes"></textarea>
+                    <textarea id="textarea" class="form-control" rows="2" name="c_notes"><?php echo $data['contact']['notes'];?></textarea>
                     <div class="form-group">
                         <label  class="col-md-4 control-label">Date de mise à jour minimum :</label>
                         <input type="radio" name ="c_dureeMAJ" value="1_month">1 mois
