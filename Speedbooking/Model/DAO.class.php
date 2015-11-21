@@ -25,8 +25,8 @@ class DAO {
     
     /**
      * Vérifie que le login et le mot de passe identifient un utilisateur connu de la db
-     * @param type $username
-     * @param type $passwd
+     * @param type $username le nom d'utilisateur (ou login)
+     * @param type $passwd le mot de passe entré par l'utilisateur
      * @return integer l'id de l'utilisateur s'il existe
      * @return bool False sinon
      */
@@ -36,7 +36,7 @@ class DAO {
         $sql = $this->db->query("SELECT * FROM utilisateurs WHERE identifiant=$username"); // On vérifie si un tuple correspond au nom d'utilisateur
         if ($sql->rowCount() != 0) {
             // si une ligne est retournée, c'est que l'utilisateur existe
-            $hash = fetch(PDO::FETCH_COLUMN, "motdepasse");                                 // on récupère le motdepasse de celui-ci (crypté)
+            $hash = fetch(PDO::FETCH_COLUMN, "motdepasse");                                 // on récupère le motdepasse de celui-ci (haché)
                     
             if (password_verify($passwd, $hash)){                                           // On vérifie que les mots de passe correspondent avec la fonction password_verify
                 $res = $sql->fetch(PDO::FETCH_COLUMN, "id");                                // si oui on renvoit l'id de l'utilisateur
@@ -47,15 +47,47 @@ class DAO {
         }
     }
     /**
-     * Renvoit le mot de passe crypté
-     * @param string $passwd
+     * Renvoit le mot de passe hasché
+     * CETTE FONCTION NE DOIT ÊTRE UTILISÉE QUE LORSQU'UN UTILISATEUR MODIFIE SON MOT DE PASSE VIA LE FORMULAIRE ADÉQUAT
+     * CAR LE NOUVEAU MOT DE PASSE NE DOIT PAS ÊTRE STOCKÉ EN CLAIR DANS LA DB
+     * @param string $passwd le nouveau mot de passe utilisateur
      * @return string Mot de passe haché
      */
-    public function crypterPassword($passwd){
+    public function hacherPassword($passwd){
         $hash = password_hash($passwd,PASSWORD_BCRYPT,['cost' => 11]) ;
         return $hash;
     }
 
+    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    // Méthodes CRUD sur Contacts
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Retoune tous les contacts à partir de l'id d'un booker
+     * @param integer $booker l'id du booker
+     * @return Array $res Les noms et prenoms de chaque contact excepté ceux du booker.
+     */
+    public function readContactsFromBooker($booker) {
+        $booker = $this->db->quote($booker);
+        $sql = $this->db->query("SELECT nom, prenom FROM Contacts EXCEPT SELECT nom, prenom FROM Contacts WHERE id=$booker AND metier='booker'");
+        $res = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
+    }
+    /**
+     * Retourne toutes les infos concernant un contact.
+     * @param string $nom le Nom du contact
+     * @param string $prenom le Prenom du contact
+     * @return Array $res Toutes les informations sur le contact.
+     */
+    public function readContactFromNomPrenom($nom,$prenom) {
+        $nom = $this->db->quote($nom);
+        $prenom = $this->db->quote($prenom);
+        $sql = $this->db->query("SELECT * FROM Contacts WHERE nom=$nom AND prenom=$prenom");
+        $res = $sql->fetch();
+        return $res;
+    }
+    
 } // FIN CLASSE DAO
 
 
