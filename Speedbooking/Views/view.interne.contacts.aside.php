@@ -40,9 +40,9 @@ Améliorations :
           }
           else {
             foreach($data['AllContacts'] as $c ) {
-            $nomPrenom = $c->nom().' '.$c->prenom();
-            echo "<li><a href=\"#\" class=\"list-group-item\">
-              <span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+            $nomPrenom = $c['nom'].' '.$c['prenom'];
+            echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'.
+              "<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
             }
           }
          ?>

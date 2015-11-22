@@ -31,16 +31,15 @@ class DAO {
      * @return bool False sinon
      */
     public function connexion($username, $passwd) {
-        $username = $this->db->quote($username);                                           // On quote proprement la variable $username
+        $username = $this->db->quote($username);                                            // On quote proprement la variable $username
         
-        $sql = $this->db->query("SELECT * FROM utilisateurs WHERE identifiant=$username"); // On vérifie si un tuple correspond au nom d'utilisateur
-        if ($sql->rowCount() != 0) {
+        $sql = $this->db->query("SELECT * FROM Identifiants WHERE login=$username");        // On vérifie si un tuple correspond au nom d'utilisateur
+        if ($sql) {
             // si une ligne est retournée, c'est que l'utilisateur existe
-            $hash = fetch(PDO::FETCH_COLUMN, "motdepasse");                                 // on récupère le motdepasse de celui-ci (haché)
-                    
+            $res = $sql->fetch(PDO::FETCH_ASSOC);                                           // on récupère le motdepasse de celui-ci (haché)
+            $hash = $res['mdp'];
             if (password_verify($passwd, $hash)){                                           // On vérifie que les mots de passe correspondent avec la fonction password_verify
-                $res = $sql->fetch(PDO::FETCH_COLUMN, "id");                                // si oui on renvoit l'id de l'utilisateur
-                return $res;
+                return $res['id'];                                                          // si oui on renvoit l'id de l'utilisateur
             } else {                                                                        // On retourne Faux sinon
                 return False;   
             }
@@ -70,7 +69,7 @@ class DAO {
      */
     public function readContactsFromBooker($booker) {
         $booker = $this->db->quote($booker);
-        $sql = $this->db->query("SELECT nom, prenom FROM Contacts EXCEPT SELECT nom, prenom FROM Contacts WHERE id=$booker AND metier='booker'");
+        $sql = $this->db->query("SELECT nom, prenom FROM Contacts WHERE id <> $booker AND metier <> 'booker'");
         $res = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
@@ -86,6 +85,24 @@ class DAO {
         $sql = $this->db->query("SELECT * FROM Contacts WHERE nom=$nom AND prenom=$prenom");
         $res = $sql->fetch();
         return $res;
+    }
+    /**
+     * Met à jour un contact
+     * @param string $nom
+     * @param string $prenom
+     * @param string $mail
+     * @param string $tel
+     * @param string metier
+     */
+    public function updateContactFromNomPrenom($nom,$prenom,$mail,$tel,$metier, $adresse) {
+        $nom = $this->db->quote($nom);
+        $prenom = $this->db->quote($prenom);
+        $mail = $this->db->quote($mail);
+        $tel = $this->db->quote($tel);
+        $metier = $this->db->quote($metier);
+        $adresse = $this->db->quote($adresse);
+        $q = ("UPDATE Contacts SET email=$mail, telephone=$tel, metier=$metier, adresse=$adresse WHERE nom=$nom AND prenom=$prenom");
+        $this->db->exec($q) or die("Update Contact ERROR : No Contact updated");
     }
     
 } // FIN CLASSE DAO

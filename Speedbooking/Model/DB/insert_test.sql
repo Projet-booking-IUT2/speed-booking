@@ -15,7 +15,7 @@ INSERT INTO Contacts
 
 INSERT INTO Identifiants 
 	VALUES(SELECT id FROM Contacts WHERE nom="Les joyeux lurons","ljl","popop");
-	#Pdt l'éxécution en conditions réelles, on pourra connaitre l'id de l'utilisateur 
+	# Pdt l'éxécution en conditions réelles, on pourra connaitre l'id de l'utilisateur 
 INSERT INTO Identifiants 
 	VALUES(SELECT id FROM Contacts WHERE nom="Laurent","yanoo","password");
 
