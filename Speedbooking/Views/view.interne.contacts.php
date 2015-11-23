@@ -16,6 +16,8 @@ $data['contact']
           ['type']
           ['notes']
           ['maj']
+          ['lieuTravail']
+          ['dernièreMaj']
 S'il n'y existe aucun contact, le controler ne doit pas créer de variable.
 
 A faire :
@@ -62,8 +64,13 @@ Améliorations :
           //formulaire rempli
           ?>
           <div class="row">
-                <div class="alert alert-info">
-                <strong>Infos sur la mise à jour</strong>
+              <!-- A afficher si à jour : -->
+                <div class="alert alert-info col-md-3 pull-right">
+                <strong>Contact à jour :)</strong>
+                </div>
+              <!-- A afficher si PAS à jour : -->
+                <div class="alert alert-danger col-md-3 pull-right">
+                <strong>Contact Obscolète ! </strong>
                 </div>
           </div>
           <div class="row">
@@ -92,7 +99,7 @@ Améliorations :
                         } else if($data['contact']['metier'] == "Association"){
                             echo '<option selected>Association</option>';
                             echo "<option>Organisateur</option>";
-                            echo "<option>Festival</option>";                     
+                            echo "<option>Festival</option>";
                         } else if ($data['contact']['metier'] == "Festival"){
                             echo '<option selected>Festival</option>';
                             echo "<option>Organisateur</option>";
@@ -100,6 +107,8 @@ Améliorations :
                         }
                       ?>
                     </select>
+                    <label for="orga" class="col-md-3 control-label">Lieu de travail : </label>
+                    <div class="col-md-9"><input id="orga" class="form-control" name="c_lieuTravail" value ="<?= $data['contact']['lieuTravail'] ?>"></div>
                     <label for="textarea" class="col-md-4 control-label">Notes :</label>
                     <textarea id="textarea" class="form-control" rows="2" name="c_notes"><?php //echo $data['contact']['notes'];?></textarea>
                     <div class="form-group">
@@ -110,50 +119,60 @@ Améliorations :
                         <input type="radio" name ="c_dureeMAJ" value="12_month">12 mois
                     </div>
                 </fieldset>
+                <div lcass="row"><div class="alert alert-sucess  pull-left">
+                <i>Date de dernière mise à jour : <?= $data['contact']['dernièreMaj'] ?></i>
+              </div></div>
             </div>
         <?php }
         else {
           //formulaire vide
         ?>
-        <div class="row">
-              <fieldset class="form-group">
-                <label for="nom" class="control-label">Nom : </label>
-                <input type="text" id="nom" class="form-control" placeholder="Ex : Dupont" name="c_nom">
+              <div class="form-group row">
+                <label for="nom" class="col-md-2 control-label">Nom : </label>
+                <div class="col-md-4"><input type="text" id="nom" class="form-control" placeholder="Ex : Dupont" name="c_nom"></div>
                 <label for="prenom" class="col-md-2 control-label">Prénom : </label>
-                <input type="text" id="prenom" class="form-control" placeholder="Ex : Charles" name="c_prenom">
-                <label for="mail" class="col-md-4 control-label">Mail : </label>
-                <input type="email" id="mail" class="form-control" placeholder="exemple@exemple.com" name="c_mail">
-                <label for="tel" class="col-md-4 control-label">Tel : </label>
-                <input type="tel" id="tel" class="form-control" placeholder="Ex : 0600000000" name="c_tel">
-                <label for="site" class="col-md-4 control-label">Site-web : </label>
-                <input type="url" id="site" class="form-control" placeholder="exemple.fr" name="c_site">
-              </fieldset>
-        </div>
-        <div class="row">
-              <fieldset>
-                  <label for="select">Type : </label>
-                  <select id="select" class="form-control" name="c_type">
+                <div class="col-md-4"><input type="text" id="prenom" class="form-control" placeholder="Ex : Charles" name="c_prenom"></div>
+             </div>
+             <div class="form-group row">
+                <label for="mail"  class="col-md-2 control-label">Mail : </label>
+                <div class="col-md-10"><input type="email" id="mail" class="form-control" placeholder="exemple@exemple.com" name="c_mail"></div>
+             </div>
+             <div class="form-group row">
+                <label for="tel" class="col-md-2 control-label">Tel : </label>
+                <div class="col-md-4"><input type="tel" id="tel" class="form-control" placeholder="Ex : 0600000000" name="c_tel"></div>
+                <label for="site" class="col-md-2 control-label">Site-web : </label>
+                <div class="col-md-4"><input type="url" id="site" class="form-control" placeholder="exemple.fr" name="c_site"></div>
+             </div>
+              <div class="form-group row">
+                  <label for="select" class="col-md-2 control-label">Type : </label>
+                  <div class="col-md-10"><select id="select" class="form-control" name="c_type">
                       <option selected>Choisir un rôle pour ce contact</option>
                     <option>Organisateur</option>
                     <option>Association</option>
                     <option>Festival</option>
-                  </select>
-                  <label for="textarea" class="col-md-4 control-label">Notes :</label>
-                  <textarea id="textarea" class="form-control" rows="2" name="c_notes"></textarea>
-                  <div class="form-group">
-                      <label  class="col-md-4 control-label">Date de mise à jour minimum :</label>
+                  </select></div>
+              </div>
+              <div class="form-group row">
+                  <label for="orga" class="col-md-3 control-label">Lieu de travail : </label>
+                  <div class="col-md-9"><input id="orga" class="form-control" placeholder="Hellfest" name="c_lieuTravail"></div>
+              </div>
+               <div class="form-group row">
+                  <label for="textarea" class="col-md-2 control-label">Notes :</label>
+                  <div class="col-md-10"><textarea id="textarea" class="form-control" rows="2" name="c_notes">Détails sur ce contact</textarea></div>
+                </div>
+                <div class="form-group row">
+                      <label  class="col-md-4 ">Date mise à jour minimum :</label>
                       <input type="radio" name ="c_dureeMAJ" value="1_month">1 mois
                       <input type="radio" name ="c_dureeMAJ" value="3_month" checked>3 mois
                       <input type="radio" name ="c_dureeMAJ" value="6_month">6 mois
                       <input type="radio" name ="c_dureeMAJ" value="12_month">12 mois
-                  </div>
-              </fieldset>
-          </div>
+                </div>
         <?php }
         ?>
 
-        <div class="form-group">
-          <button type="submit" class="btn btn-block btn-success"><span class="glyphicon glyphicon-send"></span> Envoyez</button>
+          <div class="form-group row">
+          <a href="#" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
+          <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button>
         </div>
       </form>
     </div>

@@ -14,6 +14,7 @@ Si la liste est vide, la vue affiche une alerte et le controler ne crée pas la 
 Si l'user clique sur un lien, le controler est appelé avec en param $_GET['nom_booker'].
 Le controler doit afficher la fiche contact correspondante en redonnant la variable $data['contact'] remplie correctement
 
+Si l'user clique sur l'icone plus, le controler est appelé et doit afficher un formulaire tout vide.
 
 A faire :
 
@@ -26,7 +27,10 @@ Améliorations :
 <div class="col-md-4">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h3 class="panel-title">Vos contacts :</h3>
+      <div class="row">
+          <h3 class="panel-title col-md-8">Vos contacts :</h3>
+          <a href="#" class="btn btn-lg btn-success pull-right "><span class="glyphicon glyphicon-plus"></span></a>
+      </div>
     </div>
     <div class="panel-body">
         <ul class="list-group">
