@@ -8,14 +8,19 @@ CREATE VIEW Bookers AS
 	FROM Contacts
 	WHERE metier="booker";
 
-CREATE VIEW Groupes AS
+CREATE VIEW Artistes AS
 	SELECT *
-	FROM Contacts c, Groupes g
+	FROM Contacts c
 	WHERE metier="artiste";
+
+CREATE VIEW Organisateurs AS
+	SELECT *
+	FROM Contacts
+	WHERE metier="organisateur";
 
 CREATE VIEW espaceEchangePerso AS
 	SELECT fichier
-	FROM espaceEchange
+	FROM Espace_echange
 	WHERE proprietaire = USER();
 
 CREATE VIEW EvenementsAVenir AS
