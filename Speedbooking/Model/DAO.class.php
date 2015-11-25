@@ -5,11 +5,10 @@ class DAO {
     private $db;
     
     public function __construct() {
-        $dsn = "mysql:host=projet-tut-info-1.iut2.upmf-grenoble.fr;dbname=2015_M3301_groupe3_dev"; // Data Source Name de la db de Developpement
-        $username = "groupe3_dev";
-        $passwd = "DxWGSBT4rTHD5JRZ";
+        $config = parse_ini_file('../config/config.ini');//Chemin vers le dossier config
+        
         try {
-            $this->db = new PDO($dsn, $username, $passwd);
+            $this->db = new PDO($config['database_path'], $config['database_userRoot'], $config['database_mdpRoot']);
         } catch (PDOException $e) {
             die("Erreur d'ouverture de la DB : ". $e->getMessage());
         }
