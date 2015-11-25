@@ -61,10 +61,9 @@ Améliorations :
                       <input type="radio" name ="c_dureeMAJ" value="12_month">12 mois
                 </div>
                 <div class="form-group row">
-                      <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok">Créer</span></button>
+                      <button type="submit" class="btn btn-success pull-right boutonPlus"><span class="glyphicon glyphicon-ok">Créer</span></button>
                 </div>
       </form>
     </div><!--panel body-->
   </div><!--panel-->
 </div><!--col md 8-->
-

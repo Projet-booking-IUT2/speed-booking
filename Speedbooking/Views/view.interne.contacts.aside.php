@@ -29,11 +29,11 @@ Améliorations :
     <div class="panel-heading">
       <div class="row">
           <h3 class="panel-title col-md-8">Vos contacts :</h3>
-          <a href="#" class="btn btn-lg btn-success pull-right "><span class="glyphicon glyphicon-plus"></span></a>
+          <a href="#" class="btn btn-lg btn-success pull-right boutonPlus"><span class="glyphicon glyphicon-plus"></span></a>
       </div>
     </div>
     <div class="panel-body">
-        <ul class="list-group">
+        <ul class="list-group list-unstyled">
         <?php
           if (!isset($data['AllContacts'])) {
             echo "
@@ -51,6 +51,6 @@ Améliorations :
           }
          ?>
         </ul>
-    </div>
-  </div>
-</div>
+    </div><!--panel body-->
+  </div><!--panel info-->
+</div><!--col md 4-->

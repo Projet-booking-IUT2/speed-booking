@@ -10,7 +10,7 @@ Améliorations :
 -->
     <footer class="navbar navbar-default navbar-fixed-bottom">
       <div class="container">
-       <p class="text-muted">Un jouli pied de paaaaage</p>
+              <p class="text-muted">Speed-Booking - En cours de construction - Startup Ayaty</p>
      </div>
     </footer>
   </div><!--container-->
