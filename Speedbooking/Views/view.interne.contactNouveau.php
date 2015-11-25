@@ -20,8 +20,8 @@ Améliorations :
         <li><a href="#" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
         <li><a href="#" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
       </ul>
-    </div>
-  </div>
+    </div><!--container nav-->
+  </div><!-- nav-->
 </header>
 <?php include('../Views/view.interne.contacts.aside.php'); ?>
 <div class="col-md-8">
@@ -75,8 +75,7 @@ Améliorations :
                       <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok">Créer</span></button>
                 </div>
       </form>
-    </div>
-  </div>
-</div>
-</section>
+    </div><!--panel body-->
+  </div><!--panel-->
+</div><!--col md 8-->
 <?php include('../Views/view.interne.footer.php'); ?>

@@ -13,6 +13,6 @@ Améliorations :
        <p class="text-muted">Un jouli pied de paaaaage</p>
      </div>
     </footer>
-  </div>
+  </div><!--container-->
   </body>
 </html>
