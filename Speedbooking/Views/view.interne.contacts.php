@@ -40,26 +40,25 @@ Améliorations :
   </div><!-- nav-->
 </header>
 <?php include('../Views/view.interne.contacts.aside.php'); ?>
+<?php
+    if(isset ($data['contact'])) {
+     ?>
+          
 <div class="col-md-8">
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title">
         <?php
-          if(isset ($data['contact'])) {
+         
             echo $data['contact']['nom']; echo $data['contact']['prenom'];
-          }
-
-        ?></h3>
+        ?>
+         </h3>
     </div>
     <div class="panel-body">
         <form action="../Controler/contacts.ctrl.php" method="post" class= " well form ">
 <!--        <input type="text" id="nom" class="form-control" name="c_nom">-->
 
-      <?php
-      //echo value=\"$data['contact']['nom']\" ";
-      if(isset ($data['contact'])) {
-          //formulaire rempli
-          ?>
+
           <div class="row">
               <!-- A afficher si à jour : -->
                 <div class="alert alert-info col-md-3 pull-right">
@@ -132,7 +131,11 @@ Améliorations :
                 <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button>
             </div>
       </form>
+      
     </div><!--panel body-->
   </div><!--panel-->
 </div><!--col md 8-->
+      <?php } else {
+     include '../Views/view.interne.contactNouveau.php';
+      } ?>
 <?php include('../Views/view.interne.footer.php'); ?>

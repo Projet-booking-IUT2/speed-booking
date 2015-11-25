@@ -27,7 +27,7 @@ Améliorations :
       <link rel="icon" href="../../favicon.ico">
       <!-- Bootstrap -->
       <link href="../Views/bootstrap/css/bootstrap.css" rel="stylesheet">
-      <link href="index.css" rel="stylesheet">
+      <link href="../Views/index.css" rel="stylesheet">
       <title>SpeedBooking</title>
     </head>
     <body>

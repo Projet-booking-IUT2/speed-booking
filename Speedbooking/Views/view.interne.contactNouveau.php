@@ -12,18 +12,7 @@ Améliorations :
 
 
 -->
-<?php include('../Views/view.interne.header.php'); ?>
 
-        <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
-        <li class="active"><a href="#"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
-        <li><a href="#" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-        <li><a href="#" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
-        <li><a href="#" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
-      </ul>
-    </div><!--container nav-->
-  </div><!-- nav-->
-</header>
-<?php include('../Views/view.interne.contacts.aside.php'); ?>
 <div class="col-md-8">
   <div class="panel panel-info">
     <div class="panel-heading">
@@ -78,4 +67,4 @@ Améliorations :
     </div><!--panel body-->
   </div><!--panel-->
 </div><!--col md 8-->
-<?php include('../Views/view.interne.footer.php'); ?>
+
