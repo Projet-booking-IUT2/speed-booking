@@ -56,7 +56,7 @@ class DAO {
         $hash = password_hash($passwd,PASSWORD_BCRYPT,['cost' => 11]) ;
         return $hash;
     }
-
+    
     
     
     ////////////////////////////////////////////////////////////////////////////
@@ -105,6 +105,13 @@ class DAO {
         $this->db->exec($q) or die("Update Contact ERROR : No Contact updated");
     }
     
+    public function deleteContactFromNomPrenom($nom,$prenom) {
+        $nom = $this->db->quote($nom);
+        $prenom = $this->db->quote($prenom);
+        
+        $q = "DELETE FROM Contacts WHERE nom=$nom AND prenom=$prenom";
+        $this->db->exec($q) or die("Delete Contact ERROR : No contact deleted");
+    }
 } // FIN CLASSE DAO
 
 
