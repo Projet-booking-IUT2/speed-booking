@@ -5,8 +5,8 @@ class DAO {
     private $db;
     
     public function __construct() {
-        $config = parse_ini_file('../config/config.ini');//Chemin vers le dossier config
-        
+//        $config = parse_ini_file('../config/config.ini');//Chemin vers le dossier config
+        $config = parse_ini_file('../config/config_local.ini');//Chemin vers le dossier config
         try {
             $this->db = new PDO($config['database_path'], $config['database_userRoot'], $config['database_mdpRoot']);
         } catch (PDOException $e) {
@@ -38,7 +38,7 @@ class DAO {
             $res = $sql->fetch(PDO::FETCH_ASSOC);                                           // on récupère le motdepasse de celui-ci (haché)
             $hash = $res['mdp'];
             if (password_verify($passwd, $hash)){                                           // On vérifie que les mots de passe correspondent avec la fonction password_verify
-                return $res['id'];                                                          // si oui on renvoit l'id de l'utilisateur
+                return $res['contact'];                                                          // si oui on renvoit l'id de l'utilisateur
             } else {                                                                        // On retourne Faux sinon
                 return False;   
             }
@@ -86,6 +86,18 @@ class DAO {
         return $res;
     }
     /**
+     * Retourne le lieux de travaille pour un contact dont on donne le nom et prenom
+     * @param type $nom
+     * @param type $prenom
+     */
+    public function readStructureFromContact($nom, $prenom) {
+        $nom = $this->db->quote($nom);
+        $prenom = $this->db->quote($prenom);
+        $sql = $this->db->query("select m.struct from Membres_structure m, Contacts c where c.nom = $nom and prenom = $prenom and m.contact = c.id;");
+        $res = $sql->fetch();
+        return $res[0];
+    }
+    /**
      * Met à jour un contact
      * @param string $nom
      * @param string $prenom
@@ -111,6 +123,18 @@ class DAO {
         $q = "DELETE FROM Contacts WHERE nom=$nom AND prenom=$prenom";
         $this->db->exec($q) or die("Delete Contact ERROR : No contact deleted");
     }
+    ////////////////////////////////////////////////////////////////////////////
+    // Méthodes CRUD sur Membres_structure
+    ////////////////////////////////////////////////////////////////////////////
+    /** Retourne le nom et prenom de chaque personne travaillant pour la structure demandée
+     * @param string $struct le nom de la structure
+     */
+    public function readMembresFromStructure($struct) {
+        $struct = $this->db->quote($struct);
+        $sql = $this->query("select c.nom,c.prenom from Membres_structure m, Contacts c Where struct =$struct and m.contact = c.id");
+        $res = $sql->fetchAll(PDO::FETCH_BOTH);
+    }
+    
 } // FIN CLASSE DAO
 
 
