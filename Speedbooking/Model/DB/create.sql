@@ -2,13 +2,13 @@ CREATE TABLE Contacts (
 	id int(6) NOT NULL AUTO_INCREMENT,
 	nom varchar(30),
 	prenom varchar(30),
-	tel integer(10) not null,
+	tel integer(12) not null,
 	metier varchar(12) not null,
 	mail varchar(100) not null,
 	notes varchar(1000),
-	derniere_maj date not null,
+	derniere_maj date,
 	prochaine_maj date,
-	utilisateur boolean,
+	utilisateur boolean DEFAULT false,
 
 	primary key (id),
 	CONSTRAINT chk_mail CHECK(mail LIKE '%@%.%'),
@@ -70,7 +70,7 @@ CREATE TABLE Espace_echange (
 	foreign key(proprietaire) references Contacts(id)
 );
 
-CREATE TABLE Organise (
+CREATE TABLE Organise ( -- Lien structure <-> Evenement
 	organisateur varchar(50) not null,
 	evenement int(6) not null,
 	lieu int(6) not null,
@@ -81,7 +81,8 @@ CREATE TABLE Organise (
 	foreign key(lieu) references Lieux(id)
 );
 
-CREATE TABLE Participe (
+
+CREATE TABLE Participe ( -- Lien artistes <-> Evènements
 	groupe int(6),
 	evenement int(6),
 
@@ -90,7 +91,7 @@ CREATE TABLE Participe (
 	foreign key(evenement) references Evenements(id)
 );
 
-CREATE TABLE Membres_groupe (
+CREATE TABLE Membres_groupe ( -- Lien artistes <-> groupe
 	contact int(6),
 	groupe int(6),
 
@@ -99,7 +100,7 @@ CREATE TABLE Membres_groupe (
 	foreign key(groupe) references Groupes(id)
 );
 
-CREATE TABLE Membres_structure (
+CREATE TABLE Membres_structure ( -- Lien orga <-> structures
 	contact int(6),
 	struct varchar(50),
 

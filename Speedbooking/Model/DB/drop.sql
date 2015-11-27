@@ -1,5 +1,5 @@
 DROP VIEW Bookers;
-DROP VIEW Atistes;
+DROP VIEW Artistes;
 DROP VIEW Organisateurs;
 DROP VIEW Utilisateurs;
 DROP VIEW espaceEchangePerso;
