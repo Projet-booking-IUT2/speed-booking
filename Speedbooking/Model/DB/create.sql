@@ -1,5 +1,5 @@
 CREATE TABLE Contacts (
-	id int(6),
+	id int(6) NOT NULL AUTO_INCREMENT,
 	nom varchar(30),
 	prenom varchar(30),
 	tel integer(10) not null,
@@ -25,7 +25,7 @@ CREATE TABLE Identifiants (
 );
 
 CREATE TABLE Groupes (
-	id int(6),
+	id int(6) NOT NULL AUTO_INCREMENT,
 	booker_associe int(6) not null,
 	nom varchar(50) not null,
 	style varchar(30),
@@ -36,7 +36,7 @@ CREATE TABLE Groupes (
 );
 
 CREATE TABLE Evenements (
-	id int(6),
+	id int(6) NOT NULL AUTO_INCREMENT,
 	nom varchar(70),
 	date_evt date not null,
 	style varchar(30),
@@ -45,7 +45,7 @@ CREATE TABLE Evenements (
 );
 
 CREATE TABLE Lieux (
-	id int(6),
+	id int(6) NOT NULL AUTO_INCREMENT,
 	adresse varchar(250) not null,
 	nom varchar(50),
 
@@ -71,12 +71,12 @@ CREATE TABLE Espace_echange (
 );
 
 CREATE TABLE Organise (
-	organisateur varchar(50),
-	evenement int(6),
-	lieu int(6),
+	organisateur varchar(50) not null,
+	evenement int(6) not null,
+	lieu int(6) not null,
 
 	primary key(organisateur,evenement,lieu),
-	foreign key(organisateur) references Contact(id),
+	foreign key(organisateur) references Structures(nom),
 	foreign key(evenement) references Evenements(id),
 	foreign key(lieu) references Lieux(id)
 );
@@ -105,5 +105,5 @@ CREATE TABLE Membres_structure (
 
 	primary key(contact,struct),
 	foreign key(contact) references Contacts(id),
-	foreign key(struct) references Structures(id)
+	foreign key(struct) references Structures(nom)
 );

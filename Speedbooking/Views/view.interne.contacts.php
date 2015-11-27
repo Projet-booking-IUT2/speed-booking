@@ -50,7 +50,7 @@ Améliorations :
       <h3 class="panel-title">
         <?php
          
-            echo $data['contact']['nom']; echo $data['contact']['prenom'];
+            echo $data['contact']['nom']; echo " "; echo $data['contact']['prenom'];
         ?>
          </h3>
     </div>
@@ -66,7 +66,7 @@ Améliorations :
                 </div>
               <!-- A afficher si PAS à jour : -->
                 <div class="alert alert-danger col-md-3 pull-right">
-                <strong>Contact Obscolète ! </strong>
+                <strong>Contact Obsolète ! </strong>
                 </div>
           </div>
           <div class="form-group row">
@@ -77,13 +77,13 @@ Améliorations :
           </div>
           <div class="form-group row">
               <label for="mail"  class="col-md-2 control-label">Mail : </label>
-              <div class="col-md-10"><input type="email" id="mail" class="form-control" name="c_mail" value ="<?= $data['contact']['email'] ?>" /></div>
+              <div class="col-md-10"><input type="email" id="mail" class="form-control" name="c_mail" value ="<?= $data['contact']['mail'] ?>" /></div>
           </div>
           <div class="form-group row">
               <label for="tel" class="col-md-2 control-label">Tel : </label>
-              <div class="col-md-4"><input type="tel" id="tel" class="form-control" name="c_tel" value ="<?= $data['contact']['telephone'] ?>" /></div>
+              <div class="col-md-4"><input type="tel" id="tel" class="form-control" name="c_tel" value ="<?= $data['contact']['tel'] ?>" /></div>
               <label for="site" class="col-md-2 control-label">Site-web : </label>
-              <div class="col-md-4"><input type="url" id="site" class="form-control" name="c_site" value ="<?= $data['contact']['adresse'] ?>" /></div>
+              <div class="col-md-4"><input type="url" id="site" class="form-control" name="c_site" value ="<?php // $data['contact']['site'] ?>" /></div>
           </div>
           <div class="form-group row">
               <label for="select" class="col-md-2 control-label">Type : </label>
@@ -107,11 +107,11 @@ Améliorations :
             </div>
             <div class="form-group row">
                     <label for="orga" class="col-md-3 control-label">Lieu de travail : </label>
-                    <div class="col-md-9"><input id="orga" class="form-control" name="c_lieuTravail" value ="<?= $data['contact']['lieuTravail'] ?>"></div>
+                    <div class="col-md-9"><input id="orga" class="form-control" name="c_lieuTravail" value ="<?= $data['lieuTravail'] ?>"></div>
             </div>
              <div class="form-group row">
                     <label for="textarea" class="col-md-2 control-label">Notes :</label>
-                    <div class="col-md-10"><textarea id="textarea" class="form-control" rows="2" name="c_notes"><?php //echo $data['contact']['notes'];?>
+                    <div class="col-md-10"><textarea id="textarea" class="form-control" rows="2" name="c_notes"><?= $data['contact']['notes'] ?>
                     </textarea></div>
             </div>
             <div class="form-group">
@@ -123,7 +123,7 @@ Améliorations :
             </div>
             <div lcass="row">
               <div class="alert alert-sucess  pull-left">
-                <i>Date de dernière mise à jour : <?= $data['contact']['dernièreMaj'] ?></i>
+                <i>Date de dernière mise à jour : <?= $data['contact']['derniere_maj'] ?></i>
               </div>
             </div>
             <div class="form-group row">

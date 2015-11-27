@@ -62,13 +62,39 @@ class DAO {
     // Méthodes CRUD sur Contacts
     ////////////////////////////////////////////////////////////////////////////
     /**
+     * Crée un nouveau contact
+     * @param type $nom
+     * @param type $prenom
+     * @param type $mail
+     * @param type $tel
+     * @param type $site
+     * @param type $metier
+     * @param type $struct
+     * @param type $notes
+     * @param type $freq_maj
+     */
+    public function createNewContact($nom, $prenom, $mail, $tel, $site, $metier, $struct, $notes, $freq_maj) {
+        $nom = $this->db->quote($nom);
+        $prenom = $this->db->quote($prenom);
+        $mail = $this->db->quote($mail);
+        $tel = $this->db->quote($tel);
+        $site = $this->db->quote($site);
+        $metier = $this->db->quote($metier);
+        $struct = $this->db->quote($struct);
+        $notes = $this->db->quote($notes);
+        $freq_maj = $this->db->quote($freq_maj);
+        $q = "INSERT INTO speedBooking_test.Contacts (nom, prenom, tel, metier, mail, notes, derniere_maj, prochaine_maj, utilisateur) VALUES ( $nom, $prenom, $tel, $metier, $mail, $notes, now(), NULL, false";
+        $this->db->exec($q) or die("erreur");
+        
+    }
+    /**
      * Retoune tous les contacts à partir de l'id d'un booker
      * @param integer $booker l'id du booker
      * @return Array $res Les noms et prenoms de chaque contact excepté ceux du booker.
      */
     public function readContactsFromBooker($booker) {
         $booker = $this->db->quote($booker);
-        $sql = $this->db->query("SELECT nom, prenom FROM Contacts WHERE id <> $booker AND metier <> 'booker'");
+        $sql = $this->db->query("SELECT nom, prenom FROM Contacts WHERE id <> $booker AND metier <> 'booker' ORDER BY nom");
         $res = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
@@ -97,23 +123,38 @@ class DAO {
         $res = $sql->fetch();
         return $res[0];
     }
+    
     /**
-     * Met à jour un contact
-     * @param string $nom
-     * @param string $prenom
-     * @param string $mail
-     * @param string $tel
-     * @param string metier
+     * Met à jour le contact
+     * @param type $nom
+     * @param type $prenom
+     * @param type $mail
+     * @param type $tel
+     * @param type $metier
+     * @param type $adresse
+     * @param type $lieuTravail
+     * @param type $note
      */
-    public function updateContactFromNomPrenom($nom,$prenom,$mail,$tel,$metier, $adresse) {
+    
+    public function updateContactFromNomPrenom($nom,$prenom,$mail,$tel,$metier, $adresse, $lieuTravail, $note, $freq_maj) {
         $nom = $this->db->quote($nom);
         $prenom = $this->db->quote($prenom);
         $mail = $this->db->quote($mail);
-        $tel = $this->db->quote($tel);
+//        $tel = $this->db->quote($tel);
         $metier = $this->db->quote($metier);
         $adresse = $this->db->quote($adresse);
-        $q = ("UPDATE Contacts SET email=$mail, telephone=$tel, metier=$metier, adresse=$adresse WHERE nom=$nom AND prenom=$prenom");
-        $this->db->exec($q) or die("Update Contact ERROR : No Contact updated");
+        $note = $this->db->quote($note);
+        $lieuTravail = $this->db->quote($lieuTravail);
+        $sql = $this->db->query("SELECT id from Contacts WHERE nom=$nom and prenom=$prenom");
+        $sql = $sql->fetch();
+        $id = $this->db->quote($sql[0]);
+        $q1 = ("UPDATE Contacts SET mail=$mail, tel=$tel, metier=$metier, mail=$adresse, notes=$note WHERE nom=$nom AND prenom=$prenom");
+        $q2 = ("UPDATE Membres_structure SET struct=$lieuTravail WHERE contact=$id");
+        
+        $this->db->beginTransaction();
+        $this->db->exec($q1);
+        $this->db->exec($q2);
+        $this->db->commit() or die("Update Contact ERROR : No Contact updated");
     }
     
     public function deleteContactFromNomPrenom($nom,$prenom) {

@@ -29,7 +29,7 @@ Améliorations :
     <div class="panel-heading">
       <div class="row">
           <h3 class="panel-title col-md-8">Vos contacts :</h3>
-          <a href="#" class="btn btn-lg btn-success pull-right boutonPlus"><span class="glyphicon glyphicon-plus"></span></a>
+          <a href="../Controler/contacts.ctrl.php?arg=addContact" class="btn btn-lg btn-success pull-right boutonPlus"><span class="glyphicon glyphicon-plus"></span></a>
       </div>
     </div>
     <div class="panel-body">
