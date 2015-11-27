@@ -56,7 +56,7 @@ Améliorations :
     </div>
     <div class="panel-body">
         <form action="../Controler/contacts.ctrl.php" method="post" class= " well form ">
-<!--        <input type="text" id="nom" class="form-control" name="c_nom">-->
+        <input type="hidden" name="maj">
 
 
           <div class="row">

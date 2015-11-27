@@ -4,7 +4,7 @@ if(isset($_GET['mp'])) {
     require_once '../Model/DAO.class.php';
 
     $dao = new DAO();
-    $password = "";
+    $password = $_GET['mp'];
     $hash = $dao->hacherPassword($password);
 
     //$hash = $dao->crypterPassword($password);
@@ -17,8 +17,6 @@ if(isset($_GET['mp'])) {
     }
 
 }
-
-// $2y$11$Sc/DVjzHHDbZHDj2OEkj/uUSoaOaTU4eVZUdeXz9751x1TXl.Ud2y
 ?>
 
 <!DOCTYPE html>

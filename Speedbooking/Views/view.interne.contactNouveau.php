@@ -20,7 +20,7 @@ Améliorations :
     </div>
     <div class="panel-body">
         <form action="../Controler/contacts.ctrl.php" method="post" class= " well form ">
-            <input type="hidden" name="arg" value="addContact" />
+            <input type="hidden" name="add" />
             <div class="form-group row">
                 <label for="nom" class="col-md-2 control-label">Nom : </label>
                 <div class="col-md-4"><input type="text" id="nom" class="form-control" placeholder="Ex : Dupont" name="c_nom"></div>

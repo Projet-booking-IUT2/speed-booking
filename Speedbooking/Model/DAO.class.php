@@ -5,8 +5,8 @@ class DAO {
     private $db;
     
     public function __construct() {
-//        $config = parse_ini_file('../config/config.ini');//Chemin vers le dossier config
-        $config = parse_ini_file('../config/config_local.ini');//Chemin vers le dossier config
+        $config = parse_ini_file('../config/config.ini');//Chemin vers le dossier config
+//        $config = parse_ini_file('../config/config_local.ini');//Chemin vers le dossier config
         try {
             $this->db = new PDO($config['database_path'], $config['database_userRoot'], $config['database_mdpRoot']);
         } catch (PDOException $e) {
@@ -67,24 +67,22 @@ class DAO {
      * @param type $prenom
      * @param type $mail
      * @param type $tel
-     * @param type $site
      * @param type $metier
      * @param type $struct
      * @param type $notes
      * @param type $freq_maj
      */
-    public function createNewContact($nom, $prenom, $mail, $tel, $site, $metier, $struct, $notes, $freq_maj) {
+    public function createNewContact($nom, $prenom, $mail, $tel, $metier, $struct, $notes, $freq_maj) {
         $nom = $this->db->quote($nom);
         $prenom = $this->db->quote($prenom);
         $mail = $this->db->quote($mail);
         $tel = $this->db->quote($tel);
-        $site = $this->db->quote($site);
         $metier = $this->db->quote($metier);
         $struct = $this->db->quote($struct);
         $notes = $this->db->quote($notes);
         $freq_maj = $this->db->quote($freq_maj);
-        $q = "INSERT INTO speedBooking_test.Contacts (nom, prenom, tel, metier, mail, notes, derniere_maj, prochaine_maj, utilisateur) VALUES ( $nom, $prenom, $tel, $metier, $mail, $notes, now(), NULL, false";
-        $this->db->exec($q) or die("erreur");
+        $q1 = "INSERT INTO Contacts (nom, prenom, tel, metier, mail, notes, derniere_maj, prochaine_maj, utilisateur) VALUES ($nom, $prenom, $tel, $metier, $mail, $notes, Now(), NULL, false)";
+        $this->db->exec($q1) or die("erreur erreur erreur !!!!");
         
     }
     /**
@@ -140,11 +138,11 @@ class DAO {
         $nom = $this->db->quote($nom);
         $prenom = $this->db->quote($prenom);
         $mail = $this->db->quote($mail);
-//        $tel = $this->db->quote($tel);
         $metier = $this->db->quote($metier);
         $adresse = $this->db->quote($adresse);
         $note = $this->db->quote($note);
         $lieuTravail = $this->db->quote($lieuTravail);
+        
         $sql = $this->db->query("SELECT id from Contacts WHERE nom=$nom and prenom=$prenom");
         $sql = $sql->fetch();
         $id = $this->db->quote($sql[0]);
