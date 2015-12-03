@@ -5,12 +5,6 @@ View pour ajouter un nouveau contact
 -Liste des contacts existantes (aside)
 -footer
 --------------------------------------------------------------
-
-A faire :
-
-Améliorations :
-
-
 -->
 
 <div class="col-md-8">
@@ -32,6 +26,10 @@ Améliorations :
                 <div class="col-md-10"><input type="email" id="mail" class="form-control" placeholder="exemple@exemple.com" name="c_mail"></div>
              </div>
              <div class="form-group row">
+                <label for="adresse"  class="col-md-2 control-label">Adresse : </label>
+                <div class="col-md-10"><input  id="adresse" class="form-control" placeholder="3 rue paul Mistral 38000 Grenoble" name="c_adresse"></div>
+             </div>
+             <div class="form-group row">
                 <label for="tel" class="col-md-2 control-label">Tel : </label>
                 <div class="col-md-4"><input type="tel" id="tel" class="form-control" placeholder="Ex : 0600000000" name="c_tel"></div>
                 <label for="site" class="col-md-2 control-label">Site-web : </label>
@@ -39,16 +37,15 @@ Améliorations :
              </div>
               <div class="form-group row">
                   <label for="select" class="col-md-2 control-label">Type : </label>
-                  <div class="col-md-10"><select id="select" class="form-control" name="c_type">
-                      <option selected>Choisir un rôle pour ce contact</option>
+                  <div class="col-md-4"><select id="select" class="form-control" name="c_type">
+                      <option selected>Choisir un rôle</option>
                     <option>Organisateur</option>
                     <option>Association</option>
                     <option>Festival</option>
+                    <option>Autre</option>
                   </select></div>
-              </div>
-              <div class="form-group row">
-                  <label for="orga" class="col-md-3 control-label">Lieu de travail : </label>
-                  <div class="col-md-9"><input id="orga" class="form-control" placeholder="Hellfest" name="c_lieuTravail"></div>
+                  <label for="orga" class="col-md-2 control-label">Travaille à : </label>
+                  <div class="col-md-4"><input id="orga" class="form-control" placeholder="Hellfest" name="c_lieuTravail"></div>
               </div>
                <div class="form-group row">
                   <label for="textarea" class="col-md-2 control-label">Notes :</label>

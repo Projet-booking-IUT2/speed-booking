@@ -11,6 +11,7 @@ $data['contact']
           ['nom']
           ['prenom']
           ['mail']
+          ['adresse']
           ['tel']
           ['site']
           ['type']
@@ -21,35 +22,34 @@ $data['contact']
 S'il n'y existe aucun contact, le controler ne doit pas créer de variable.
 
 A faire :
-- les fonctions ajouter/supprimer/modifier
-- différentes alertes selon si le contact est à jour ou non.
-
+- les fonctions supprimer/modifier
+-les fonctions de recherche
 Améliorations :
 
 
 -->
 <?php include('../Views/view.interne.header.php'); ?>
 
-        <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
+        <li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
         <li class="active"><a href="#"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
-        <li><a href="#" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-        <li><a href="#" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
-        <li><a href="#" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
+        <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
+        <li><a href="../Controler/compte.ctrl.php" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
+        <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
       </ul>
     </div><!--container nav-->
   </div><!-- nav-->
 </header>
 <?php include('../Views/view.interne.contacts.aside.php'); ?>
 <?php
-    if(isset ($data['contact'])) {
+  //  if(isset ($data['contact'])) {
      ?>
-          
+
 <div class="col-md-8">
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title">
         <?php
-         
+
             echo $data['contact']['nom']; echo " "; echo $data['contact']['prenom'];
         ?>
          </h3>
@@ -80,6 +80,10 @@ Améliorations :
               <div class="col-md-10"><input type="email" id="mail" class="form-control" name="c_mail" value ="<?= $data['contact']['mail'] ?>" /></div>
           </div>
           <div class="form-group row">
+             <label for="adresse"  class="col-md-2 control-label">Adresse : </label>
+             <div class="col-md-10"><input  id="adresse" class="form-control" name="c_adresse" value ="<?= $data['contact']['adresse'] ?>" ></div>
+          </div>
+          <div class="form-group row">
               <label for="tel" class="col-md-2 control-label">Tel : </label>
               <div class="col-md-4"><input type="tel" id="tel" class="form-control" name="c_tel" value ="<?= $data['contact']['tel'] ?>" /></div>
               <label for="site" class="col-md-2 control-label">Site-web : </label>
@@ -87,7 +91,7 @@ Améliorations :
           </div>
           <div class="form-group row">
               <label for="select" class="col-md-2 control-label">Type : </label>
-                    <div class="col-md-10"><select id="select" class="form-control" name="c_type">
+                    <div class="col-md-4"><select id="select" class="form-control" name="c_type">
                      <?php
                         if ($data['contact']['metier'] == "Organisateur") {
                             echo '<option selected>Organisateur</option>';
@@ -103,11 +107,11 @@ Améliorations :
                             echo "<option>Association</option>";
                         }
                       ?>
+                      <option>Autre</option>
                     </select></div>
-            </div>
-            <div class="form-group row">
-                    <label for="orga" class="col-md-3 control-label">Lieu de travail : </label>
-                    <div class="col-md-9"><input id="orga" class="form-control" name="c_lieuTravail" value ="<?= $data['lieuTravail'] ?>"></div>
+
+                    <label for="orga" class="col-md-2 control-label">Travaille à : </label>
+                    <div class="col-md-4"><input id="orga" class="form-control" name="c_lieuTravail" value ="<?= $data['lieuTravail'] ?>"></div>
             </div>
              <div class="form-group row">
                     <label for="textarea" class="col-md-2 control-label">Notes :</label>
@@ -131,11 +135,12 @@ Améliorations :
                 <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button>
             </div>
       </form>
-      
+
     </div><!--panel body-->
   </div><!--panel-->
 </div><!--col md 8-->
-      <?php } else {
-     include '../Views/view.interne.contactNouveau.php';
-      } ?>
+      <?php
+    //} else {
+    // include '../Views/view.interne.contactNouveau.php';
+    //  } ?>
 <?php include('../Views/view.interne.footer.php'); ?>

@@ -30,7 +30,7 @@ Il y a une astuce en javascript pour le faire mais j'ai pas le temps tout de sui
       <!-- Bootstrap -->
       <link href="../Views/bootstrap/css/bootstrap.css" rel="stylesheet">
       <link href="../Views/index.css" rel="stylesheet">
-      <title>Nom de l'agence de Booking</title>
+      <title>SpeedBooking</title>
     </head>
     <body>
       <div class="container">
@@ -41,9 +41,9 @@ Il y a une astuce en javascript pour le faire mais j'ai pas le temps tout de sui
                   <a class="navbar-brand" href="#">Logo trop beau</a>
                 </div>
                 <ul class="col-md-4 nav navbar-nav navbar-right">
-                  <li class="active"><a href="../controler/ctrl.externe.index.php"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
-                  <li><a href="../controler/ctrl.externe.contact.php" ><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
-                  <li><a href="../controler.ctrl.externe.connexion.php" ><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
+                  <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
+                  <li><a href="#" ><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
+                  <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
                 </ul>
               </div>
           </div>
