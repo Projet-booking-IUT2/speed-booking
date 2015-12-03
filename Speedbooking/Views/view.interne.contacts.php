@@ -19,7 +19,8 @@ $data['contact']
           ['maj']
           ['lieuTravail']
           ['dernièreMaj']
-S'il n'y existe aucun contact, le controler ne doit pas créer de variable.
+La variable $_GET['VueAvance'] existe et vaut true, le formulaire s'affiche avec tous les détails.
+En vue avancé, on doit renseigner tout les événements en lien avec ce contact
 
 A faire :
 - les fonctions supprimer/modifier
@@ -125,7 +126,34 @@ Améliorations :
                         <input type="radio" name ="c_dureeMAJ" value="6_month">6 mois
                         <input type="radio" name ="c_dureeMAJ" value="12_month">12 mois
             </div>
-            <div lcass="row">
+            <div class="row">
+              <a href="#" class="btn btn-xs btn-info pull-left">
+                <?php if (isset($_GET['VueAvance']) && $_GET['VueAvance']=='true' ) { ?>
+                  <span class="glyphicon glyphicon-chevron-up"></span>Vue avancée</a>
+                  <div class="col-md-6"><table class="table table-bordered table-striped table-condensed">
+                    <caption>
+                      <h4>Evénements en lien avec ce contact :</h4>
+                    </caption>
+                    <thead>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>blablabla</td>
+                      </tr>
+                      <?php //afficher toutes les dates en rapport avec ce contact
+                      ?>
+                    </tbody>
+                  </table></div>
+                <?php } else { ?>
+                  <span class="glyphicon glyphicon-chevron-down"></span>Vue avancée</a>
+                <?php } ?>
+
+            </div>
+            <div class="row">
               <div class="alert alert-sucess  pull-left">
                 <i>Date de dernière mise à jour : <?= $data['contact']['derniere_maj'] ?></i>
               </div>
