@@ -58,17 +58,19 @@ Améliorations :
     <div class="panel-body">
         <form action="../Controler/contacts.ctrl.php" method="post" class= " well form ">
         <input type="hidden" name="maj">
-
-
-          <div class="row">
+        <div class="row">
+        <?php if($data['Ajour'] == true) {?>
+          
               <!-- A afficher si à jour : -->
                 <div class="alert alert-info col-md-3 pull-right">
                 <strong>Contact à jour :)</strong>
                 </div>
+        <?php } else { ?>
               <!-- A afficher si PAS à jour : -->
                 <div class="alert alert-danger col-md-3 pull-right">
                 <strong>Contact Obsolète ! </strong>
                 </div>
+        <?php }?>
           </div>
           <div class="form-group row">
               <label for="nom" class="col-md-2 control-label">Nom : </label>
@@ -121,10 +123,10 @@ Améliorations :
             </div>
             <div class="form-group">
                         <label  class="col-md-4 control-label">Date de mise à jour minimum :</label>
-                        <input type="radio" name ="c_dureeMAJ" value="1_month">1 mois
-                        <input type="radio" name ="c_dureeMAJ" value="3_month" checked>3 mois
-                        <input type="radio" name ="c_dureeMAJ" value="6_month">6 mois
-                        <input type="radio" name ="c_dureeMAJ" value="12_month">12 mois
+                        <input type="radio" name ="c_dureeMAJ" value="1">1 mois
+                        <input type="radio" name ="c_dureeMAJ" value="3" checked>3 mois
+                        <input type="radio" name ="c_dureeMAJ" value="6">6 mois
+                        <input type="radio" name ="c_dureeMAJ" value="12">12 mois
             </div>
             <div class="row">
               <a href="#" class="btn btn-xs btn-info pull-left">

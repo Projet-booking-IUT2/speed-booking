@@ -81,9 +81,12 @@ class DAO {
         $struct = $this->db->quote($struct);
         $notes = $this->db->quote($notes);
         $freq_maj = $this->db->quote($freq_maj);
-        $q1 = "INSERT INTO Contacts (nom, prenom, tel, metier, mail, notes, derniere_maj, prochaine_maj, utilisateur) VALUES ($nom, $prenom, $tel, $metier, $mail, $notes, Now(), NULL, false)";
+        $q1 = "INSERT INTO Contacts (nom, prenom, tel, metier, mail, notes, derniere_maj, utilisateur) VALUES ($nom, $prenom, $tel, $metier, $mail, $notes, Now(), false)";
         $this->db->exec($q1) or die("erreur erreur erreur !!!!");
-        
+        $sql = $this->db->query("SELECT id FROM Contacts WHERE nom=$nom and prenom=$prenom");
+        $id = $sql->fetch();
+        $id = $id[0];
+        $this->setProchaineDateMAJ($id, $freq_maj);
     }
     /**
      * Retoune tous les contacts à partir de l'id d'un booker
@@ -148,7 +151,7 @@ class DAO {
         $id = $this->db->quote($sql[0]);
         $q1 = ("UPDATE Contacts SET mail=$mail, tel=$tel, metier=$metier, mail=$adresse, notes=$note WHERE nom=$nom AND prenom=$prenom");
         $q2 = ("UPDATE Membres_structure SET struct=$lieuTravail WHERE contact=$id");
-        
+        $this->setProchaineDateMAJ($id, $freq_maj);
         $this->db->beginTransaction();
         $this->db->exec($q1);
         $this->db->exec($q2);
@@ -170,6 +173,37 @@ class DAO {
         $sql = $this->query("select c.nom,c.prenom from Membres_structure m, Contacts c Where struct =$struct and m.contact = c.id");
         $res = $sql->fetchAll(PDO::FETCH_BOTH);
     }
+    
+    ////////////////////////////////////////////////////////////////////////////
+    // Manupulation des date de mise à jour
+    ////////////////////////////////////////////////////////////////////////////
+    
+    /**
+     * Indique si le contact est à jour ou non
+     * @param int $id l'id du contact
+     * @return bool Vrai si le contact est à jour, Faux sinon
+     */
+    public function estAJour($nom, $prenom) {
+        $nom = $this->db->quote($nom);
+        $prenom = $this->db->quote($prenom);
+        
+        $sql = $this->db->query("Select prochaine_maj FROM Contacts WHERE nom=$nom AND prenom=$prenom");
+        $sql1 = $sql->fetch();
+        $prochMaj = $sql1[0];
+        
+        return ($prochMaj > date("Y-m-d"));
+    }
+    
+    private function setProchaineDateMAJ($id, $freq_maj) {
+        $date = date("Y-m-d");
+        $prochMaj = date("Y-m-d", strtotime($date." + $freq_maj month"));
+        $nvDate = $this->db->quote($prochMaj);
+        $this->db->exec("UPDATE Contacts SET prochaine_maj=$nvDate WHERE id=$id");
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
     
         
     public function updateGroupe($booker,$c_nom,$style, $c_notes){
