@@ -10,7 +10,7 @@ CREATE TABLE Contacts (
 	prochaine_maj date,
 	utilisateur boolean DEFAULT false,
 
-	primary key (id),
+	PRIMARY KEY (id), INDEX(id(6)),
 	CONSTRAINT chk_mail CHECK(mail LIKE '%@%.%'),
 	CONSTRAINT enum_metier CHECK(metier LIKE ('booker','organisateur','artiste'))
 );
@@ -19,6 +19,7 @@ CREATE TABLE Identifiants (
 	contact int(6),
 	login varchar(30) not null,
 	mdp varchar(64) not null,
+        notes varchar(1000),
 
 	primary key(contact),
 	foreign key(contact) references Contacts(id)
@@ -30,7 +31,8 @@ CREATE TABLE Groupes (
 	nom varchar(50) not null,
 	style varchar(30),
 	mail varchar(100) not null,
-	primary key (id),
+
+	primary key (id), INDEX(id(6)),
 	foreign key (booker_associe) references Contacts(id),
 	CONSTRAINT chk_mail CHECK(mail LIKE '%@%.%')
 );
@@ -41,7 +43,7 @@ CREATE TABLE Evenements (
 	date_evt date not null,
 	style varchar(30),
 
-	primary key (id)
+	primary key (id), INDEX(id(6))
 );
 
 CREATE TABLE Lieux (
@@ -49,7 +51,7 @@ CREATE TABLE Lieux (
 	adresse varchar(250) not null,
 	nom varchar(50),
 
-	primary key (id)
+	primary key (id), INDEX(id(6))
 );
 
 CREATE TABLE Structures (

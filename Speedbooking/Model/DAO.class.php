@@ -80,7 +80,6 @@ class DAO {
         $metier = $this->db->quote($metier);
         $struct = $this->db->quote($struct);
         $notes = $this->db->quote($notes);
-        $freq_maj = $this->db->quote($freq_maj);
         $q1 = "INSERT INTO Contacts (nom, prenom, tel, metier, mail, notes, derniere_maj, utilisateur) VALUES ($nom, $prenom, $tel, $metier, $mail, $notes, Now(), false)";
         $this->db->exec($q1) or die("erreur erreur erreur !!!!");
         $sql = $this->db->query("SELECT id FROM Contacts WHERE nom=$nom and prenom=$prenom");
@@ -96,8 +95,12 @@ class DAO {
     public function readContactsFromBooker($booker) {
         $booker = $this->db->quote($booker);
         $sql = $this->db->query("SELECT nom, prenom FROM Contacts WHERE id <> $booker AND metier <> 'booker' ORDER BY nom");
-        $res = $sql->fetchAll(PDO::FETCH_ASSOC);
-        return $res;
+        $res1 = $sql->fetchAll(PDO::FETCH_ASSOC);
+        foreach($res1 as $key) {
+            $key['Ajour'] = $this->estAJour($key['nom'], $key['prenom']);
+            $res2[] = $key;
+        }
+        return $res2; 
     }
     /**
      * Retourne toutes les infos concernant un contact.
