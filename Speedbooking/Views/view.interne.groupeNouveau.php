@@ -11,7 +11,7 @@
                 <div class="col-md-8"><input type="text" id="nom" class="form-control" name="c_nom"></div>
             </div>
             <div class=" from-group row">
-                <label for="nom" class="col-md-4 control-label">Membres du groupe : </label>
+                <label for="membre" class="col-md-4 control-label">Membres du groupe : </label>
             </div>
             <div class="form-group row">
                 <label for="mail"  class="col-md-2 control-label">Mail : </label>

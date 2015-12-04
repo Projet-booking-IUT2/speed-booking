@@ -29,11 +29,11 @@
     <div class="panel-body">
             <form action="../controler/groupe.ctrl.php" method="post" class= " well form ">
                 <div class="from-group row">
-                    <label for="nomG" class="col-md-4 control-label">Nom du groupe : </label>
+                    <label for="nom" class="col-md-4 control-label">Nom du groupe : </label>
                     <div class="col-md-8"><input type="text" id="nom" class="form-control" name="c_nom" value ="<?= $data['groupe']['nom'] ?>" /></div>
                 </div>
                 <div class=" from-group row">
-                    <label for="nom" class="col-md-4 control-label">Membres du groupe : </label>
+                    <label for="membre" class="col-md-4 control-label">Membres du groupe : </label>
                     <?php
                         //récup les membres du groupes et renvoie sur leur fiche contact si clique sur leur nom
                     ?>
