@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group row">
                     <a href="../Controler/groupe.ctrl.php?delete=true&id=<?= $data['groupe']['id'] ?>" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
-                    <a href="../Controler/groupe.ctrl.php"><button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button></a>
+                    <a href="../Controler/groupe.ctrl.php?maj=true"><button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button></a>
                 </div>
             </form>
         </div>
