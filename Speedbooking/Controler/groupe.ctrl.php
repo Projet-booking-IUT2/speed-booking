@@ -16,11 +16,13 @@ if(isset($_GET['selected'])) {
     $data['groupe'] = $dao->StructureFromGroupe($tab[0], $tab2);
     } 
 else if (isset($_POST['maj'])) {    
-    $dao->updateGroupe($_POST['c_nom'], $_POST['c_notes'], $_POST['c_dureeMAJ']);
+    $dao->updateGroupe($booker,$_POST['c_nom'], $_POST['c_notes'], $_POST['c_style']);
     }
 else if(isset($_POST['add'])){                   // $nom, $prenom, $mail, $tel, $site, $metier, $struct, $notes, $freq_maj
-    $dao->createNewGroupe($_POST['c_nom'], $_POST['c_membres'], $_POST['c_notes'], $_POST['c_dureeMAJ']);
+    $dao->createNewGroupe($booker,$_POST['c_nom'], $_POST['c_membres'], $_POST['c_notes']);
  }
 
 $data['AllGroupe'] = $dao->readGroupeFromBooker($booker);
+
+include '../Views/view.interne.groupe.php';
 ?>

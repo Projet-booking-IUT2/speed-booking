@@ -174,6 +174,25 @@ class DAO {
         $res = $sql->fetchAll(PDO::FETCH_BOTH);
     }
     
+        
+    public function updateGroupe($booker,$c_nom,$style, $c_notes){
+        $booker = $this->db->quote($booker);
+        $c_nom = $this->db->quote($c_nom);
+        $c_notes = $this->db->quote($c_notes);
+        $dureeMAJ = $this->db->quote($dureeMAJ);
+        $style = $this->db->quote($style);
+        $sql = ("update Groupes set nom=$c_nom and style=$style and notes=$c_notes where booker_associe=$booker");
+        $this->db->exec($sql);      
+    }
+    
+    public function readGroupeFromBooker($booker){
+        $booker = $this->db->quote($booker);
+        $sql = $this->query("select * from Groupes Where booker_associe=$booker");
+        $res = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
+    }
+    
+    
 } // FIN CLASSE DAO
 
 
