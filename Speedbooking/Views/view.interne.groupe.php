@@ -15,7 +15,7 @@
 </header>
 <?php include('../Views/view.interne.groupe.aside.php'); ?>
 <?php
-   if(isset ($data['contact'])) {
+   if(isset ($data['groupe'])) {
      ?>
 <div class="col-md-8">
   <div class="panel panel-info">
@@ -26,7 +26,7 @@
         ?></h3>
     </div>
     <div class="panel-body">
-            <form action="../controler/ctrl.interne.groupe.php" method="post" class= " well form ">
+            <form action="../controler/groupe.ctrl.php" method="post" class= " well form ">
                 <div class="row">
                       <fieldset class="form-group">
                        <label for="nomG" class="col-md-4 control-label">Nom du groupe : </label>

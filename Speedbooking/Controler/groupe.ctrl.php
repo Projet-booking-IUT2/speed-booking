@@ -10,10 +10,8 @@ $dao = new DAO();
 
 
 if(isset($_GET['selected'])) {
-    $tab = explode(" ",$_GET['selected']);
-    $tab2 = array_slice($tab, 1);
-    $tab2 = implode(" ", $tab2);
-    $data['groupe'] = $dao->StructureFromGroupe($tab[0], $tab2);
+    $nomG = $_GET['selected'];
+    $data['groupe'] = $dao->StructureFromGroupe($nomG);
     } 
 else if (isset($_POST['maj'])) {    
     $dao->updateGroupe($booker,$_POST['c_nom'], $_POST['c_notes'], $_POST['c_style']);
