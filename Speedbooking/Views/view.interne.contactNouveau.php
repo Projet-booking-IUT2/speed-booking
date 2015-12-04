@@ -53,10 +53,10 @@ View pour ajouter un nouveau contact
                 </div>
                 <div class="form-group row">
                       <label  class="col-md-4 ">Date mise à jour minimum :</label>
-                      <input type="radio" name ="c_dureeMAJ" value="1_month">1 mois
-                      <input type="radio" name ="c_dureeMAJ" value="3_month" checked>3 mois
-                      <input type="radio" name ="c_dureeMAJ" value="6_month">6 mois
-                      <input type="radio" name ="c_dureeMAJ" value="12_month">12 mois
+                      <input type="radio" name ="c_dureeMAJ" value="1">1 mois
+                      <input type="radio" name ="c_dureeMAJ" value="3" checked>3 mois
+                      <input type="radio" name ="c_dureeMAJ" value="6">6 mois
+                      <input type="radio" name ="c_dureeMAJ" value="12">12 mois
                 </div>
                 <div class="form-group row">
                       <button type="submit" class="btn btn-success pull-right boutonPlus"><span class="glyphicon glyphicon-ok">Créer</span></button>
