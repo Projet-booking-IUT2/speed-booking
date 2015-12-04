@@ -27,7 +27,7 @@
         ?></h3>
     </div>
     <div class="panel-body">
-            <form action="../controler/groupe.ctrl.php" method="post" class= " well form ">
+            <form action="../Controler/groupe.ctrl.php" method="post" class= " well form ">
                 <div class="from-group row">
                     <label for="nom" class="col-md-4 control-label">Nom du groupe : </label>
                     <div class="col-md-8"><input type="text" id="nom" class="form-control" name="c_nom" value ="<?= $data['groupe']['nom'] ?>" /></div>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group row">
                     <a href="../Controler/groupe.ctrl.php?delete=true&id=<?= $data['groupe']['id'] ?>" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
-                    <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button>
+                    <a href="../Controler/groupe.ctrl.php"><button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button></a>
                 </div>
             </form>
         </div>
