@@ -15,28 +15,29 @@ View pour ajouter un nouveau contact
     <div class="panel-body">
         <form action="../Controler/contacts.ctrl.php" method="post" class= " well form ">
             <input type="hidden" name="add" />
+            <p>Les champs indiqués par une * sont obligatoires.</p>
             <div class="form-group row">
-                <label for="nom" class="col-md-2 control-label">Nom : </label>
+                <label for="nom" class="col-md-2 control-label required">Nom: *</label>
                 <div class="col-md-4"><input type="text" id="nom" class="form-control" placeholder="Ex : Dupont" name="c_nom"></div>
-                <label for="prenom" class="col-md-2 control-label">Prénom : </label>
+                <label for="prenom" class="col-md-2 control-label required">Prénom: *</label>
                 <div class="col-md-4"><input type="text" id="prenom" class="form-control" placeholder="Ex : Charles" name="c_prenom"></div>
              </div>
              <div class="form-group row">
-                <label for="mail"  class="col-md-2 control-label">Mail : </label>
+                <label for="mail"  class="col-md-2 control-label">Mail: </label>
                 <div class="col-md-10"><input type="email" id="mail" class="form-control" placeholder="exemple@exemple.com" name="c_mail"></div>
              </div>
              <div class="form-group row">
-                <label for="adresse"  class="col-md-2 control-label">Adresse : </label>
+                <label for="adresse"  class="col-md-2 control-label">Adresse: </label>
                 <div class="col-md-10"><input  id="adresse" class="form-control" placeholder="3 rue paul Mistral 38000 Grenoble" name="c_adresse"></div>
              </div>
              <div class="form-group row">
-                <label for="tel" class="col-md-2 control-label">Tel : </label>
+                <label for="tel" class="col-md-2 control-label">Tel: </label>
                 <div class="col-md-4"><input type="tel" id="tel" class="form-control" placeholder="Ex : 0600000000" name="c_tel"></div>
-                <label for="site" class="col-md-2 control-label">Site-web : </label>
+                <label for="site" class="col-md-2 control-label">Site-web: </label>
                 <div class="col-md-4"><input type="url" id="site" class="form-control" placeholder="exemple.fr" name="c_site"></div>
              </div>
               <div class="form-group row">
-                  <label for="select" class="col-md-2 control-label">Type : </label>
+                  <label for="select" class="col-md-2 control-label">Type: </label>
                   <div class="col-md-4"><select id="select" class="form-control" name="c_type">
                       <option selected>Choisir un rôle</option>
                     <option>Organisateur</option>
@@ -44,15 +45,15 @@ View pour ajouter un nouveau contact
                     <option>Festival</option>
                     <option>Autre</option>
                   </select></div>
-                  <label for="orga" class="col-md-2 control-label">Travaille à : </label>
+                  <label for="orga" class="col-md-2 control-label required">Travaille à: *</label>
                   <div class="col-md-4"><input id="orga" class="form-control" placeholder="Hellfest" name="c_lieuTravail"></div>
               </div>
                <div class="form-group row">
-                  <label for="textarea" class="col-md-2 control-label">Notes :</label>
+                  <label for="textarea" class="col-md-2 control-label">Notes:</label>
                   <div class="col-md-10"><textarea id="textarea" class="form-control" rows="2" name="c_notes">Détails sur ce contact</textarea></div>
                 </div>
                 <div class="form-group row">
-                      <label  class="col-md-4 ">Date mise à jour minimum :</label>
+                      <label  class="col-md-4 ">Date mise à jour minimum: *</label>
                       <input type="radio" name ="c_dureeMAJ" value="1">1 mois
                       <input type="radio" name ="c_dureeMAJ" value="3" checked>3 mois
                       <input type="radio" name ="c_dureeMAJ" value="6">6 mois

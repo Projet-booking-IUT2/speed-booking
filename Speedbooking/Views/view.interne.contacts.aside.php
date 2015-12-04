@@ -45,8 +45,17 @@ Améliorations :
           else {
             foreach($data['AllContacts'] as $c ) {
             $nomPrenom = $c['nom'].' '.$c['prenom'];
-            echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'.
+            if ($c['Ajour'] == true) //contact à jour
+              {
+                echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'.
               "<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+              }
+            else  //contact pas à jour donc on affiche en ROUGE
+              {
+                echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item-danger">'.
+              "<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+
+              }
             }
           }
          ?>
