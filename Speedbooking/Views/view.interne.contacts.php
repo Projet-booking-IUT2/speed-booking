@@ -26,7 +26,18 @@ A faire :
 - les fonctions supprimer/modifier
 -les fonctions de recherche
 Améliorations :
+//////////////////////////////////
+Pour les STRUCTURES lors de la création d'un contact : ///////////////////////////////////////////////////////////////////////////////////
+-soit on transforme le champ "travaille à" en <option> qui propose toutes les structures existantes.
+Et à coté de ce champ, on met un petit "+" qui permet d'ajouter une nouvelle structure si besoin.
+Comme ça, l'user n'a pas besoin de créer d'abord sa structure pour ensuite retourner créer son contact
+(ça serait nul et chiant)
+-soit on fait une fiche structure pour créer des structures et ensuite lui ajouter des contacts/staff, mais
+c'est nul je trouve
 
+Pour les recherches :
+Je me demande si ça serait pas mieux de faire un menu spécial recherche (avec un champ texte pour les mots clés,
+des icones pour rechercher/trier par nom,prénom,type,dernière modification et structure)
 
 -->
 <?php include('../Views/view.interne.header.php'); ?>
