@@ -15,12 +15,12 @@ View pour ajouter un nouveau contact
     <div class="panel-body">
         <form action="../Controler/contacts.ctrl.php" method="post" class= " well form ">
             <input type="hidden" name="add" />
-            <p>Les champs indiqués par une * sont obligatoires.</p>
+            <p class="col-md-12">Les champs indiqués par une * sont obligatoires.</p>
             <div class="form-group row">
-                <label for="nom" class="col-md-2 control-label required">Nom: *</label>
-                <div class="col-md-4"><input type="text" id="nom" class="form-control" placeholder="Ex : Dupont" name="c_nom"></div>
-                <label for="prenom" class="col-md-2 control-label required">Prénom: *</label>
-                <div class="col-md-4"><input type="text" id="prenom" class="form-control" placeholder="Ex : Charles" name="c_prenom"></div>
+                <label for="nom" class="col-md-2 control-label">Nom: *</label>
+                <div class="col-md-4"><input required type="text" id="nom" class="form-control" placeholder="Ex : Dupont" name="c_nom"></div>
+                <label for="prenom" class="col-md-2 control-label">Prénom: *</label>
+                <div class="col-md-4"><input required type="text" id="prenom" class="form-control" placeholder="Ex : Charles" name="c_prenom"></div>
              </div>
              <div class="form-group row">
                 <label for="mail"  class="col-md-2 control-label">Mail: </label>
@@ -37,7 +37,7 @@ View pour ajouter un nouveau contact
                 <div class="col-md-4"><input type="url" id="site" class="form-control" placeholder="exemple.fr" name="c_site"></div>
              </div>
               <div class="form-group row">
-                  <label for="select" class="col-md-2 control-label">Type: </label>
+                  <label for="select" class="col-md-2 control-label">Type: *</label>
                   <div class="col-md-4"><select id="select" class="form-control" name="c_type">
                       <option selected>Choisir un rôle</option>
                     <option>Organisateur</option>
@@ -45,8 +45,8 @@ View pour ajouter un nouveau contact
                     <option>Festival</option>
                     <option>Autre</option>
                   </select></div>
-                  <label for="orga" class="col-md-2 control-label required">Travaille à: *</label>
-                  <div class="col-md-4"><input id="orga" class="form-control" placeholder="Hellfest" name="c_lieuTravail"></div>
+                  <label for="orga" class="col-md-2 control-label">Travaille à: *</label>
+                  <div class="col-md-4"><input required  id="orga" class="form-control" placeholder="Hellfest" name="c_lieuTravail"></div>
               </div>
                <div class="form-group row">
                   <label for="textarea" class="col-md-2 control-label">Notes:</label>
