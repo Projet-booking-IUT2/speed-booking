@@ -4,16 +4,19 @@
 -->
 <?php include('../Views/view.interne.header.php'); ?>
 
-        <li><a href="../Views/view.interne.date.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
-        <li><a href="../Views/view.interne.contacts.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
-        <li><a href="#" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
+        <li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
+        <li><a href="../Controler/contacts.ctrl.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
+        <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
         <li class="active"><a href="#" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
-        <li><a href="#" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
+        <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
       </ul>
     </div>
   </div>
 </header>
 <?php include('../Views/view.interne.groupe.aside.php'); ?>
+<?php
+   if(isset ($data['contact'])) {
+     ?>
 <div class="col-md-8">
   <div class="panel panel-info">
     <div class="panel-heading">
@@ -56,4 +59,6 @@
   </div>
 </div>
 </section>
+<?php
+    }?>
 <?php include('../Views/view.interne.footer.php'); ?>
