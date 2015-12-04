@@ -218,11 +218,17 @@ class DAO {
     
     public function readGroupeFromBooker($booker){
         $booker = $this->db->quote($booker);
-        $sql = $this->query("select * from Groupes Where booker_associe=$booker");
+        $sql = $this->db->query("select * from Groupes Where booker_associe=$booker");
         $res = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
     
+    public function StructureFromGroupe($nomG){
+        $nomG = $this->db->quote($nomG);
+        $sql = $this->db->query("select * from Groupes Where nom=$nomG");
+        $res = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $res[0];
+    }
     
 } // FIN CLASSE DAO
 
