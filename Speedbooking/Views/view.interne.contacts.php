@@ -42,7 +42,7 @@ Améliorations :
 </header>
 <?php include('../Views/view.interne.contacts.aside.php'); ?>
 <?php
-  //  if(isset ($data['contact'])) {
+   if(isset ($data['contact'])) {
      ?>
 
 <div class="col-md-8">
@@ -82,7 +82,7 @@ Améliorations :
           </div>
           <div class="form-group row">
              <label for="adresse"  class="col-md-2 control-label">Adresse : </label>
-             <div class="col-md-10"><input  id="adresse" class="form-control" name="c_adresse" value ="<?= $data['contact']['adresse'] ?>" ></div>
+             <div class="col-md-10"><input  id="adresse" class="form-control" name="c_adresse" value ="<?php //$data['contact']['adresse'] ?>" ></div>
           </div>
           <div class="form-group row">
               <label for="tel" class="col-md-2 control-label">Tel : </label>
@@ -168,7 +168,7 @@ Améliorations :
   </div><!--panel-->
 </div><!--col md 8-->
       <?php
-    //} else {
-    // include '../Views/view.interne.contactNouveau.php';
-    //  } ?>
+    } else {
+     include '../Views/view.interne.contactNouveau.php';
+    } ?>
 <?php include('../Views/view.interne.footer.php'); ?>
