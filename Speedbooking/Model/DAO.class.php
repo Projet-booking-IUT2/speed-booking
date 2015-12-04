@@ -206,14 +206,16 @@ class DAO {
     ////////////////////////////////////////////////////////////////////////////
     
         
-    public function updateGroupe($booker,$c_nom,$style, $c_notes){
+    public function updateGroupe($booker,$nom, $membres, $notes,$style,$mail){    
         $booker = $this->db->quote($booker);
-        $c_nom = $this->db->quote($c_nom);
-        $c_notes = $this->db->quote($c_notes);
-        $dureeMAJ = $this->db->quote($dureeMAJ);
+        $nom = $this->db->quote($nom);
+        $notes = $this->db->quote($notes);
         $style = $this->db->quote($style);
-        $sql = ("update Groupes set nom=$c_nom and style=$style and notes=$c_notes where booker_associe=$booker");
-        $this->db->exec($sql);      
+        $mail = $this->db->quote($mail);
+        $sql = ("update Groupes set nom=$nom, style=$style, mail=$mail where booker_associe=$booker and nom=$nom");
+        $this->db->beginTransaction();
+        $this->db->exec($sql);   
+        $this->db->commit() or die("Update Groupe ERROR : No Groupe updated");
     }
     
     public function readGroupeFromBooker($booker){
@@ -228,6 +230,17 @@ class DAO {
         $sql = $this->db->query("select * from Groupes Where nom=$nomG");
         $res = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $res[0];
+    }
+    
+    public function createNewGroupe($booker,$nom, $membres, $notes,$style,$mail){
+        $booker = $this->db->quote($booker);
+        $nom = $this->db->quote($nom);
+        $membres = $this->db->quote($membres);
+        $notes = $this->db->quote($notes);
+        $style = $this->db->quote($style);
+        $mail = $this->db->quote($mail);
+        $q1 = "INSERT INTO Groupes(booker_associe,nom,style,mail) VALUES ($booker,$nom,$style,$mail)";
+        $this->db->exec($q1) or die("erreur erreur erreur !!!!");    
     }
     
 } // FIN CLASSE DAO
