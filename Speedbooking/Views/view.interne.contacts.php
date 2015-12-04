@@ -159,7 +159,7 @@ Améliorations :
               </div>
             </div>
             <div class="form-group row">
-                <a href="#" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
+                <a href="../Controler/contacts.ctrl.php?delete=true&id=<?= $data['contact']['id'] ?>" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
                 <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button>
             </div>
       </form>

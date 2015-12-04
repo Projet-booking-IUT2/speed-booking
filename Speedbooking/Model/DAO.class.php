@@ -155,11 +155,8 @@ class DAO {
         $this->db->commit() or die("Update Contact ERROR : No Contact updated");
     }
     
-    public function deleteContactFromNomPrenom($nom,$prenom) {
-        $nom = $this->db->quote($nom);
-        $prenom = $this->db->quote($prenom);
-        
-        $q = "DELETE FROM Contacts WHERE nom=$nom AND prenom=$prenom";
+    public function deleteContactFromID($id) {
+        $q = "DELETE FROM Contacts WHERE id=$id";
         $this->db->exec($q) or die("Delete Contact ERROR : No contact deleted");
     }
     ////////////////////////////////////////////////////////////////////////////
