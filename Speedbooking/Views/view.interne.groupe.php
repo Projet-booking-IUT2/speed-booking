@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group row">
                     <label for="mail"  class="col-md-2 control-label">Mail : </label>
-                    <div class="col-md-10"><input type="email" id="mail" class="form-control" name="c_mail"/></div>
+                    <div class="col-md-10"><input type="email" id="mail" class="form-control" name="c_mail" value="<?= $data['groupe']['mail']?>"/></div>
                 </div>
                 <div class="form-group row">
                     <label for="style"  class="col-md-2 control-label">Style : </label>
@@ -51,7 +51,8 @@
                     <div class="col-md-10"><textarea id="textarea" class="form-control" rows="2" name="c_notes"></textarea></div>
                 </div>
                 <div class="form-group row">
-                    <button type="submit" class="btn btn-success pull-right boutonPlus"><span class="glyphicon glyphicon-ok">Créer</span></button>
+                    <a href="../Controler/groupe.ctrl.php?delete=true&id=<?= $data['groupe']['id'] ?>" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
+                    <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button>
                 </div>
             </form>
         </div>
