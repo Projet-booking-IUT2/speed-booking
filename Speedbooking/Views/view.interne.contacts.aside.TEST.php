@@ -30,18 +30,6 @@ Améliorations :
       <div class="row">
           <div class="col-md-10">
             <div class="row"><h3 class="col-md-12 panel-title">Vos contacts :</h3></div>
-            <form class="row navbar-form inline-form">
-              <div class="form-group">
-                <input type="search" class="input-sm form-control" placeholder="Recherche">
-                <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span>
-                </button>
-              </div>
-            </form>
-          </div><!--col-md-9-->
-          <div class="col-md-2">
-            <a href="../Controler/contacts.ctrl.php?create=true" class="btn btn-lg btn-success pull-right boutonPlus">
-              <span class="glyphicon glyphicon-plus"></span>
-            </a>
           </div>
       </div>
     </div>
@@ -58,7 +46,7 @@ Améliorations :
           else {
             foreach($data['AllContacts'] as $c ) {
             $nomPrenom = $c['nom'].' '.$c['prenom'];
-            if ($c['Ajour'] == true) //contact à jour
+            if (isset($c['Ajour']) && $c['Ajour'] == true) //contact à jour
               {
                 echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'.
               "<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
