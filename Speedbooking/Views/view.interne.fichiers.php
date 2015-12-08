@@ -36,57 +36,50 @@ $data['AllFichiers'][1]['nom']="LALIHOU";
     </div><!--container nav-->
   </div><!-- nav-->
 </header>
-<div class="row"><nav class="navbar navbar-default col-md-12">
-  <form class="navbar-form col-md-4">
-    <div class="form-group">
-      <input type="search" class="input-sm form-control" placeholder="Recherche">
-      <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span>
-      </button>
-    </div>
-  </form>
-  Trier par :
-  <a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-sort-by-alphabet"></span> Noms</a>
-  <a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-sort-by-attributes-alt"></span> Date</a>
-  <a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-tag"></span> Propriétaire</a>
-  +bouton supprimer
-  <a href="../Controler/contacts.ctrl.php?create=true" class="btn btn-lg btn-success pull-right boutonPlus">
-    <span class="glyphicon glyphicon-plus"></span>
-  </a>
-</nav></div>
-
-<div class="col-md-8">
+<div class="row">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <div class="row">
-          <div class="col-md-10">
-            <div class="row"><h3 class="col-md-12 panel-title">Vos fichiers :</h3></div>
-          </div>
-      </div>
-    </div>
+      <?php include('../Views/view.interne.fichiers.toolbar.php'); ?>
+    </div><!--panelheading-->
     <div class="panel-body">
-        <ul class="list-group list-unstyled">
-        <?php
-          if (!isset($data['AllFichiers'])) {
-            echo "
-            <div class=\"alert alert-info\">
-            <strong>Vous n'avez pas encore uploadé de fichiers ! </strong>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <div class="row">
+                  <div class="col-md-10">
+                    <div class="row"><h3 class="col-md-12 panel-title">Vos fichiers :</h3></div>
+                  </div>
+              </div>
             </div>
-            ";
-          }
-          else {
-            foreach($data['AllFichiers'] as $f ) {
-            $nom = $f['nom'];
-                echo "<li>$nom
-              <span class=\"glyphicon glyphicon-download-alt\"></span>
-              <span class=\"glyphicon glyphicon-wrench\"></span>
-              <span class=\"glyphicon glyphicon-remove\"></span>
-              </li>";
-            }
-          }
-         ?>
-        </ul>
-    </div><!--panel body-->
-  </div><!--panel info-->
-</div><!--col md 8-->
+            <div class="panel-body">
+                <ul class="list-group list-unstyled">
+                <?php
+                  if (!isset($data['AllFichiers'])) {
+                    echo "
+                    <div class=\"alert alert-info\">
+                    <strong>Vous n'avez pas encore uploadé de fichiers ! </strong>
+                    </div>
+                    ";
+                  }
+                  else {
+                    foreach($data['AllFichiers'] as $f ) {
+                    $nom = $f['nom'];
+                        echo "<li>$nom
+                      <span class=\"glyphicon glyphicon-download-alt\"></span>
+                      <span class=\"glyphicon glyphicon-wrench\"></span>
+                      <span class=\"glyphicon glyphicon-remove\"></span>
+                      </li>";
+                    }
+                  }
+                 ?>
+                </ul>
+            </div><!--panel body-->
+          </div><!--panel info-->
+      </div><!--col md 8-->
+    </div><!--row-->
+  </div><!--panelbody-->
+</div><!--panel-->
+</div><!--row-->
 
 <?php include('../Views/view.interne.footer.php'); ?>
