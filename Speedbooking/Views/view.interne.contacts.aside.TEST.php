@@ -24,12 +24,12 @@ Améliorations :
 
 -->
 
-<div class="col-md-4">
+<div class="row"><div class="col-md-4">
   <div class="panel panel-info">
     <div class="panel-heading">
       <div class="row">
           <div class="col-md-10">
-            <div class="row"><h3 class="col-md-12 panel-title">Vos contacts :</h3></div>
+            <div class="row"><h3 class="col-md-12 panel-title">Mes contacts :</h3></div>
           </div>
       </div>
     </div>
