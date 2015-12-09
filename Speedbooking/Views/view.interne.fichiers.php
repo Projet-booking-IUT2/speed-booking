@@ -42,38 +42,34 @@ $data['AllFichiers'][1]['nom']="LALIHOU";
       <?php include('../Views/view.interne.fichiers.toolbar.php'); ?>
     </div><!--panelheading-->
     <div class="panel-body">
-      <div class="row">
+      <?php include('../Views/view.interne.fichiers.aside.php');?>
         <div class="col-md-8">
           <div class="panel panel-info">
             <div class="panel-heading">
-              <div class="row">
-                  <div class="col-md-10">
-                    <div class="row"><h3 class="col-md-12 panel-title">Vos fichiers :</h3></div>
-                  </div>
-              </div>
+              <h3 class="panel-title">
+                <?php //echo $data['fichier']['nom'];  ?>  </h3>
             </div>
             <div class="panel-body">
-                <ul class="list-group list-unstyled">
-                <?php
-                  if (!isset($data['AllFichiers'])) {
-                    echo "
-                    <div class=\"alert alert-info\">
-                    <strong>Vous n'avez pas encore uploadé de fichiers ! </strong>
-                    </div>
-                    ";
-                  }
-                  else {
-                    foreach($data['AllFichiers'] as $f ) {
-                    $nom = $f['nom'];
-                        echo "<li>$nom
-                      <span class=\"glyphicon glyphicon-download-alt\"></span>
-                      <span class=\"glyphicon glyphicon-wrench\"></span>
-                      <span class=\"glyphicon glyphicon-remove\"></span>
-                      </li>";
-                    }
-                  }
-                 ?>
-                </ul>
+              <form action="../Controler/contacts.ctrl.php" method="post" class= " well form ">
+                <div class="form-group row">
+                    <label for="nom" class="col-md-2 control-label">Nom: *</label>
+                    <div class="col-md-4"><input required  type="text" id="nom" class="form-control" name="c_nom" value ="<?php //$data['fichier']['nom'] ?>" /></div>
+                </div>
+                <div class="form-group row">
+                    <label for="tel" class="col-md-2 control-label">Date: </label>
+                    <div class="col-md-4"><input type="date" id="date" class="form-control"value ="<?php //$data['fichier']['date'] ?>" /></div>
+                    <label for="taille" class="col-md-2 control-label">Taille: </label>
+                    <div class="col-md-4"><input id="taille" class="form-control" value ="<?php //$data['fichier']['taille'] ?>" /></div>
+                </div>
+                <div class="form-group row">
+                   <label for="?"  class="col-md-2 control-label">Partagé avec : </label>
+                   <div class="col-md-10"><input  id="?" class="form-control" value ="<?php //? ?>" ></div>
+                </div>
+                  <div class="form-group row">
+                      <a href="../Controler/contacts.ctrl.php?delete=true&id=<?= $data['contact']['id'] ?>" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
+                      <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button>
+                  </div>
+            </form>
             </div><!--panel body-->
           </div><!--panel info-->
       </div><!--col md 8-->

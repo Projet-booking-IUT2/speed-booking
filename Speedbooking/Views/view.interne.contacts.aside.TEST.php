@@ -8,6 +8,7 @@ Elle a donc besoin de :
 $data['AllContacts']
             ['nom']
             ['prenom']
+            ['Ajour']
 qui contient les noms et prénoms de tous les contacts.
 Si la liste est vide, la vue affiche une alerte et le controler ne crée pas la variable ci dessus.
 

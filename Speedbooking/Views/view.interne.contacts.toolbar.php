@@ -1,7 +1,7 @@
 <div class="btn-toolbar">
     <form class="navbar-form btn-group">
       <div class="form-group">
-        <input type="search" class="input-sm form-control" placeholder="Recherche">
+        <input type="search" class="input-sm form-control" placeholder="Recherche par mots clés">
         <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span>
         </button>
       </div>
@@ -27,11 +27,13 @@
       </a>
     </div>
     <div class="btn-group pull-right">
-      <a href="#" class="btn btn-lg btn-danger">
-        <span class="glyphicon glyphicon-trash"></span>
-      </a>
       <a href="../Controler/contacts.ctrl.php?create=true" class="btn btn-lg btn-success">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
     </div><!--btngroupe-->
+    <div class="btn-group pull-right">
+      <a href="#" class="btn btn-lg btn-danger">
+        <span class="glyphicon glyphicon-trash"></span>
+      </a>
+    </div>
 </div><!--toolbar-->

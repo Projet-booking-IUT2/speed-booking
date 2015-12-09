@@ -1,30 +1,13 @@
 <!--
 Page d'affichage des contacts.
 -header
--fiche contacts (formulaire)
--Liste des contacts existantes (aside)
--footer
---------------------------------------------------------------
-Par défaut, la page affiche la fiche du premier contact. Mais l'user peut selectionner un autre contact via le aside
-La fiche a donc besoin des variables suivantes :
-$data['contact']
-          ['nom']
-          ['prenom']
-          ['mail']
-          ['adresse']
-          ['tel']
-          ['site']
-          ['type']
-          ['notes']
-          ['maj']
-          ['lieuTravail']
-          ['dernièreMaj']
-La variable $_GET['VueAvance'] existe et vaut true, le formulaire s'affiche avec tous les détails.
-En vue avancé, on doit renseigner tout les événements en lien avec ce contact
+-toolbar
+-aside (liste des contacts)
+-structures
+-alertes contacts obsolètes
 
 A faire :
-- les fonctions supprimer/modifier
--les fonctions de recherche
+
 Améliorations :
 //////////////////////////////////
 Pour les STRUCTURES lors de la création d'un contact : ///////////////////////////////////////////////////////////////////////////////////
@@ -35,9 +18,6 @@ Comme ça, l'user n'a pas besoin de créer d'abord sa structure pour ensuite ret
 -soit on fait une fiche structure pour créer des structures et ensuite lui ajouter des contacts/staff, mais
 c'est nul je trouve
 
-Pour les recherches :
-Je me demande si ça serait pas mieux de faire un menu spécial recherche (avec un champ texte pour les mots clés,
-des icones pour rechercher/trier par nom,prénom,type,dernière modification et structure)
 
 -->
 <?php include('../Views/view.interne.header.php'); ?>
@@ -66,11 +46,29 @@ des icones pour rechercher/trier par nom,prénom,type,dernière modification et 
                </h3>
           </div>
           <div class="panel-body">
-              TRUC sur les structures + listes des contacts obscolètes
+              TRUC sur les structures
           </div><!--panel body-->
         </div><!--panel-->
+        <?php  if (isset($data['obsoletes'])) { //listes des contacts obscolètes?>
+        <div class="panel panel-warning ">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+                Contacts obsolètes
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+               </h3>
+          </div>
+          <div class="panel-body">
+              <?php //(nom et prénom + lien vers la fiche)
+                  foreach($data['obsoletes'] as $c){
+                    $nomPrenom = $c['nom'].' '.$c['prenom'];
+                    echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item-danger">'.
+                "<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+                  }
+              ?>
+          </div><!--panel body-->
+        </div><!--panel-->
+        <?php  } ?>
       </div><!--col md 8-->
-    </div><!--row-->
   </div><!--panelbody-->
 </div><!--panel-->
 </div><!--row-->

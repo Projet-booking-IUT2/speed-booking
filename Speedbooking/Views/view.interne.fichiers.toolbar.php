@@ -18,11 +18,9 @@
       </a>
     </div>
     <div class="btn-group pull-right">
-      <a href="#" class="btn btn-lg btn-danger">
-        <span class="glyphicon glyphicon-trash"></span>
-      </a>
       <a href="../Controler/contacts.ctrl.php?create=true" class="btn btn-lg btn-success">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
     </div><!--btngroupe-->
+
 </div><!--toolbar-->
