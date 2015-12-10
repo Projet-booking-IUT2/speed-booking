@@ -24,7 +24,14 @@ Améliorations :
 
 
 -->
-
+<?php
+//$data['AllContacts'][0]['nom']="JOESTAR";
+//$data['AllContacts'][0]['prenom']="jojo";
+//$data['AllContacts'][1]['nom']="TSUKIYAMA";
+//$data['AllContacts'][1]['prenom']="Shuu";
+//$data['AllContacts'][0]['Ajour']=true;
+//$data['AllContacts'][0]['AJour']=false;
+ ?>
 <div class="row"><div class="col-md-4">
   <div class="panel panel-info">
     <div class="panel-heading">
@@ -49,19 +56,24 @@ Améliorations :
             $nomPrenom = $c['nom'].' '.$c['prenom'];
             if (isset($c['Ajour']) && $c['Ajour'] == true) //contact à jour
               {
-                echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'.
-              "<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+                echo "<li class=\"list-group-item\">
+                <a href=\"../Controler/contacts.ctrl.php?selected=$nomPrenom\" >
+              <span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
               }
             else  //contact pas à jour donc on affiche en ROUGE
               {
-                echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item-danger">'.
-              "<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+                echo "<li class=\"list-group-item list-group-item-danger\">
+                <a href=\"../Controler/contacts.ctrl.php?selected=$nomPrenom\">
+              <span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a>
+              <span class=\"glyphicon glyphicon-warning-sign \" style=\"color:#f85a00;\">
+              </span>
+              </li>";
 
               }
             }
           }
          ?>
-        </ul>
+    </ul>
     </div><!--panel body-->
   </div><!--panel info-->
 </div><!--col md 4-->
