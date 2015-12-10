@@ -229,10 +229,27 @@ class DAO {
     }
     
     public function StructureFromGroupe($nomG){
+        //récuperation des infos du groupe 
         $nomG = $this->db->quote($nomG);
         $sql = $this->db->query("select * from Groupes Where nom=$nomG");
-        $res = $sql->fetchAll(PDO::FETCH_ASSOC);
-        return $res[0];
+        $res[] = $sql->fetchAll(PDO::FETCH_ASSOC);
+        
+        //récuperation de l'id des membres
+        $idG = $this->db->quote($res[0][0]['id']);
+        $sql2 = $this->db->query("select contact from Membres_groupe where groupe=$idG");
+        $res[] = $sql2->fetchAll(PDO::FETCH_ASSOC);
+        
+        // récuperation du nom et prenom des membres
+        $i=0;
+        foreach($res[1] as $c){
+            $idC = $this->db->quote($c['contact']);
+            $sql3 = $this->db->query("select nom,prenom from Contacts where id=$idC");
+            $res[1][$i] = $sql3->fetchAll(PDO::FETCH_ASSOC);
+            $res[1][$i] = $res[1][$i][0];
+            $i++;
+        }
+        $res[0]=$res[0][0];      
+        return $res;
     }
     
     public function createNewGroupe($booker,$nom, $membres, $notes,$style,$mail){
@@ -245,7 +262,6 @@ class DAO {
         $q1 = "INSERT INTO Groupes(booker_associe,nom,style,mail) VALUES ($booker,$nom,$style,$mail)";
         $this->db->exec($q1) or die("erreur erreur erreur !!!!");    
     }
-    
 } // FIN CLASSE DAO
 
 

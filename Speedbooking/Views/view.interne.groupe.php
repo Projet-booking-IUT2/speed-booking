@@ -23,7 +23,7 @@
     <div class="panel-heading">
       <h3 class="panel-title">
         <?php
-            echo $data['groupe']['nom'];
+            echo $data['groupe'][0]['nom'];
         ?></h3>
     </div>
     <div class="panel-body">
@@ -31,28 +31,31 @@
                 <input type="hidden" name ="maj">
                 <div class="from-group row">
                     <label for="nom" class="col-md-4 control-label">Nom du groupe : </label>
-                    <div class="col-md-8"><input type="text" id="nom" class="form-control" name="c_nom" value ="<?= $data['groupe']['nom'] ?>" /></div>
+                    <div class="col-md-8"><input type="text" id="nom" class="form-control" name="c_nom" value ="<?= $data['groupe'][0]['nom'] ?>" /></div>
                 </div>
                 <div class=" from-group row">
                     <label for="membre" class="col-md-4 control-label">Membres du groupe : </label>
                     <?php
-                        //récup les membres du groupes et renvoie sur leur fiche contact si clique sur leur nom
+                        foreach($data['groupe'][1] as $g){
+                            $nomPrenom = $g['nom'].' '.$g['prenom'];
+                            echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'."<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+                        }
                     ?>
                 </div>
                 <div class="form-group row">
                     <label for="mail"  class="col-md-2 control-label">Mail : </label>
-                    <div class="col-md-10"><input type="email" id="mail" class="form-control" name="c_mail" value="<?= $data['groupe']['mail']?>"/></div>
+                    <div class="col-md-10"><input type="email" id="mail" class="form-control" name="c_mail" value="<?= $data['groupe'][0]['mail']?>"/></div>
                 </div>
                 <div class="form-group row">
                     <label for="style"  class="col-md-2 control-label">Style : </label>
-                    <div class="col-md-10"><input type="text" id="mail" class="form-control" name="c_style" value ="<?= $data['groupe']['style'] ?>" /></div>
+                    <div class="col-md-10"><input type="text" id="mail" class="form-control" name="c_style" value ="<?= $data['groupe'][0]['style'] ?>" /></div>
                 </div>
                 <div class="from-group row">
                      <label for="textarea" class="col-md-2 control-label">Notes :</label>
                     <div class="col-md-10"><textarea id="textarea" class="form-control" rows="2" name="c_notes"></textarea></div>
                 </div>
                 <div class="form-group row">
-                    <a href="../Controler/groupe.ctrl.php?delete=true&id=<?= $data['groupe']['id'] ?>" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
+                    <a href="../Controler/groupe.ctrl.php?delete=true&id=<?= $data['groupe'][0]['id'] ?>" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
                     <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button></a>
                 </div>
             </form>
