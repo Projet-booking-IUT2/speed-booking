@@ -58,7 +58,7 @@
                     <div class="col-md-8"><textarea id="textarea" class="form-control" rows="2" name="c_notes"></textarea></div>
                 </div>
                 <div class="form-group row">
-                    <a href="../Controler/groupe.ctrl.php?delete=true&id=<?= $data['groupe'][0]['nom'] ?>" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
+                    <a href="../Controler/groupe.ctrl.php?delete=true&id=<?= $data['groupe']['nom'] ?>" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
                     <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button></a>
                 </div>
             </form>
