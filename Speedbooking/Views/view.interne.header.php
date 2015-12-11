@@ -28,6 +28,10 @@ Améliorations :
       <!-- Bootstrap -->
       <link href="../Views/bootstrap/css/bootstrap.css" rel="stylesheet">
       <link href="../Views/index.css" rel="stylesheet">
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
       <title>SpeedBooking</title>
     </head>
     <body>

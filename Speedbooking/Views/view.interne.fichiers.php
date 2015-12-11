@@ -53,17 +53,22 @@ $data['AllFichiers'][1]['nom']="LALIHOU";
               <form action="../Controler/contacts.ctrl.php" method="post" class= " well form ">
                 <div class="form-group row">
                     <label for="nom" class="col-md-2 control-label">Nom: *</label>
-                    <div class="col-md-4"><input required  type="text" id="nom" class="form-control" name="c_nom" value ="<?php //$data['fichier']['nom'] ?>" /></div>
+                    <div class="col-md-10"><input required  type="text" id="nom" class="form-control" name="c_nom" value ="<?php //$data['fichier']['nom'] ?>" /></div>
+                </div>
+                <div class="form-group row alert alert-info">
+                  <div class=\" col-md-10\">
+                  <strong>Date : <?php //$data['fichier']['date'] ?></strong>
+                  <strong>Taille : <?php //$data['fichier']['taille'] ?></strong>
+                  </div>
                 </div>
                 <div class="form-group row">
-                    <label for="tel" class="col-md-2 control-label">Date: </label>
-                    <div class="col-md-4"><input type="date" id="date" class="form-control"value ="<?php //$data['fichier']['date'] ?>" /></div>
-                    <label for="taille" class="col-md-2 control-label">Taille: </label>
-                    <div class="col-md-4"><input id="taille" class="form-control" value ="<?php //$data['fichier']['taille'] ?>" /></div>
-                </div>
-                <div class="form-group row">
-                   <label for="?"  class="col-md-2 control-label">Partagé avec : </label>
-                   <div class="col-md-10"><input  id="?" class="form-control" value ="<?php //? ?>" ></div>
+                   <label class="col-md-12 control-label">Partagé avec : </label>
+                   <div class="checkbox">
+                     <label><input type="checkbox" name="partageAvec" value="groupe1">Groupe 1</label>
+                   </div>
+                   <div class="checkbox">
+                     <label><input type="checkbox" name="partageAvec" value="groupe2">Groupe 2</label>
+                   </div>
                 </div>
                   <div class="form-group row">
                       <a href="../Controler/contacts.ctrl.php?delete=true&id=<?= $data['contact']['id'] ?>" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>

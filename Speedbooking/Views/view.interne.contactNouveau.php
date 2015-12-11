@@ -61,7 +61,7 @@ View pour ajouter un nouveau contact
                       <input type="radio" name ="c_dureeMAJ" value="12">12 mois
                 </div>
                 <div class="form-group row">
-                      <button type="submit" class="btn btn-success pull-right boutonPlus"><span class="glyphicon glyphicon-ok">Créer</span></button>
+                      <button type="submit" class="btn btn-success pull-right boutonPlus"><span class="glyphicon glyphicon-ok"> Créer</span></button>
                 </div>
       </form>
     </div><!--panel body-->

@@ -20,27 +20,12 @@
           else {
             foreach($data['AllFichiers'] as $f ) {
             $nom = $f['nom'];
-                echo "<li>
-              <div class=\"btn-toolbar list-group-item\">
-                <div class=\"btn-group\">
-                  <a href=\"#\" class=\"btn btn-md\">$nom</a>
-                </div>
-                <div class=\"btn-group pull-right\">
-                  <a href=\"#\" class=\"btn btn-md btn-info\">
-                    <span class=\"glyphicon glyphicon-download-alt\"></span>
+                echo "<li class=\"list-group-item \">
+                  <a href=\"#\">$nom</a>
+                  <a href=\"#\" class=\"btn-lg\">
+                    <span class=\"glyphicon glyphicon-download-alt pull-right\" style=\"color:#00aa30;\"></span>
                   </a>
-                </div>
-                <div class=\"btn-group pull-right\">
-                  <a href=\"#\" class=\"btn btn-md btn-info\">
-                    <span class=\"glyphicon glyphicon-wrench\"></span>
-                  </a>
-                </div>
-                <div class=\"btn-group pull-right\">
-                  <a href=\"#\" class=\"btn btn-md btn-danger\">
-                    <span class=\"glyphicon glyphicon-remove\"></span>
-                  </a>
-                </div>
-              </div></li>";
+                  </li>";
             }
           }
          ?>

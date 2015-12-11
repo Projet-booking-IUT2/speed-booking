@@ -9,6 +9,7 @@ $data['AllContacts']
             ['nom']
             ['prenom']
             ['Ajour']
+            ['Fav']
 qui contient les noms et prénoms de tous les contacts.
 Si la liste est vide, la vue affiche une alerte et le controler ne crée pas la variable ci dessus.
 
@@ -25,12 +26,12 @@ Améliorations :
 
 -->
 <?php
-//$data['AllContacts'][0]['nom']="JOESTAR";
-//$data['AllContacts'][0]['prenom']="jojo";
-//$data['AllContacts'][1]['nom']="TSUKIYAMA";
-//$data['AllContacts'][1]['prenom']="Shuu";
-//$data['AllContacts'][0]['Ajour']=true;
-//$data['AllContacts'][0]['AJour']=false;
+$data['AllContacts'][0]['nom']="JOESTAR";
+$data['AllContacts'][0]['prenom']="jojo";
+$data['AllContacts'][1]['nom']="TSUKIYAMA";
+$data['AllContacts'][1]['prenom']="Shuu";
+$data['AllContacts'][0]['Ajour']=true;
+$data['AllContacts'][0]['AJour']=false;
  ?>
 <div class="row"><div class="col-md-4">
   <div class="panel panel-info">
@@ -58,18 +59,26 @@ Améliorations :
               {
                 echo "<li class=\"list-group-item\">
                 <a href=\"../Controler/contacts.ctrl.php?selected=$nomPrenom\" >
-              <span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+                </span> $nomPrenom</a>";
               }
             else  //contact pas à jour donc on affiche en ROUGE
               {
                 echo "<li class=\"list-group-item list-group-item-danger\">
                 <a href=\"../Controler/contacts.ctrl.php?selected=$nomPrenom\">
-              <span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a>
-              <span class=\"glyphicon glyphicon-warning-sign \" style=\"color:#f85a00;\">
-              </span>
-              </li>";
-
+              $nomPrenom</a>
+              <span class=\"glyphicon glyphicon-warning-sign pull-right\" style=\"color:#f85a00;\">
+              </span>";
               }
+            if (isset($c['Fav']) && $c['Fav'] == true) { //favoris ON
+                echo '<a href="#" class="btn-lg"><span class="glyphicon glyphicon-heart pull-left" style="margin-right:5px;"></span></a>';
+            }
+            else { //favoris OFF
+              echo '<a href="#" class="btn-lg "><span class="glyphicon glyphicon-heart-empty pull-left"
+              style="color:#00aa30;
+              margin-right:5px;">
+              </span> </a>';
+            }
+              echo "</li>";
             }
           }
          ?>
