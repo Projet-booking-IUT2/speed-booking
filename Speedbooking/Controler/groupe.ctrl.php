@@ -19,6 +19,9 @@ else if (isset($_POST['maj'])) {
 else if(isset($_POST['add'])){                   // $nom, $prenom, $mail, $tel, $site, $metier, $struct, $notes, $freq_maj
     $dao->createNewGroupe($booker,$_POST['c_nom'], $_POST['c_membre'], $_POST['c_notes'],$_POST['c_style'],$_POST['c_mail']);
  }
+ else if(isset($_POST['supp'])){
+     $dao->deleteGroupe($_POST['c_nom']);
+ }
 
 $data['AllGroupe'] = $dao->readGroupeFromBooker($booker);
 

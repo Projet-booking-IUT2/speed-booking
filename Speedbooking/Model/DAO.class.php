@@ -262,6 +262,22 @@ class DAO {
         $q1 = "INSERT INTO Groupes(booker_associe,nom,style,mail) VALUES ($booker,$nom,$style,$mail)";
         $this->db->exec($q1) or die("erreur erreur erreur !!!!");    
     }
+    
+    public function deleteGroupe($nomG){
+        $nomG=$this->db->quote($nomG);
+        $sql = $this->db->query("select * from Groupes Where nom=$nomG");
+        $res[] = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $res[0]=$res[0][0];   
+        
+        //récuperation de l'id des membres
+        $idG = $this->db->quote($res[0]['id']);
+        $sql1="DELETE FROM Membres_groupe WHERE groupe=$idG";
+        $this->db->exec($sql1) or die("Delete Contact ERROR : No contact deleted");
+        
+        $sql2="DELETE FROM Groupes WHERE nom=$nomG";
+        $this->db->exec($sql2) or die("Delete Contact ERROR : No contact deleted");
+        
+    }
 } // FIN CLASSE DAO
 
 
