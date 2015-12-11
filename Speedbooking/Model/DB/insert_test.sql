@@ -1,37 +1,33 @@
 # Ajouts classiques
 
-INSERT INTO Contacts
-	VALUES("Jean","Claude",false,"booker","jean-claude@placeholder.com","123 route des routes 38999 Pas-Grenoble");
-INSERT INTO Contacts
-	VALUES("Les joyeux lurons",null,true,"groupe","joyeuxlur@monsite.com","La grange, 73350 Bourg-st-Maurice");
-INSERT INTO Contacts
-	VALUES("Les joyeux hobbits",null,true,"groupe","joyeuxhob@monsite.com","La grange, 73350 Bourg-st-Maurice");
-INSERT INTO Contacts
-	VALUES("Laurent","Jay",true,"booker","liveB@live.com","252 rue des prairies 55403 Grignan");
-INSERT INTO Contacts
-	VALUES("Jaipas","Dinspiration",false,"organisateur","jenaitoujourspas@nowhere.com","000 route du néant 00000 nowhere-ville");
-INSERT INTO Contacts
-	VALUES("UnAutre","organisateur",true,"organisateur","jenaitoujourspas@nowhere.com","000 route du néant 00000 nowhere-ville");
+INSERT INTO Contacts(nom,prenom,tel,metier,mail,notes)
+	VALUES("Jean","Claude",'+33609145531',"booker","jean-claude@placeholder.com","habite 123 route des routes 38999 Pas-Grenoble, mec sympa");
+INSERT INTO Contacts(nom,prenom,tel,metier,mail,notes)
+	VALUES("Laurent","Jay",+33652145211,"organisateur","liveB@live.com","252 rue des prairies 55403 Grignan");
+INSERT INTO Contacts(nom,prenom,tel,metier,mail,notes)
+	VALUES("Jaipas","Dinspiration",'+12345678910',"artiste","jenaitoujourspas@nowhere.com","000 route du néant 00000 nowhere-ville");
+INSERT INTO Contacts(nom,prenom,tel,metier,mail,notes)
+	VALUES("UnAutre","artiste",true,"artiste","jenaitoujourspas@nowhere.com","000 route du néant 00000 nowhere-ville");
 
 INSERT INTO Identifiants 
-	VALUES(SELECT id FROM Contacts WHERE nom="Les joyeux lurons","ljl","popop");
+	VALUES(SELECT id FROM Contacts WHERE nom="Laurent","lj","popop");
 	# Pdt l'éxécution en conditions réelles, on pourra connaitre l'id de l'utilisateur 
 INSERT INTO Identifiants 
-	VALUES(SELECT id FROM Contacts WHERE nom="Laurent","yanoo","password");
+	VALUES(SELECT id FROM Contacts WHERE nom="Jean","jc","password");
 
-INSERT INTO espaceEchange
+INSERT INTO Espace_echange
 	VALUES("/dossier/fichier",2);
-INSERT INTO espaceEchange
+INSERT INTO Espace_echange
 	VALUES("/dossier/fichier",3);
-INSERT INTO espaceEchange
+INSERT INTO Espace_echange
 	VALUES("/dossier/fichier2",2);
-INSERT INTO espaceEchange
+INSERT INTO Espace_echange
 	VALUES("/dossier/fichier2",1);
-INSERT INTO espaceEchange
+INSERT INTO Espace_echange
 	VALUES("/dossier/fichier2",4);
-INSERT INTO espaceEchange
+INSERT INTO Espace_echange
 	VALUES("/dossier/fichier3",1);
-INSERT INTO espaceEchange
+INSERT INTO Espace_echange
 	VALUES("/dossier/fichier4",4);
 
 INSERT INTO Lieux
