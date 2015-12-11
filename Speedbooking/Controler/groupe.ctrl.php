@@ -28,7 +28,5 @@ else if(isset($_POST['add'])){                   // $nom, $prenom, $mail, $tel, 
 
 $data['AllGroupe'] = $dao->readGroupeFromBooker($booker);
 
-var_dump($data);
-
 include '../Views/view.interne.groupe.php';
 ?>
