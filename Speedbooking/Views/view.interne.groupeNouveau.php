@@ -11,17 +11,15 @@
                 <div class="col-md-8"><input type="text" id="nom" class="form-control" name="c_nom"></div>
             </div>
             <div class=" from-group row">
-                <form action="../Controler/contacts.ctrl.php" method="post" class= " well form ">
-                     <input type="hidden" name="add" />
                 <label for="membre" class="col-md-4 control-label">Membres du groupe : </label>
-                <a href="../Controler/contacts.ctrl.php" class="btn btn-default btn-info pull-right boutonPlus col-md-1"><span class="glyphicon glyphicon-plus"></span></a>
-            <?php
-                if(isset($data['groupe'][1])){
-                    foreach($data['groupe'][1] as $g){
-                        $nomPrenom = $g['nom'].' '.$g['prenom'];
-                        echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'."<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+                <a href="../Controler/groupe.ctrl.php?selectContact=true" class="btn btn-default btn-info pull-right boutonPlus col-md-1"><span class="glyphicon glyphicon-plus"></span></a>
+                <?php
+                    if(isset($data['groupe'][1])){
+                        foreach($data['groupe'][1] as $g){
+                            $nomPrenom = $g['nom'].' '.$g['prenom'];
+                            echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'."<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+                        }
                     }
-                }
                 ?>
             </div>
             </br>

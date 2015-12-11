@@ -3,12 +3,18 @@
 
 -->
 <?php include('../Views/view.interne.header.php'); ?>
-
         <li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
         <li><a href="../Controler/contacts.ctrl.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
         <li class="active"><a href="../Controler/groupe.ctrl.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes groupes</a></li>
         <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-        <li><a href="#" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
+        <li class="divider-vertical"></li>
+        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#" ><span class="glyphicon glyphicon-user"></span> Mon compte<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Gestion des groupes</a></li>
+                <li><a href="#">Gestion des utilisateurs</a></li>
+                <li><a href="#">Gestion compte</a></li>
+            </ul>
+        </li>
         <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
       </ul>
     </div>
@@ -46,6 +52,7 @@
                     </ul>
                     <a href="../Controler/groupe.ctrl.php" class="btn btn-lg btn-success pull-right boutonPlus col-md-2"><span class="glyphicon glyphicon-plus"></span></a>
                 </div>
+                </br>
                 <div class="form-group row">
                     <label for="mail"  class="col-md-4 control-label">Mail : </label>
                     <div class="col-md-8"><input type="email" id="mail" class="form-control" name="c_mail" value="<?= $data['groupe'][0]['mail']?>"/></div>
