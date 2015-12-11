@@ -16,12 +16,7 @@
                 <ul class="list-group list-unstyled col-md-4">
                     <form action="../Controler/groupe.ctrl.php" method="post" class= " well form ">
                     <?php
-                    if(isset($data['groupe'][1])){
-                        foreach($data['groupe'][1] as $g){
-                            $nomPrenom = $g['nom'].' '.$g['prenom'];
-                            echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'."<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
-                        }
-                    }
+
                     if(isset($data['Contacts'])){
                         $i=0;
                         echo "<form>";
@@ -35,6 +30,12 @@
                         echo"<div class=\"form-group row\">
                         <button type=\"submit\" class=\"btn btn-success pull-right boutonPlus\">Valider</span></button>
                         </div>";
+                    }
+                    if(isset($data['groupe'][1])){
+                        foreach($data['groupe'][1] as $g){
+                            $nomPrenom = $g['nom'].' '.$g['prenom'];
+                            echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'."<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+                        }
                     }
                 ?>
                 </ul>
