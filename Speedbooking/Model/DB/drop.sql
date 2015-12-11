@@ -1,9 +1,9 @@
 DROP VIEW Bookers;
 DROP VIEW Artistes;
 DROP VIEW Organisateurs;
-DROP VIEW Utilisateurs;
 DROP VIEW espaceEchangePerso;
 DROP VIEW EvenementsAVenir;
+DROP VIEW GroupesAssocies;
 DROP TABLE Membres_groupe;
 DROP TABLE Membres_structure;
 DROP TABLE Identifiants;

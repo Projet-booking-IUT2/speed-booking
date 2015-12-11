@@ -11,14 +11,13 @@ CREATE TABLE Contacts (
 	utilisateur boolean DEFAULT false,
 
 	PRIMARY KEY (id),
-	CONSTRAINT chk_mail CHECK(mail LIKE '%@%.%'),
+	CONSTRAINT chk_mail CHECK(mail LIKE '%@%.%')
 );
 
 CREATE TABLE Identifiants (
 	contact int(6),
 	login varchar(30) not null,
 	mdp varchar(64) not null,
-        notes text(1000),
 
 	PRIMARY KEY(contact),
 	foreign key(contact) references Contacts(id)
