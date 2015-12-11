@@ -15,7 +15,6 @@
                 <a href="../Controler/groupe.ctrl.php?selectContact=true" class="btn btn-default btn-info pull-right boutonPlus col-md-1"><span class="glyphicon glyphicon-plus"></span></a>
                 <ul class="list-group list-unstyled col-md-4">
                     <form action="../Controler/groupe.ctrl.php" method="post" class= " well form ">
-                        <input type="hidden" name="selectedContact">
                     <?php
                     if(isset($data['groupe'][1])){
                         foreach($data['groupe'][1] as $g){
@@ -28,7 +27,7 @@
                         echo "<form>";
                         foreach ($data['Contacts'] as $c){
                             $nomPrenom=$c['nom'].' '.$c['prenom'];
-                                echo"<li> <INPUT type=\"checkbox\" name=\"membres[]\" value=\"$i\">$nomPrenom</li>";
+                                echo"<li> <input type=\"checkbox\" name=\"membres[]\" value=\"$i\">$nomPrenom</li>";
                                 echo"<br>";
                             $i++;
                         }
