@@ -43,7 +43,7 @@ View pour ajouter un nouveau contact
                     <option>Organisateur</option>
                     <option>Association</option>
                     <option>Festival</option>
-                    <option>Membre d'un groupe</option>
+                    <option>Musicien</option>
                     <option>Autre</option>
                   </select></div>
                   <label for="orga" class="col-md-2 control-label">Travaille à: *</label>
