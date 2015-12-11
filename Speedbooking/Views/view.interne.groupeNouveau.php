@@ -27,15 +27,6 @@
                             $i++;
                         }
                         echo"</from>";
-                        echo"<div class=\"form-group row\">
-                        <button type=\"submit\" class=\"btn btn-success pull-right boutonPlus\">Valider</span></button>
-                        </div>";
-                    }
-                    if(isset($data['groupe'][1])){
-                        foreach($data['groupe'][1] as $g){
-                            $nomPrenom = $g['nom'].' '.$g['prenom'];
-                            echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'."<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
-                        }
                     }
                 ?>
                 </ul>
