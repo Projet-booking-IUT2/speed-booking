@@ -122,7 +122,8 @@ des icones pour rechercher/trier par nom,prénom,type,dernière modification et 
                             echo "<option>Association</option>";
                         }
                       ?>
-                      <option>Autre</option>
+                    <option>Musicien</option>
+                    <option>Autre</option>
                     </select></div>
 
                     <label for="orga" class="col-md-2 control-label">Travaille à: *</label>
