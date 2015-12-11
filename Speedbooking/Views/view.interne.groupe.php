@@ -44,6 +44,7 @@
                         }
                     ?>
                     </ul>
+                    <a href="../Controler/groupe.ctrl.php" class="btn btn-lg btn-success pull-right boutonPlus col-md-2"><span class="glyphicon glyphicon-plus"></span></a>
                 </div>
                 <div class="form-group row">
                     <label for="mail"  class="col-md-4 control-label">Mail : </label>
