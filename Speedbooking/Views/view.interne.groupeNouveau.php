@@ -13,14 +13,33 @@
             <div class=" from-group row">
                 <label for="membre" class="col-md-4 control-label">Membres du groupe : </label>
                 <a href="../Controler/groupe.ctrl.php?selectContact=true" class="btn btn-default btn-info pull-right boutonPlus col-md-1"><span class="glyphicon glyphicon-plus"></span></a>
-                <?php
+                <ul class="list-group list-unstyled col-md-4">
+                    <form action="../Controler/groupe.ctrl.php" method="post" class= " well form ">
+                        <input type="hidden" name="selectedContact">
+                    <?php
                     if(isset($data['groupe'][1])){
                         foreach($data['groupe'][1] as $g){
                             $nomPrenom = $g['nom'].' '.$g['prenom'];
                             echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'."<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
                         }
                     }
+                    if(isset($data['Contacts'])){
+                        $i=0;
+                        echo "<form>";
+                        foreach ($data['Contacts'] as $c){
+                            $nomPrenom=$c['nom'].' '.$c['prenom'];
+                                echo"<li> <INPUT type=\"checkbox\" name=\"membres[]\" value=\"$i\">$nomPrenom</li>";
+                                echo"<br>";
+                            $i++;
+                        }
+                        echo"</from>";
+                        echo"<div class=\"form-group row\">
+                        <button type=\"submit\" class=\"btn btn-success pull-right boutonPlus\">Valider</span></button>
+                        </div>";
+                    }
                 ?>
+                </ul>
+            
             </div>
             </br>
             <div class="form-group row">
@@ -29,7 +48,7 @@
             </div>
             <div class="form-group row">
                 <label for="style"  class="col-md-4 control-label">Style : </label>
-                <div class="col-md-8"><input type="text" id="mail" class="form-control" name="c_style" placeholder="Rock" /></div>
+                <div class="col-md-8"><in              put type="text" id="mail" class="form-control" name="c_style" placeholder="Rock" /></div>
             </div>
             <div class="from-group row">
                 <label for="textarea" class="col-md-4 control-label">Notes :</label>
