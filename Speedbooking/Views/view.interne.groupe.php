@@ -7,8 +7,7 @@
         <li><a href="../Controler/contacts.ctrl.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
         <li class="active"><a href="../Controler/groupe.ctrl.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes groupes</a></li>
         <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-        <li class="divider-vertical"></li>
-        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#" ><span class="glyphicon glyphicon-user"></span> Mon compte<b class="caret"></b></a>
+        <li><button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Mon Compte<span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <li><a href="#">Gestion des groupes</a></li>
                 <li><a href="#">Gestion des utilisateurs</a></li>

@@ -16,7 +16,6 @@
                 <ul class="list-group list-unstyled col-md-4">
                     <form action="../Controler/groupe.ctrl.php" method="post" class= " well form ">
                     <?php
-
                     if(isset($data['Contacts'])){
                         $i=0;
                         echo "<form>";
@@ -28,7 +27,7 @@
                         }
                         echo"</from>";
                     }
-                ?>
+                    ?>
                 </ul>
             
             </div>
