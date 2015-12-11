@@ -22,8 +22,13 @@ else if(isset($_POST['add'])){                   // $nom, $prenom, $mail, $tel, 
  else if(isset($_GET['delete'])){
      $dao->deleteGroupe($_GET['id']);
  }
+ else if(isset($_GET['selectContact'])){
+     $data['Contacts']=$dao->ReadContactMusicienFromBokker($booker);
+ }
 
 $data['AllGroupe'] = $dao->readGroupeFromBooker($booker);
+
+var_dump($data);
 
 include '../Views/view.interne.groupe.php';
 ?>

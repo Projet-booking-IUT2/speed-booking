@@ -279,6 +279,13 @@ class DAO {
         $this->db->exec($sql2);
         
     }
+    
+    public  function ReadContactMusicienFromBokker($booker){
+        $booker=$this->db->quote($booker);
+        $sql = $this->db->query("SELECT nom,prenom FROM Contacts WHERE metier='Musicien'");
+        $res = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
+    }
 } // FIN CLASSE DAO
 
 
