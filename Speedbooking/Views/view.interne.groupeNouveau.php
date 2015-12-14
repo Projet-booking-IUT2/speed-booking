@@ -21,7 +21,8 @@
                         echo "<form>";
                         foreach ($data['Contacts'] as $c){
                             $nomPrenom=$c['nom'].' '.$c['prenom'];
-                                echo"<li> <input type=\"checkbox\" name=\"membres[]\" value=\"$nomPrenom\">$nomPrenom</li>";
+                            $idM = $data['id'];
+                                echo"<li> <input type=\"checkbox\" name=\"membres[]\" value=\"$idM\">$nomPrenom</li>";
                                 echo"<br>";
                             $i++;
                         }
@@ -38,7 +39,7 @@
             </div>
             <div class="form-group row">
                 <label for="style"  class="col-md-4 control-label">Style : </label>
-                <div class="col-md-8"><in              put type="text" id="mail" class="form-control" name="c_style" placeholder="Rock" /></div>
+                <div class="col-md-8"><input type="text" id="mail" class="form-control" name="c_style" placeholder="Rock" /></div>
             </div>
             <div class="from-group row">
                 <label for="textarea" class="col-md-4 control-label">Notes :</label>
