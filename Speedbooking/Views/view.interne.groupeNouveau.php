@@ -21,7 +21,7 @@
                         echo "<form>";
                         foreach ($data['Contacts'] as $c){
                             $nomPrenom=$c['nom'].' '.$c['prenom'];
-                            $idM = $data['id'];
+                            $idM = $c['id'];
                                 echo"<li> <input type=\"checkbox\" name=\"membres[]\" value=\"$idM\">$nomPrenom</li>";
                                 echo"<br>";
                             $i++;

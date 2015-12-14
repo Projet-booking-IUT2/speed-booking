@@ -16,8 +16,13 @@ if(isset($_GET['selected'])) {
 else if (isset($_POST['maj'])) {    
     $dao->updateGroupe($booker,$_POST['c_nom'], $_POST['c_membre'], $_POST['c_notes'],$_POST['c_style'],$_POST['c_mail']);
     }
-else if(isset($_POST['add'])){                   // $nom, $prenom, $mail, $tel, $site, $metier, $struct, $notes, $freq_maj
-    $dao->createNewGroupe($booker,$_POST['c_nom'], $_POST['c_membre'], $_POST['c_notes'],$_POST['c_style'],$_POST['c_mail']);
+else if(isset($_POST['add'])){  
+    if($_POST['membres']){
+        foreach($_POST['membres'] as $m){
+            $membres[]=$m;
+        }
+    }
+    $dao->createNewGroupe($booker,$_POST['c_nom'],$membres, $_POST['c_notes'],$_POST['c_style'],$_POST['c_mail']);
  }
  else if(isset($_GET['delete'])){
      $dao->deleteGroupe($_GET['id']);

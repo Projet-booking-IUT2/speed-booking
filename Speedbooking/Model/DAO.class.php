@@ -255,12 +255,21 @@ class DAO {
     public function createNewGroupe($booker,$nom, $membres, $notes,$style,$mail){
         $booker = $this->db->quote($booker);
         $nom = $this->db->quote($nom);
-        $membres = $this->db->quote($membres);
+        //$membres = $this->db->quote($membres);
         $notes = $this->db->quote($notes);
         $style = $this->db->quote($style);
         $mail = $this->db->quote($mail);
         $q1 = "INSERT INTO Groupes(booker_associe,nom,style,mail) VALUES ($booker,$nom,$style,$mail)";
-        $this->db->exec($q1) or die("erreur erreur erreur !!!!");    
+        $this->db->exec($q1) or die("erreur erreur erreur !!!!");
+        
+        $q2 = $this->db->query("SELECT id FROM Groupes where nom=$nom");
+        $res= $q2->fetchAll(PDO::FETCH_ASSOC);
+        $idG=$res[0]['id'];
+        
+        foreach($membres as $m){
+            $sq4="INSERT INTO Membres_groupe VALUES ($m,$idG)";
+            $this->db->exec($sq4) or die("erreur erreur erreur !!!!");
+        }
     }
     
     public function deleteGroupe($nomG){
@@ -282,7 +291,7 @@ class DAO {
     
     public  function ReadContactMusicienFromBokker($booker){
         $booker=$this->db->quote($booker);
-        $sql = $this->db->query("SELECT nom,prenom FROM Contacts WHERE metier='Musicien'");
+        $sql = $this->db->query("SELECT nom,prenom,id FROM Contacts WHERE metier='Musicien'");
         $res = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
