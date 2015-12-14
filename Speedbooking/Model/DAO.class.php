@@ -6,7 +6,7 @@ class DAO {
     
     public function __construct() {
         $config = parse_ini_file('../config/config.ini');//Chemin vers le dossier config
-//        $config = parse_ini_file('../config/config_local.ini');//Chemin vers le dossier config
+        //$config = parse_ini_file('../config/config_local.ini');//Chemin vers le dossier config
         try {
             $this->db = new PDO($config['database_path'], $config['database_userRoot'], $config['database_mdpRoot']);
         } catch (PDOException $e) {
@@ -267,7 +267,7 @@ class DAO {
         $idG=$res[0]['id'];
         
         foreach($membres as $m){
-            $sq4="INSERT INTO Membres_groupe VALUES ($m,$idG)";
+            $sq4="INSERT INTO Membres_groupe(contact,groupe) VALUES ($m,$idG)";
             $this->db->exec($sq4) or die("erreur erreur erreur !!!!");
         }
     }
@@ -289,9 +289,14 @@ class DAO {
         
     }
     
-    public  function ReadContactMusicienFromBokker($booker){
+    public  function ReadContactMusicienFromBokker($idG=0){
         $booker=$this->db->quote($booker);
-        $sql = $this->db->query("SELECT nom,prenom,id FROM Contacts WHERE metier='Musicien'");
+        if(idG!=0){
+            $sql = $this->db->query("SELECT c.nom,c.prenom,c.id FROM Contacts c,Membres_groupe mG WHERE metier='Musicien' AND c.id=mG.contact AND mG.groupe <> $idG");
+        }
+        else{
+            $sql = $this->db->query("SELECT nom,prenom,id FROM Contacts WHERE metier='Musicien'");
+        }
         $res = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }

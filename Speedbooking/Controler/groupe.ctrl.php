@@ -28,7 +28,13 @@ else if(isset($_POST['add'])){
      $dao->deleteGroupe($_GET['id']);
  }
  else if(isset($_GET['selectContact'])){
-     $data['Contacts']=$dao->ReadContactMusicienFromBokker($booker);
+     if(isset($_POST['diG'])){
+         $idG=$_POST['diG'];
+         $data['Contacts']=$dao->ReadContactMusicienFromBokker($idG);
+     }
+     else{
+         $data['Contacts']=$dao->ReadContactMusicienFromBokker();
+     }
  }
 
 $data['AllGroupe'] = $dao->readGroupeFromBooker($booker);
