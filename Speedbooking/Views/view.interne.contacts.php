@@ -27,17 +27,6 @@ A faire :
 -les fonctions de recherche
 Améliorations :
 //////////////////////////////////
-Pour les STRUCTURES lors de la création d'un contact : ///////////////////////////////////////////////////////////////////////////////////
--soit on transforme le champ "travaille à" en <option> qui propose toutes les structures existantes.
-Et à coté de ce champ, on met un petit "+" qui permet d'ajouter une nouvelle structure si besoin.
-Comme ça, l'user n'a pas besoin de créer d'abord sa structure pour ensuite retourner créer son contact
-(ça serait nul et chiant)
--soit on fait une fiche structure pour créer des structures et ensuite lui ajouter des contacts/staff, mais
-c'est nul je trouve
-
-Pour les recherches :
-Je me demande si ça serait pas mieux de faire un menu spécial recherche (avec un champ texte pour les mots clés,
-des icones pour rechercher/trier par nom,prénom,type,dernière modification et structure)
 
 -->
 <?php include('../Views/view.interne.header.php'); ?>
@@ -110,24 +99,48 @@ des icones pour rechercher/trier par nom,prénom,type,dernière modification et 
                      <?php
                         if ($data['contact']['metier'] == "Organisateur") {
                             echo '<option selected>Organisateur</option>';
-                            echo "<option>Association</option>";
-                            echo "<option>Festival</option>";
+                            echo "<option>Association</option>
+                            <option>Festival</option>
+                            <option>Musicien</option>
+                            <option>Autre</option>";
                         } else if($data['contact']['metier'] == "Association"){
                             echo '<option selected>Association</option>';
                             echo "<option>Organisateur</option>";
-                            echo "<option>Festival</option>";
+                            echo "<option>Festival</option>
+                            <option>Musicien</option>
+                            <option>Autre</option>";
                         } else if ($data['contact']['metier'] == "Festival"){
                             echo '<option selected>Festival</option>';
                             echo "<option>Organisateur</option>";
-                            echo "<option>Association</option>";
+                            echo "<option>Association</option>
+                            <option>Musicien</option>
+                            <option>Autre</option>";
+                        } else if ($data['contact']['metier'] == "Musicien"){
+                              echo '<option selected>Musicien</option>';
+                              echo "<option>Organisateur</option>";
+                              echo "<option>Association</option>
+                              <option>Festival</option>
+                              <option>Autre</option>";
+                        } else if ($data['contact']['metier'] == "Autre"){
+                              echo '<option selected>Autre</option>';
+                              echo "<option>Organisateur</option>";
+                              echo "<option>Association</option>
+                              <option>Festival</option>
+                              <option>Musicien</option>";
                         }
                       ?>
-                    <option>Musicien</option>
-                    <option>Autre</option>
-                    </select></div>
 
                     <label for="orga" class="col-md-2 control-label">Travaille à: *</label>
-                    <div class="col-md-4"><input id="orga" required class="form-control" name="c_lieuTravail" value ="<?= $data['lieuTravail'] ?>"></div>
+                    <div class="col-md-4"><select id="select" class="form-control" name="c_lieuTravail">
+                      <?php
+                         foreach ($data['structures'] as s) {
+                           if (s == $data['contact']['lieuTravail'] )
+                            echo "<option selected>$s</option>";
+                          else
+                            echo "<option>$s</option>";
+                         }
+                     ?>
+                    </select></div>
             </div>
              <div class="form-group row">
                     <label for="textarea" class="col-md-2 control-label">Notes:</label>

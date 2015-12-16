@@ -1,10 +1,29 @@
 <!--
 Page d'affichage des contacts.
 -header
--toolbar
--aside (liste des contacts)
+-toolbar (avec les fonctions de tris + boutons nouveau contact)
+-aside (liste des contacts -peut être modifiée selon le tri choisi-)
 -structures
 -alertes contacts obsolètes
+
+Variables nécessaires :
+$data['obsoletes'] -> liste des contacts obsoletes pour les alertes
+$data['contact'] -> liste des contacts pour le aside
+          ['nom']
+          ['prenom']
+          ['mail']
+          ['adresse']
+          ['tel']
+          ['site']
+          ['type']
+          ['notes']
+          ['maj']
+          ['lieuTravail']
+          ['dernièreMaj']
+
+$data['types'] -> liste des types de contacts existants pour la toolbar
+$data['structures'] -> liste des structures de contacts existantes pour la toolbar et formulaire contact
+$data['tris']->type de tri séléctionné (éventuellement)
 
 A faire :
 

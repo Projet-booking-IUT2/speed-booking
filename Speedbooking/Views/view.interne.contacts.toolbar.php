@@ -25,22 +25,38 @@
         <span class="glyphicon glyphicon-sort-by-attributes"></span> Date
       </a>
       -->
-     <!--trier par type OFF -->
+     <!--trier par type -->
       <ul class="btn btn-lg btn-info list-unstyled">
         <li class="dropdown">
           <a href="#" class=" dropdown-toggle LienMenuDeroulant" data-toggle="dropdown">
             <span class="glyphicon glyphicon-tag"></span> Type
           </a>
           <ul class="dropdown-menu list-unstyled menuDeroulant">
-            <li><a href="#">Type 1</a></li>
-            <li><a href="#">Type 2</a></li>
+            <?php
+                foreach($data['types'] as $t){
+
+                  echo '<li><a href="#" class="list-group-item-info">'.$t.'</a></li>';
+                }
+            ?>
           </ul>
         </li>
       </ul>
-      <!--trier par structures OFF -->
-      <a href="#" class="btn btn-lg btn-info">
-        <span class="glyphicon glyphicon-tags"></span> Structure
-      </a>
+      <!--trier par structures -->
+      <ul class="btn btn-lg btn-info list-unstyled">
+        <li class="dropdown">
+          <a href="#" class=" dropdown-toggle LienMenuDeroulant" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-tags"></span> Structure
+          </a>
+          <ul class="dropdown-menu list-unstyled menuDeroulant">
+            <?php
+                foreach($data['structures'] as $s){
+
+                  echo '<li><a href="#" class="list-group-item-info">'.$s.'</a></li>';
+                }
+            ?>
+          </ul>
+        </li>
+      </ul>
       <!--N'afficher que les favoris OFF -->
       <a href="#" class="btn btn-lg btn-success">
         <span class="glyphicon glyphicon-heart"></span> Favoris
