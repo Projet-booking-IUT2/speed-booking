@@ -3,7 +3,6 @@
    if(isset ($data['contact'])) {
      ?>
 
-<div class="col-md-8">
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title">
@@ -17,20 +16,20 @@
         <form action="../Controler/contacts.ctrl.php" method="post" class= " well form ">
         <input type="hidden" name="maj">
         <div class="row">
-        <?php if($data['Ajour'] == true) {?>
+          <p class="col-md-9" style="font-size:10px;"><i>Les champs indiqués par une * sont obligatoires.</i></p>
+        <?php if($data['Ajour'] == true ) {?>
 
               <!-- A afficher si à jour : -->
                 <div class="alert alert-info col-md-3 pull-right">
-                <strong>Contact à jour :)</strong>
+                <strong style="font-size:10px;">Contact à jour :)</strong>
                 </div>
-        <?php } else { ?>
+        <?php } else if($data['Ajour'] == false ) { ?>
               <!-- A afficher si PAS à jour : -->
                 <div class="alert alert-danger col-md-3 pull-right">
-                <strong>Contact Obsolète ! </strong>
+                <strong style="font-size:10px;">Contact Obsolète ! </strong>
                 </div>
         <?php }?>
           </div>
-          <p class="col-md-12">Les champs indiqués par une * sont obligatoires.</p>
           <div class="form-group row">
               <label for="nom" class="col-md-2 control-label">Nom: *</label>
               <div class="col-md-4"><input required  type="text" id="nom" class="form-control" name="c_nom" value ="<?= $data['contact']['nom'] ?>" /></div>
@@ -91,12 +90,14 @@
                     <label for="orga" class="col-md-2 control-label">Travaille à: *</label>
                     <div class="col-md-4"><select id="select" class="form-control" name="c_lieuTravail">
                       <?php
-                         foreach ($data['structures'] as $s) {
+                         if(isset($data['structures'])){
+                           foreach ($data['structures'] as $s) {
                            if (s == $data['contact']['lieuTravail'] )
                             echo "<option selected>$s</option>";
                           else
                             echo "<option>$s</option>";
-                         }
+                            }
+                          }
                      ?>
                     </select></div>
             </div>
@@ -105,18 +106,19 @@
                     <div class="col-md-10"><textarea id="textarea" class="form-control" rows="2" name="c_notes"><?= $data['contact']['notes'] ?>
                     </textarea></div>
             </div>
-            <div class="form-group">
-                        <label  class="col-md-4 control-label">Date de mise à jour minimum: *</label>
+            <div class="form-group row">
+                        <label  class="col-md-5 control-label">Date de mise à jour minimum: *</label>
                         <input type="radio" name ="c_dureeMAJ" value="1">1 mois
                         <input type="radio" name ="c_dureeMAJ" value="3" checked>3 mois
                         <input type="radio" name ="c_dureeMAJ" value="6">6 mois
                         <input type="radio" name ="c_dureeMAJ" value="12">12 mois
             </div>
             <div class="row">
-              <a href="#" class="btn btn-xs btn-info pull-left">
-                <?php if (isset($_GET['VueAvance']) && $_GET['VueAvance']=='true' ) { ?>
-                  <span class="glyphicon glyphicon-chevron-up"></span>Vue avancée</a>
-                  <div class="col-md-6"><table class="table table-bordered table-striped table-condensed">
+                <?php if (isset($_GET['VueAvance']) && $_GET['VueAvance']==true ) { ?>
+                  <a href="../Controler/contacts.ctrl.php?selected=<?=$nomPrenom?>" class="btn btn-xs btn-info pull-left">
+                    <span class="glyphicon glyphicon-chevron-up"></span>Vue avancée
+                  </a>
+                  <div class="row"><div class="col-md-12"><table class="table table-bordered table-striped table-condensed">
                     <caption>
                       <h4>Evénements en lien avec ce contact :</h4>
                     </caption>
@@ -127,17 +129,23 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>blablabla</td>
-                      </tr>
                       <?php //afficher toutes les dates en rapport avec ce contact
-                      ?>
+                         if(isset($data['EventContact'])){
+                           foreach ($data['EventContact'] as $s) {
+                             echo "<tr>";
+                             echo "<td>".$s['nom']."</td>";
+                             echo "<td>".$s['date']."</td>";
+                             echo "</tr>";
+                             }
+                          }
+                        ?>
                     </tbody>
-                  </table></div>
+                  </table></div></div>
                 <?php } else { ?>
-                  <span class="glyphicon glyphicon-chevron-down"></span>Vue avancée</a>
+                  <a href="../Controler/contacts.ctrl.php?VueAvance=true&selected=<?=$nomPrenom?>" class="btn btn-xs btn-info pull-left">
+                    <span class="glyphicon glyphicon-chevron-down"></span>Vue avancée
+                  </a>
                 <?php } ?>
-
             </div>
             <div class="row">
               <div class="alert alert-sucess  pull-left">
@@ -152,7 +160,6 @@
 
     </div><!--panel body-->
   </div></div><!--panel-->
-</div><!--col md 8-->
       <?php
     } else {
      include '../Views/view.interne.contactNouveau.php';

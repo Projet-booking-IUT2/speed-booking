@@ -7,7 +7,6 @@ View pour ajouter un nouveau contact
 --------------------------------------------------------------
 -->
 
-<div class="col-md-8">
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title">Nouveau contact</h3>
@@ -15,7 +14,9 @@ View pour ajouter un nouveau contact
     <div class="panel-body">
         <form action="../Controler/contacts.ctrl.php" method="post" class= " well form ">
             <input type="hidden" name="add" />
-            <p class="col-md-12">Les champs indiqués par une * sont obligatoires.</p>
+            <div class="row">
+              <p class="col-md-9" style="font-size:10px;"><i>Les champs indiqués par une * sont obligatoires.</i></p>
+            </div>
             <div class="form-group row">
                 <label for="nom" class="col-md-2 control-label">Nom: *</label>
                 <div class="col-md-4"><input required type="text" id="nom" class="form-control" placeholder="Ex : Dupont" name="c_nom"></div>
@@ -66,4 +67,3 @@ View pour ajouter un nouveau contact
       </form>
     </div><!--panel body-->
   </div><!--panel-->
-</div><!--col md 8-->

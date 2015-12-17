@@ -77,6 +77,9 @@
       -->
     </div>
     <div class="btn-group pull-right">
+      <a href="../Controler/contacts.ctrl.php?accueil=true" class="btn btn-lg btn-info">
+        <span class="glyphicon glyphicon-home"></span>
+      </a>
       <a href="../Controler/contacts.ctrl.php?create=true" class="btn btn-lg btn-success">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
