@@ -24,7 +24,7 @@ $data['contact'] -> liste des contacts pour le aside
 Pour la vue avancé de la fiche contact :
 $data['EventContact']['nom']
                     ['date']
-                    
+
 $data['types'] -> liste des types de contacts existants pour la toolbar
 $data['structures'] -> liste des structures de contacts existantes pour la toolbar et formulaire contact
 $data['tris']->type de tri séléctionné (éventuellement)
@@ -50,7 +50,13 @@ c'est nul je trouve
 <li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
 <li class="active"><a href="../Controler/contacts.ctrl.php?accueil=true"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
 <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-<li><a href="../Controler/compte.ctrl.php" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
+<li><a data-toggle="dropdown">Mon Compte<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+          <li><a href="#">Gestion des groupes</a></li>
+          <li><a href="#">Gestion des utilisateurs</a></li>
+          <li><a href="#">Gestion compte</a></li>
+      </ul>
+</li>
 <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
 </ul>
 </div><!--container nav-->

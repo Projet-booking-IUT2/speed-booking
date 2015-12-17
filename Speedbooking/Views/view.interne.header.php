@@ -43,6 +43,6 @@ Améliorations :
           <div class="navbar navbar-default navbar-fixed-top">
               <div class="container">
                 <div class="navbar-header  col-md-4">
-                  <a class="navbar-brand" href="#">Logo trop beau</a>
+                  <a class="navbar-brand" href="#">SpeedBooking</a>
                 </div>
                 <ul class=" nav navbar-nav navbar-right">

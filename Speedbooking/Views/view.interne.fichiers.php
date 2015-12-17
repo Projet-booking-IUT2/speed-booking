@@ -30,7 +30,13 @@ $data['AllFichiers'][1]['nom']="LALIHOU";
         <li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
         <li class="active"><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-        <li><a href="../Controler/compte.ctrl.php" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
+        <li><a class="dropdown-toggle" data-toggle="dropdown">Mon Compte<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="#">Gestion des groupes</a></li>
+                  <li><a href="#">Gestion des utilisateurs</a></li>
+                  <li><a href="#">Gestion compte</a></li>
+              </ul>
+        </li>
         <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
       </ul>
     </div><!--container nav-->
@@ -71,7 +77,7 @@ $data['AllFichiers'][1]['nom']="LALIHOU";
                    </div>
                 </div>
                   <div class="form-group row">
-                      <a href="../Controler/contacts.ctrl.php?delete=true&id=<?= $data['contact']['id'] ?>" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
+                      <a href="#"class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
                       <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button>
                   </div>
             </form>
