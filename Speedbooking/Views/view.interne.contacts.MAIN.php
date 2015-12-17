@@ -56,38 +56,10 @@ c'est nul je trouve
       <?php include('../Views/view.interne.contacts.toolbar.php'); ?>
     </div><!--panelheading-->
     <div class="panel-body">
-      <?php include('../Views/view.interne.contacts.aside.php'); ?>
-      <div class="col-md-8">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-                LALALA
-               </h3>
-          </div>
-          <div class="panel-body">
-              TRUC sur les structures
-          </div><!--panel body-->
-        </div><!--panel-->
-        <?php  if (isset($data['obsoletes'])) { //listes des contacts obscolètes?>
-        <div class="panel panel-warning ">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-                Contacts obsolètes
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-               </h3>
-          </div>
-          <div class="panel-body">
-              <?php //(nom et prénom + lien vers la fiche)
-                  foreach($data['obsoletes'] as $c){
-                    $nomPrenom = $c['nom'].' '.$c['prenom'];
-                    echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item-danger">'.
-                "<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
-                  }
-              ?>
-          </div><!--panel body-->
-        </div><!--panel-->
-        <?php  } ?>
-      </div><!--col md 8-->
+
+        <?php include('../Views/view.interne.contacts.aside.TEST.php'); ?>
+        <?php include('../Views/view.interne.contacts.php'); ?>
+
   </div><!--panelbody-->
 </div><!--panel-->
 </div><!--row-->

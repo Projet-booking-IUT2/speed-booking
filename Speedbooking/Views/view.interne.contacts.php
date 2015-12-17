@@ -1,46 +1,4 @@
-<!--
-Page d'affichage des contacts.
--header
--fiche contacts (formulaire)
--Liste des contacts existantes (aside)
--footer
---------------------------------------------------------------
-Par défaut, la page affiche la fiche du premier contact. Mais l'user peut selectionner un autre contact via le aside
-La fiche a donc besoin des variables suivantes :
-$data['contact']
-          ['nom']
-          ['prenom']
-          ['mail']
-          ['adresse']
-          ['tel']
-          ['site']
-          ['type']
-          ['notes']
-          ['maj']
-          ['lieuTravail']
-          ['dernièreMaj']
-La variable $_GET['VueAvance'] existe et vaut true, le formulaire s'affiche avec tous les détails.
-En vue avancé, on doit renseigner tout les événements en lien avec ce contact
 
-A faire :
-- les fonctions supprimer/modifier
--les fonctions de recherche
-Améliorations :
-//////////////////////////////////
-
--->
-<?php include('../Views/view.interne.header.php'); ?>
-
-        <li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
-        <li class="active"><a href="#"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
-        <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-        <li><a href="../Controler/compte.ctrl.php" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
-        <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
-      </ul>
-    </div><!--container nav-->
-  </div><!-- nav-->
-</header>
-<?php include('../Views/view.interne.contacts.aside.php'); ?>
 <?php
    if(isset ($data['contact'])) {
      ?>
@@ -193,7 +151,7 @@ Améliorations :
       </form>
 
     </div><!--panel body-->
-  </div><!--panel-->
+  </div></div><!--panel-->
 </div><!--col md 8-->
       <?php
     } else {
