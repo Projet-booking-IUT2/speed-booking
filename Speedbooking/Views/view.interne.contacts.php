@@ -133,7 +133,7 @@ Améliorations :
                     <label for="orga" class="col-md-2 control-label">Travaille à: *</label>
                     <div class="col-md-4"><select id="select" class="form-control" name="c_lieuTravail">
                       <?php
-                         foreach ($data['structures'] as s) {
+                         foreach ($data['structures'] as $s) {
                            if (s == $data['contact']['lieuTravail'] )
                             echo "<option selected>$s</option>";
                           else

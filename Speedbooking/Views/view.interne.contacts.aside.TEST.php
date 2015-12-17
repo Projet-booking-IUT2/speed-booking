@@ -13,11 +13,6 @@ $data['AllContacts']
 qui contient les noms et prénoms de tous les contacts.
 Si la liste est vide, la vue affiche une alerte et le controler ne crée pas la variable ci dessus.
 
-Si l'user clique sur un lien, le controler est appelé avec en param $_GET['nom_booker'].
-Le controler doit afficher la fiche contact correspondante en redonnant la variable $data['contact'] remplie correctement
-
-Si l'user clique sur l'icone plus, le controler est appelé et doit afficher un formulaire tout vide.
-
 A faire :
 -recherches
 
@@ -25,14 +20,7 @@ Améliorations :
 
 
 -->
-<?php
-$data['AllContacts'][0]['nom']="JOESTAR";
-$data['AllContacts'][0]['prenom']="jojo";
-$data['AllContacts'][1]['nom']="TSUKIYAMA";
-$data['AllContacts'][1]['prenom']="Shuu";
-$data['AllContacts'][0]['Ajour']=true;
-$data['AllContacts'][0]['AJour']=false;
- ?>
+
 <div class="row"><div class="col-md-4">
   <div class="panel panel-info">
     <div class="panel-heading">

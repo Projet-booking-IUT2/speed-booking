@@ -42,7 +42,7 @@ c'est nul je trouve
 <?php include('../Views/view.interne.header.php'); ?>
 
         <li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
-        <li class="active"><a href="#"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
+        <li class="active"><a href="../Controler/contacts.ctrl.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
         <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
         <li><a href="../Controler/compte.ctrl.php" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
         <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
@@ -56,7 +56,7 @@ c'est nul je trouve
       <?php include('../Views/view.interne.contacts.toolbar.php'); ?>
     </div><!--panelheading-->
     <div class="panel-body">
-      <?php include('../Views/view.interne.contacts.aside.TEST.php'); ?>
+      <?php include('../Views/view.interne.contacts.aside.php'); ?>
       <div class="col-md-8">
         <div class="panel panel-info">
           <div class="panel-heading">
