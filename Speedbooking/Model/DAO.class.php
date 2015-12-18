@@ -404,7 +404,10 @@ class DAO {
                 $sql2=$this->db->query("SELECT * FROM Membres_groupe where contact=$id AND groupe=$idG");
                 $res2 = $sql2->fetchAll(PDO::FETCH_ASSOC);
                 if(!$res2){
-                $res[]=$c;
+                    $res[]=$c;
+                }
+                else{
+                    $res[]=null;
                 }
             }
         }

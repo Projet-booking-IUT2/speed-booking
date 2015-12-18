@@ -57,10 +57,12 @@
                             echo "<ul class=\"list-group list-unstyled col-md-4\">";
                             echo "<form>";
                             foreach ($data['Contacts'] as $c){
-                                $nomPrenom=$c['nom'].' '.$c['prenom'];
-                                $idM = $c['id'];
+                                if($c!=null){
+                                    $nomPrenom=$c['nom'].' '.$c['prenom'];
+                                    $idM = $c['id'];
                                     echo"<li> <input type=\"checkbox\" name=\"membres[]\" value=\"$idM\">$nomPrenom</li>";
                                     echo"<br>";
+                                }
                             }
                             echo"</from>";
                             echo "</ul>";
