@@ -4,6 +4,16 @@ class DAO {
     
     private $db;
     
+    /**
+     * Constructeur de la classe DAO.
+     * 
+     * Initialise la variable $db pour pointer vers la base de données 
+     * avec les adresses et identifiants contenus dans les fichiers de 
+     * configuration.
+     * 
+     *
+     * @author gorkat
+     */
     public function __construct() {
         $config = parse_ini_file('../config/config.ini');//Chemin vers le dossier config
         //$config = parse_ini_file('../config/config_local.ini');//Chemin vers le dossier config
@@ -14,6 +24,13 @@ class DAO {
         }
     }
     
+    
+    /**
+     * Retourne le contenu de la table développeurs. POUR DEVELOPPEMENT / TEST UNIQUEMENT
+     * @deprecated
+     * @author gorkat
+     * @return Tab_associatif Tableau associatif nom_colonne -> contenu
+     */
     public function readDev() {
         $q = "SELECT * FROM developpeurs";
         $sql = $this->db->query($q);
@@ -22,12 +39,13 @@ class DAO {
         return $res;
     }
     
+    
     /**
      * Vérifie que le login et le mot de passe identifient un utilisateur connu de la db
+     * @author gorkat
      * @param type $username le nom d'utilisateur (ou login)
      * @param type $passwd le mot de passe entré par l'utilisateur
-     * @return integer l'id de l'utilisateur s'il existe
-     * @return bool False sinon
+     * @return integer|bool l'id de l'utilisateur s'il existe, false sinon
      */
     public function connexion($username, $passwd) {
         $username = $this->db->quote($username);                                            // On quote proprement la variable $username
@@ -44,11 +62,13 @@ class DAO {
             }
         }
     }
+    
+    
     /**
-     * Renvoit le mot de passe hasché
-     * CETTE FONCTION NE DOIT ÊTRE UTILISÉE QUE LORSQU'UN UTILISATEUR MODIFIE SON MOT DE PASSE VIA LE FORMULAIRE ADÉQUAT
-     * CAR LE NOUVEAU MOT DE PASSE NE DOIT PAS ÊTRE STOCKÉ EN CLAIR DANS LA DB
-     * @param string $passwd le nouveau mot de passe utilisateur
+     * Hache le mot de passe passé en paramètre.
+     * 
+     * @author gorkat
+     * @param string $passwd Mot de passe en clair
      * @return string Mot de passe haché
      */
     public function hacherPassword($passwd){
@@ -57,12 +77,18 @@ class DAO {
     }
     
     
+    //####################################################################
+    //####################################################################
+    // {{ Méthodes CRUD sur Contacts
     
-    ////////////////////////////////////////////////////////////////////////////
-    // Méthodes CRUD sur Contacts
-    ////////////////////////////////////////////////////////////////////////////
+    
     /**
-     * Crée un nouveau contact
+     * Crée un nouveau contact.
+     * 
+     * Assainit les variables passées en paramètre, calcule la prochaine date de 
+     * mise à jour nécessaire du contact et l'ajoute à la base de données.
+     * 
+     * @author gorkat
      * @param type $nom
      * @param type $prenom
      * @param type $mail
@@ -88,9 +114,11 @@ class DAO {
         $this->setProchaineDateMAJ($id, $freq_maj);
     }
     /**
-     * Retoune tous les contacts à partir de l'id d'un booker
+     * Retourne tous les contacts à partir de l'id d'un booker, booker exclus.
+     * 
+     * @author gorkat
      * @param integer $booker l'id du booker
-     * @return Array $res Les noms et prenoms de chaque contact excepté ceux du booker.
+     * @return Array $res Noms et prenoms de chaque contact excepté ceux du booker.
      */
     public function readContactsFromBooker($booker) {
         $booker = $this->db->quote($booker);
@@ -104,9 +132,11 @@ class DAO {
     }
     /**
      * Retourne toutes les infos concernant un contact.
-     * @param string $nom le Nom du contact
-     * @param string $prenom le Prenom du contact
-     * @return Array $res Toutes les informations sur le contact.
+     * 
+     * @author gorkat
+     * @param string $nom Nom du contact
+     * @param string $prenom Prenom du contact
+     * @return Tableau_assoc Informations sur le contact: tableau indexé par nom de champ et numéro de champ
      */
     public function readContactFromNomPrenom($nom,$prenom) {
         $nom = $this->db->quote($nom);
@@ -116,9 +146,11 @@ class DAO {
         return $res;
     }
     /**
-     * Retourne le lieux de travaille pour un contact dont on donne le nom et prenom
-     * @param type $nom
-     * @param type $prenom
+     * Retourne la structure à laquelle appartient un contact dont on donne le nom et prenom
+     * 
+     * @author gorkat
+     * @param string $nom
+     * @param string $prenom
      */
     public function readStructureFromContact($nom, $prenom) {
         $nom = $this->db->quote($nom);
@@ -129,15 +161,17 @@ class DAO {
     }
     
     /**
-     * Met à jour le contact
-     * @param type $nom
-     * @param type $prenom
-     * @param type $mail
-     * @param type $tel
-     * @param type $metier
-     * @param type $adresse
-     * @param type $lieuTravail
-     * @param type $note
+     * Met à jour le contact de nom et prénom donnés.
+     * 
+     * @author gorkat
+     * @param string $nom
+     * @param string $prenom
+     * @param string $mail
+     * @param string $tel
+     * @param enum("booker","artiste","organisateur") $metier
+     * @param string $adresse
+     * @param string $lieuTravail
+     * @param string $note
      */
     
     public function updateContactFromNomPrenom($nom,$prenom,$mail,$tel,$metier, $adresse, $lieuTravail, $note, $freq_maj) {
@@ -161,15 +195,30 @@ class DAO {
         $this->db->commit() or die("Update Contact ERROR : No Contact updated");
     }
     
+    /**
+     * Supprime un contact d'identifiant donné.
+     * 
+     * @author gorkat
+     * @param string $id Identifiant d'uun contact
+     */
     public function deleteContactFromID($id) {
         $q = "DELETE FROM Contacts WHERE id=$id";
         $this->db->exec($q) or die("Delete Contact ERROR : No contact deleted");
     }
-    ////////////////////////////////////////////////////////////////////////////
-    // Méthodes CRUD sur Membres_structure
-    ////////////////////////////////////////////////////////////////////////////
-    /** Retourne le nom et prenom de chaque personne travaillant pour la structure demandée
+    
+    
+    // #########################################################################
+    // #########################################################################
+    // }}
+    // {{ Méthodes CRUD sur Membres_structure
+    
+    
+    /** 
+     * Retourne le nom et prenom de chaque personne travaillant pour la structure demandée
+     * 
+     * @author gorkat
      * @param string $struct le nom de la structure
+     * @return ???
      */
     public function readMembresFromStructure($struct) {
         $struct = $this->db->quote($struct);
@@ -177,14 +226,17 @@ class DAO {
         $res = $sql->fetchAll(PDO::FETCH_BOTH);
     }
     
-    ////////////////////////////////////////////////////////////////////////////
-    // Manupulation des date de mise à jour
-    ////////////////////////////////////////////////////////////////////////////
+    // #########################################################################
+    // #########################################################################
+    // }}
+    // {{ Manipulation des dates de mise à jour
     
     /**
      * Indique si le contact est à jour ou non
+     *
+     * @author gorkat
      * @param int $id l'id du contact
-     * @return bool Vrai si le contact est à jour, Faux sinon
+     * @return bool
      */
     public function estAJour($nom, $prenom) {
         $nom = $this->db->quote($nom);
@@ -197,6 +249,13 @@ class DAO {
         return ($prochMaj > date("Y-m-d"));
     }
     
+    /**
+     * Définit la date de prochaine mise à jour d'un contact.
+     * 
+     * @author gorkat
+     * @param int $id identifiant du contact à modifier
+     * @param string $freq_maj fréquence de mise à jour
+     */
     private function setProchaineDateMAJ($id, $freq_maj) {
         $date = date("Y-m-d");
         $prochMaj = date("Y-m-d", strtotime($date." + $freq_maj month"));
@@ -204,11 +263,21 @@ class DAO {
         $this->db->exec("UPDATE Contacts SET prochaine_maj=$nvDate WHERE id=$id");
     }
     
-    ////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////
-    
-        
+    // #########################################################################
+    // #########################################################################
+    // }}
+    // {{ Manipulation des groupes   
+    /**
+     * Modifie les informations d'un groupe identifié par son nom et booker associé
+     * 
+     * @author claudeld
+     * @param int $booker
+     * @param string $nom
+     * @param ??? $membres
+     * @param string $notes
+     * @param string $style
+     * @param string $mail
+     */
     public function updateGroupe($booker,$nom, $membres, $notes,$style,$mail){    
         $booker = $this->db->quote($booker);
         $nom = $this->db->quote($nom);
@@ -218,9 +287,18 @@ class DAO {
         $sql = ("update Groupes set nom=$nom, style=$style, mail=$mail where booker_associe=$booker and nom=$nom");
         $this->db->beginTransaction();
         $this->db->exec($sql);   
-        $this->db->commit() or die("Update Groupe ERROR : No Groupe updated");
+        $this->db->commit() or die("Update Groupe ERROR : No row updated");
     }
     
+    /**
+     * Retourne les groupes associés à un booker donné.
+     * 
+     * @author claudeld
+     * @deprecated 0c74a2a177 Une view existe pour remplir le même role
+     * @param int $booker
+     * @return tableau_assoc Liste de groupes: tableau indexé par nom de champ et n° de champ
+     * @see ./DB/create.sql
+     */
     public function readGroupeFromBooker($booker){
         $booker = $this->db->quote($booker);
         $sql = $this->db->query("select * from Groupes Where booker_associe=$booker");
@@ -228,6 +306,13 @@ class DAO {
         return $res;
     }
     
+    /**
+     * Retourne les infos du groupe donné et les membres de ce groupe.
+     * 
+     * @author claudeld
+     * @param string $nomG
+     * @return tableau_assoc ???
+     */
     public function StructureFromGroupe($nomG){
         //récuperation des infos du groupe 
         $nomG = $this->db->quote($nomG);
@@ -252,6 +337,15 @@ class DAO {
         return $res;
     }
     
+    /**
+     * Crée un groupe avec les attributs passés en paramètre
+     *
+     * @author claudeld
+     * @param int $booker Booker associé au groupe
+     * @param string $nom Nom du groupe
+     * @param 
+     *
+     */
     public function createNewGroupe($booker,$nom, $membres, $notes,$style,$mail){
         $booker = $this->db->quote($booker);
         $nom = $this->db->quote($nom);
@@ -272,6 +366,12 @@ class DAO {
         }
     }
     
+    /**
+     * Supprime le groupe de nom donné
+     *
+     * @author claudeld
+     * @param string $nomG nom du groupe à supprimer
+     */
     public function deleteGroupe($nomG){
         $nomG=$this->db->quote($nomG);
         $sql = $this->db->query("select * from Groupes Where nom=$nomG");
@@ -289,6 +389,14 @@ class DAO {
         
     }
     
+    /**
+     * Retourne les contacts associés à l'utilisateur appartenant au groupe donné en paramètre.
+     * Si aucun groupe n'est donné, renvoie tous les contacts associés.
+     * 
+     * @author claudeld
+     * @param int $idG Identifiant du groupe
+     *
+     */
     public  function ReadContactMusicienFromBokker($idG=0){
         //$booker=$this->db->quote($booker);
         if($idG!=0){
