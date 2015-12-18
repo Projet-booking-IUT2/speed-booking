@@ -1,30 +1,81 @@
 <?php include('../Views/view.interne.header.php'); ?>
-
-        <li class="active"><a href="#"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
-        <li><a href="../Views/view.interne.contacts.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Mes groupes</a></li>
-        <li><a href="#" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-        <li><a href="#" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
-        <li><a href="#" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <li class="active"><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
+        <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
+        <li><a href="../Controler/compte.ctrl.php" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
+        <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
       </ul>
-    </div>
-  </div>
+    </div><!--container nav-->
+  </div><!-- nav-->
+  <script type="text/javascript">
+      jQuery(function($){
+          $('.month').hide();
+          $('.month:first').show();
+          $('.months a:first').addClass('active');
+          var current =1;
+          $('.months a').click(function(){
+              var month = $(this).attr('id').replace('linkMonth','');
+              if(month !== current){
+                  $('#month'+current).slideUp();
+                  $('#month'+month).slideDown();
+                  $('.months a').removeClass('active');
+                  $('.months a#linkMonth'+month).addClass('active');
+                  current=month;
+              }
+              return false;
+          });
+      });
+  </script>
 </header>
-
-<div class="col-md-8">
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">Date:</h3>
-        </div>
-        <div class="panel-body">
-            <?php
-                // récupérer les dates de concerts et les afficher avec echo 
-            ?>
-            <div class="row">
-                <label for="date" class="col-md-8"><a href="view.interne.date.aside.php">date1 </label>
+    <div class="periode">
+        <div class="year"><?php echo "$year"; ?>
+            <div class="months">
+                <ul>
+                    <?php foreach($months as $id=>$m){ ?>
+                    <li><a href="#" id="linkMonth<?php echo $id+1 ?>"><?php echo utf8_encode(substr(utf8_decode($m),0,3));?></a></li>       
+                    <?php } ?>
+                </ul>
             </div>
-        </div>
+            <div class="clear"></div>
+            <?php $dates= current($dates);?>
+            <?php foreach($dates as $m=>$day){ ?>
+                <div class="month" id="month<?php echo $m;?>">
+                    <table>
+                        <thead>
+                            <tr>
+                                <?php foreach ($days as $d) { ?>
+                                    <th>
+                                     <?php echo substr($d,0,3); ?>
+                                    </th>
+                                <?php } ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <?php
+                            $end = end($day);
+                            foreach ($day as $d=>$w) { ?>
+                                <?php if($d==1){?>
+                                    <td colspan="<?php echo $w-1; ?>"></td>
+                                <?php } ?>
+                                <td>
+                                    <div class="relative">
+                                        <div class="day"><?php echo $d; ?></div>
+                                    </div>
+                                </td>
+                                <?php if($w == 7){?>
+                                    </tr><tr>
+                                <?php } ?>
+                            <?php } ?>
+                            <?php if($end !=7) {?>
+                                <td colspan="<?php echo 7-$end; ?>"></td>       
+                            <?php } ?>           
+                            </tr>
+                        </tbody>
+                    </table>                     
+                </div>
+            <?php } ?>
     </div>
-</div>
 </section>
 <?php include('../Views/view.interne.footer.php'); ?>
