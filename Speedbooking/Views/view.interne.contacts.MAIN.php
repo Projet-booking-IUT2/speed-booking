@@ -81,7 +81,8 @@ c'est nul je trouve
                   <?php //(nom et prénom + lien vers la fiche)
                   foreach($data['obsoletes'] as $c){
                     $nomPrenom = $c['nom'].' '.$c['prenom'];
-                    echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item-danger">'.
+                    $id=$data['contact']['id'];
+                    echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'&id='.$id.'" class="list-group-item-danger">'.
                     "<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
                   }
                   ?>

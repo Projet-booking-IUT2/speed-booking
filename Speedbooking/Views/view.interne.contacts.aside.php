@@ -20,7 +20,6 @@ Améliorations :
 
 
 -->
-
 <div class="col-md-12">
   <div class="panel panel-info">
     <div class="panel-heading">
@@ -43,16 +42,17 @@ Améliorations :
           else {
             foreach($data['AllContacts'] as $c ) {
             $nomPrenom = $c['nom'].' '.$c['prenom'];
+            $id=$c['id'];
             if (isset($c['Ajour']) && $c['Ajour'] == true) //contact à jour
               {
                 echo "<li class=\"list-group-item\">
-                <a href=\"../Controler/contacts.ctrl.php?selected=$nomPrenom\" >
+                <a href=\"../Controler/contacts.ctrl.php?selected=$nomPrenom&id=$id\" >
                 </span> $nomPrenom</a>";
               }
             else  //contact pas à jour donc on affiche en ROUGE
               {
                 echo "<li class=\"list-group-item list-group-item-danger\">
-                <a href=\"../Controler/contacts.ctrl.php?selected=$nomPrenom\">
+                <a href=\"../Controler/contacts.ctrl.php?selected=$nomPrenom&id=$id\">
               $nomPrenom</a>
               <span class=\"glyphicon glyphicon-warning-sign pull-right\" style=\"color:#f85a00;\">
               </span>";
@@ -87,7 +87,7 @@ Améliorations :
       <?php //(nom et prénom + lien vers la fiche)
           foreach($data['obsoletes'] as $c){
             $nomPrenom = $c['nom'].' '.$c['prenom'];
-            echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item-danger">'.
+            echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'&id='.$id.'" class="list-group-item-danger">'.
         "<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
           }
       ?>

@@ -122,10 +122,10 @@ class DAO {
      */
     public function readContactsFromBooker($booker) {
         $booker = $this->db->quote($booker);
-        $sql = $this->db->query("SELECT nom, prenom FROM Contacts WHERE id <> $booker AND metier <> 'booker' ORDER BY nom");
+        $sql = $this->db->query("SELECT nom, prenom, id FROM Contacts WHERE id <> $booker AND metier <> 'booker' ORDER BY nom");
         $res1 = $sql->fetchAll(PDO::FETCH_ASSOC);
         foreach($res1 as $key) {
-            $key['Ajour'] = $this->estAJour($key['nom'], $key['prenom']);
+            $key['Ajour'] = $this->estAJour($key['id']);
             $res2[] = $key;
         }
         return $res2; 
@@ -138,10 +138,9 @@ class DAO {
      * @param string $prenom Prenom du contact
      * @return Tableau_assoc Informations sur le contact: tableau indexé par nom de champ et numéro de champ
      */
-    public function readContactFromNomPrenom($nom,$prenom) {
-        $nom = $this->db->quote($nom);
-        $prenom = $this->db->quote($prenom);
-        $sql = $this->db->query("SELECT * FROM Contacts WHERE nom=$nom AND prenom=$prenom");
+    public function readContactFromNomPrenom($id) {
+        $id = $this->db->quote($id);
+        $sql = $this->db->query("SELECT * FROM Contacts WHERE id=$id");
         $res = $sql->fetch();
         return $res;
     }
@@ -238,14 +237,12 @@ class DAO {
      * @param int $id l'id du contact
      * @return bool
      */
-    public function estAJour($nom, $prenom) {
-        $nom = $this->db->quote($nom);
-        $prenom = $this->db->quote($prenom);
+    public function estAJour($id) {
+        $id = $this->db->quote($id);
         
-        $sql = $this->db->query("Select prochaine_maj FROM Contacts WHERE nom=$nom AND prenom=$prenom");
+        $sql = $this->db->query("Select prochaine_maj FROM Contacts WHERE id=$id");
         $sql1 = $sql->fetch();
         $prochMaj = $sql1[0];
-        
         return ($prochMaj > date("Y-m-d"));
     }
     

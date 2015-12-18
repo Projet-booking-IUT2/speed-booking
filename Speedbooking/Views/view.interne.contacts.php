@@ -8,7 +8,7 @@
       <h3 class="panel-title">
         <?php
 
-            echo $data['contact']['nom']; echo " "; echo $data['contact']['prenom'];
+           echo $data['contact']['nom']; echo " "; echo $data['contact']['prenom'];
         ?>
          </h3>
     </div>
@@ -115,7 +115,7 @@
             </div>
             <div class="row">
                 <?php if (isset($_GET['VueAvance']) && $_GET['VueAvance']==true ) { ?>
-                  <a href="../Controler/contacts.ctrl.php?selected=<?=$nomPrenom?>" class="btn btn-xs btn-info pull-left">
+                  <a href="../Controler/contacts.ctrl.php?selected=<?=$nomPrenom?>&id=<?= $data['contact']['id']?>" class="btn btn-xs btn-info pull-left">
                     <span class="glyphicon glyphicon-chevron-up"></span>Vue avancée
                   </a>
                   <div class="row"><div class="col-md-12"><table class="table table-bordered table-striped table-condensed">
