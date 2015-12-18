@@ -1,7 +1,7 @@
 <?php include('../Views/view.interne.header.php'); ?>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
         <li class="active"><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
-        <li><a href="../Controler/contacts.ctrl.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
+        <li><a href="../Controler/contacts.ctrl.php?accueil=true"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
         <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
         <li><a href="../Controler/compte.ctrl.php" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
         <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
@@ -30,9 +30,9 @@
 </header>
     <div class="periode">
         <div class="year"><?php echo "$year"; ?>
-            <nav class="navbar ">
+            <nav class="navbar">
             <div class="months form-group container">
-                <ul class="nav navbar-nav list-group list-unstyled">
+                <ul class="nav navbar-nav nav-tabs nav-justified list-group list-unstyled">
                     <?php foreach($months as $id=>$m){ ?>
                     <li><a href="#" id="linkMonth<?php echo $id+1 ?>"><?php echo utf8_encode(utf8_decode($m));?></a></li>       
                     <?php } ?>
@@ -43,12 +43,12 @@
             <?php $dates= current($dates);?>
             <?php foreach($dates as $m=>$day){ ?>
                 <div class="month" id="month<?php echo $m;?>">
-                    <table class="table table-bordered table-condensed">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <?php foreach ($days as $d) { ?>
                                     <th>
-                                     <?php echo substr($d,0,3); ?>
+                                     <?php echo $d; ?>
                                     </th>
                                 <?php } ?>
                             </tr>
@@ -64,14 +64,14 @@
                                 <td>
                                     <div class="relative">
                                         <div class="day">
-                                            <?php 
+                                            <?php
                                            /* if(!isset($data['AllDate'])){
-                                                echo"<a href=\"#\">";
+                                                echo"<a href=\"../Controler/date.ctrl.php?nouvelEvent=true\">";
                                             }
                                             else {
-                                                 echo"<a href=\"#\">";
+                                                 echo"<a href=\"../Controler/date.ctrl.php?selectEvent=true\">";
                                             }*/?>
-                                            <?php echo $d; ?>
+                                            <a href="#"><?php echo $d; ?>
                                         </div>
                                     </div>
                                 </td>
@@ -84,9 +84,10 @@
                             <?php } ?>           
                             </tr>
                         </tbody>
-                    </table>                     
+                    </table>       
                 </div>
             <?php } ?>
+    </div>
     </div>
 </section>
 <?php include('../Views/view.interne.footer.php'); ?>

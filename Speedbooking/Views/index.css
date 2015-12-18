@@ -11,6 +11,25 @@ body {
 
 }
 
+.year div {
+    font-size: 25px;
+}
+
+td, th {
+    text-align: center;
+    font-size: 25px;
+    height: 80px;
+    background-color: white;
+}
+.day a{
+  color: black;
+  overflow: hidden;
+}
+
+.day a:hover{
+    color: green;
+    text-decoration: none;
+}
 /*
 -structures ? + formulaire input des addresses et travailleA
 -harmoniser le formulaire nouveau et existant

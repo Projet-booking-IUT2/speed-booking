@@ -25,4 +25,10 @@
             </div>
             <!-- Afficher les Noms de groupes pour les ajouter à l'event -->
             
-            
+            <div class="form-group row">
+                <label for="note" class="col-md-4 control-label">Note : </label>
+                <div class="col-md-8"><input type="text" id="note" class="form-control" name="c_note"></div>
+            </div>
+    </div>
+  </div>
+</div>
