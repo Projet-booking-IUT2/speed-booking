@@ -11,6 +11,7 @@ CREATE TABLE Contacts (
 	utilisateur boolean DEFAULT false,
 
 	PRIMARY KEY (id),
+	CONSTRAINT chk_tel_1 CHECK((tel > 999999999 and tel < 10000000000) or (tel > 99999999999 and tel < 1000000000000)),
 	CONSTRAINT chk_mail CHECK(mail LIKE '%@%.%')
 );
 
@@ -82,7 +83,7 @@ CREATE TABLE Organise ( -- Lien structure <-> Evenement
 );
 
 
-CREATE TABLE Participe ( -- Lien artistes <-> Evènements
+CREATE TABLE Participe ( -- Lien groupe <-> Evènements
 	groupe int(6),
 	evenement int(6),
 
