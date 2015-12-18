@@ -27,12 +27,13 @@ else if(isset($_POST['add'])){
  else if(isset($_GET['delete'])){
      $dao->deleteGroupe($_GET['id']);
  }
+ 
+ 
+ 
 if(isset($_GET['selectContact'])){
-     if(isset($_POST['idG'])){
-         $idG=$_POST['idG'];
-         var_dump($idG);
-         $data['Contacts']=$dao->ReadContactMusicienFromBokker($idG);
-         var_dump($data['Contact']);
+    if(isset($_GET['idG'])){
+        $idG=$_GET['idG'];   
+        $data['Contacts']=$dao->ReadContactMusicienFromBokker($idG);
      }
      else{
          $data['Contacts']=$dao->ReadContactMusicienFromBokker();

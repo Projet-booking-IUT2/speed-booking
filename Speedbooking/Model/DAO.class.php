@@ -400,16 +400,24 @@ class DAO {
     public  function ReadContactMusicienFromBokker($idG=0){
         //$booker=$this->db->quote($booker);
         if($idG!=0){
-            $sql = $this->db->query("SELECT c.nom,c.prenom,c.id FROM Contacts c,Membres_groupe mG WHERE metier='Musicien' AND c.id=mG.contact AND mG.groupe <> $idG");
+            $sql = $this->db->query("SELECT nom,prenom,id FROM Contacts WHERE metier='Musicien'");
+            $res1 = $sql->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($res1 as $c){
+                $id=$c['id'];
+                $sql2=$this->db->query("SELECT * FROM Membres_groupe where contact=$id AND groupe=$idG");
+                $res2 = $sql2->fetchAll(PDO::FETCH_ASSOC);
+                if(!$res2){
+                $res[]=$c;
+                }
+            }
         }
         else{
             $sql = $this->db->query("SELECT nom,prenom,id FROM Contacts WHERE metier='Musicien'");
+            $res = $sql->fetchAll(PDO::FETCH_ASSOC);
         }
-        $res = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $res;
-    }
 } // FIN CLASSE DAO
-
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

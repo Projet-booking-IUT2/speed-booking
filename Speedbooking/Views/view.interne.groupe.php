@@ -32,6 +32,9 @@
     <div class="panel-body">
             <form action="../Controler/groupe.ctrl.php" method="post" class= " well form ">
                 <input type="hidden" name ="maj">
+                <?php
+                $idG=$data['groupe'][0]['id'];?>
+                <input type="hidden" name="idG" value="<?php echo $idG ?>">
                 <div class="from-group row">
                     <label for="nom" class="col-md-4 control-label">Nom du groupe : </label>
                     <div class="col-md-8"><input type="text" id="nom" class="form-control" name="c_nom" value ="<?= $data['groupe'][0]['nom'] ?>" /></div>
@@ -48,12 +51,7 @@
                     ?>
                     </ul>
                     
-                    <a href="../Controler/groupe.ctrl.php?selected=<?php echo $data['groupe'][0]['nom'];?>&selectContact=true" class="btn btn-default btn-info pull-right boutonPlus col-md-1"><span class="glyphicon glyphicon-plus"></span></a>
-                    <form action="../Controler/groupe.ctrl.php?selectContact=true" method="post" class= " well form ">
-                        <?php
-                            $idG=$data['groupe'][0]['id'];
-                            //var_dump($idG);
-                            echo"<input type=\"hidden\" name=\"idG\" value=\"$idG\">";?>
+                    <a href="../Controler/groupe.ctrl.php?selected=<?php echo $data['groupe'][0]['nom'];?>&selectContact=true&idG=<?php echo $idG?>" class="btn btn-default btn-info pull-right boutonPlus col-md-1"><span class="glyphicon glyphicon-plus"></span></a>
                         <?php
                         if(isset($data['Contacts'])){
                             echo "<ul class=\"list-group list-unstyled col-md-4\">";
