@@ -27,3 +27,8 @@ CREATE VIEW EvenementsAVenir AS
 	SELECT *
 	FROM Evenements
 	WHERE date_evt>now();
+
+CREATE VIEW GroupesAssocies AS
+        SELECT *
+        FROM Groupes
+        WHERE booker_associe=USER();

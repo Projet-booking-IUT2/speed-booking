@@ -1,62 +1,8 @@
-<!--
-Page d'affichage des contacts.
--header
--fiche contacts (formulaire)
--Liste des contacts existantes (aside)
--footer
---------------------------------------------------------------
-Par défaut, la page affiche la fiche du premier contact. Mais l'user peut selectionner un autre contact via le aside
-La fiche a donc besoin des variables suivantes :
-$data['contact']
-          ['nom']
-          ['prenom']
-          ['mail']
-          ['adresse']
-          ['tel']
-          ['site']
-          ['type']
-          ['notes']
-          ['maj']
-          ['lieuTravail']
-          ['dernièreMaj']
-La variable $_GET['VueAvance'] existe et vaut true, le formulaire s'affiche avec tous les détails.
-En vue avancé, on doit renseigner tout les événements en lien avec ce contact
 
-A faire :
-- les fonctions supprimer/modifier
--les fonctions de recherche
-Améliorations :
-//////////////////////////////////
-Pour les STRUCTURES lors de la création d'un contact : ///////////////////////////////////////////////////////////////////////////////////
--soit on transforme le champ "travaille à" en <option> qui propose toutes les structures existantes.
-Et à coté de ce champ, on met un petit "+" qui permet d'ajouter une nouvelle structure si besoin.
-Comme ça, l'user n'a pas besoin de créer d'abord sa structure pour ensuite retourner créer son contact
-(ça serait nul et chiant)
--soit on fait une fiche structure pour créer des structures et ensuite lui ajouter des contacts/staff, mais
-c'est nul je trouve
-
-Pour les recherches :
-Je me demande si ça serait pas mieux de faire un menu spécial recherche (avec un champ texte pour les mots clés,
-des icones pour rechercher/trier par nom,prénom,type,dernière modification et structure)
-
--->
-<?php include('../Views/view.interne.header.php'); ?>
-
-        <li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
-        <li class="active"><a href="#"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
-        <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-        <li><a href="../Controler/compte.ctrl.php" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
-        <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
-      </ul>
-    </div><!--container nav-->
-  </div><!-- nav-->
-</header>
-<?php include('../Views/view.interne.contacts.aside.php'); ?>
 <?php
    if(isset ($data['contact'])) {
      ?>
 
-<div class="col-md-8">
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title">
@@ -70,20 +16,20 @@ des icones pour rechercher/trier par nom,prénom,type,dernière modification et 
         <form action="../Controler/contacts.ctrl.php" method="post" class= " well form ">
         <input type="hidden" name="maj">
         <div class="row">
-        <?php if($data['Ajour'] == true) {?>
+          <p class="col-md-9" style="font-size:10px;"><i>Les champs indiqués par une * sont obligatoires.</i></p>
+        <?php if($data['Ajour'] == true ) {?>
 
               <!-- A afficher si à jour : -->
                 <div class="alert alert-info col-md-3 pull-right">
-                <strong>Contact à jour :)</strong>
+                <strong style="font-size:10px;">Contact à jour :)</strong>
                 </div>
-        <?php } else { ?>
+        <?php } else if($data['Ajour'] == false ) { ?>
               <!-- A afficher si PAS à jour : -->
                 <div class="alert alert-danger col-md-3 pull-right">
-                <strong>Contact Obsolète ! </strong>
+                <strong style="font-size:10px;">Contact Obsolète ! </strong>
                 </div>
         <?php }?>
           </div>
-          <p class="col-md-12">Les champs indiqués par une * sont obligatoires.</p>
           <div class="form-group row">
               <label for="nom" class="col-md-2 control-label">Nom: *</label>
               <div class="col-md-4"><input required  type="text" id="nom" class="form-control" name="c_nom" value ="<?= $data['contact']['nom'] ?>" /></div>
@@ -110,41 +56,69 @@ des icones pour rechercher/trier par nom,prénom,type,dernière modification et 
                      <?php
                         if ($data['contact']['metier'] == "Organisateur") {
                             echo '<option selected>Organisateur</option>';
-                            echo "<option>Association</option>";
-                            echo "<option>Festival</option>";
+                            echo "<option>Association</option>
+                            <option>Festival</option>
+                            <option>Musicien</option>
+                            <option>Autre</option>";
                         } else if($data['contact']['metier'] == "Association"){
                             echo '<option selected>Association</option>';
                             echo "<option>Organisateur</option>";
-                            echo "<option>Festival</option>";
+                            echo "<option>Festival</option>
+                            <option>Musicien</option>
+                            <option>Autre</option>";
                         } else if ($data['contact']['metier'] == "Festival"){
                             echo '<option selected>Festival</option>';
                             echo "<option>Organisateur</option>";
-                            echo "<option>Association</option>";
+                            echo "<option>Association</option>
+                            <option>Musicien</option>
+                            <option>Autre</option>";
+                        } else if ($data['contact']['metier'] == "Musicien"){
+                              echo '<option selected>Musicien</option>';
+                              echo "<option>Organisateur</option>";
+                              echo "<option>Association</option>
+                              <option>Festival</option>
+                              <option>Autre</option>";
+                        } else if ($data['contact']['metier'] == "Autre"){
+                              echo '<option selected>Autre</option>';
+                              echo "<option>Organisateur</option>";
+                              echo "<option>Association</option>
+                              <option>Festival</option>
+                              <option>Musicien</option>";
                         }
                       ?>
-                      <option>Autre</option>
-                    </select></div>
 
                     <label for="orga" class="col-md-2 control-label">Travaille à: *</label>
-                    <div class="col-md-4"><input id="orga" required class="form-control" name="c_lieuTravail" value ="<?= $data['lieuTravail'] ?>"></div>
+                    <div class="col-md-4"><select id="select" class="form-control" name="c_lieuTravail">
+                      <?php
+                         if(isset($data['structures'])){
+                           foreach ($data['structures'] as $s) {
+                           if (s == $data['contact']['lieuTravail'] )
+                            echo "<option selected>$s</option>";
+                          else
+                            echo "<option>$s</option>";
+                            }
+                          }
+                     ?>
+                    </select></div>
             </div>
              <div class="form-group row">
                     <label for="textarea" class="col-md-2 control-label">Notes:</label>
                     <div class="col-md-10"><textarea id="textarea" class="form-control" rows="2" name="c_notes"><?= $data['contact']['notes'] ?>
                     </textarea></div>
             </div>
-            <div class="form-group">
-                        <label  class="col-md-4 control-label">Date de mise à jour minimum: *</label>
+            <div class="form-group row">
+                        <label  class="col-md-5 control-label">Date de mise à jour minimum: *</label>
                         <input type="radio" name ="c_dureeMAJ" value="1">1 mois
                         <input type="radio" name ="c_dureeMAJ" value="3" checked>3 mois
                         <input type="radio" name ="c_dureeMAJ" value="6">6 mois
                         <input type="radio" name ="c_dureeMAJ" value="12">12 mois
             </div>
             <div class="row">
-              <a href="#" class="btn btn-xs btn-info pull-left">
-                <?php if (isset($_GET['VueAvance']) && $_GET['VueAvance']=='true' ) { ?>
-                  <span class="glyphicon glyphicon-chevron-up"></span>Vue avancée</a>
-                  <div class="col-md-6"><table class="table table-bordered table-striped table-condensed">
+                <?php if (isset($_GET['VueAvance']) && $_GET['VueAvance']==true ) { ?>
+                  <a href="../Controler/contacts.ctrl.php?selected=<?=$nomPrenom?>" class="btn btn-xs btn-info pull-left">
+                    <span class="glyphicon glyphicon-chevron-up"></span>Vue avancée
+                  </a>
+                  <div class="row"><div class="col-md-12"><table class="table table-bordered table-striped table-condensed">
                     <caption>
                       <h4>Evénements en lien avec ce contact :</h4>
                     </caption>
@@ -155,17 +129,23 @@ des icones pour rechercher/trier par nom,prénom,type,dernière modification et 
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>blablabla</td>
-                      </tr>
                       <?php //afficher toutes les dates en rapport avec ce contact
-                      ?>
+                         if(isset($data['EventContact'])){
+                           foreach ($data['EventContact'] as $s) {
+                             echo "<tr>";
+                             echo "<td>".$s['nom']."</td>";
+                             echo "<td>".$s['date']."</td>";
+                             echo "</tr>";
+                             }
+                          }
+                        ?>
                     </tbody>
-                  </table></div>
+                  </table></div></div>
                 <?php } else { ?>
-                  <span class="glyphicon glyphicon-chevron-down"></span>Vue avancée</a>
+                  <a href="../Controler/contacts.ctrl.php?VueAvance=true&selected=<?=$nomPrenom?>" class="btn btn-xs btn-info pull-left">
+                    <span class="glyphicon glyphicon-chevron-down"></span>Vue avancée
+                  </a>
                 <?php } ?>
-
             </div>
             <div class="row">
               <div class="alert alert-sucess  pull-left">
@@ -179,8 +159,7 @@ des icones pour rechercher/trier par nom,prénom,type,dernière modification et 
       </form>
 
     </div><!--panel body-->
-  </div><!--panel-->
-</div><!--col md 8-->
+  </div></div><!--panel-->
       <?php
     } else {
      include '../Views/view.interne.contactNouveau.php';

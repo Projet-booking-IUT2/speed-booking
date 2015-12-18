@@ -7,12 +7,25 @@
       </div>
     </form>
     <div class="btn-group">
+      <!--trier par ordre alpha A-Z | PAR DEFAUT-->
       <a href="#" class="btn btn-lg btn-info">
-        <span class="glyphicon glyphicon-sort-by-alphabet"></span> Noms
+        <span class="glyphicon glyphicon-sort-by-alphabet"></span> Nom
       </a>
+      <!--trier par ordre alpha Z-A
+      <a href="#" class="btn btn-info">
+        <span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Nom
+      </a>
+      -->
+      <!--trier par plus récent -> moins récent ON -->
       <a href="#" class="btn btn-lg btn-info">
         <span class="glyphicon glyphicon-sort-by-attributes-alt"></span> Date
       </a>
+      <!--trier par moins récent -> plus récent ON
+      <a href="#" class="btn btn-lg btn-info">
+        <span class="glyphicon glyphicon-sort-by-attributes"></span> Date
+      </a>
+      -->
+     <!--N'afficher que les fichiers partagés avec un certain groupe -->
       <a href="#" class="btn btn-lg btn-info">
         <span class="glyphicon glyphicon-tag"></span> Partagé avec
       </a>

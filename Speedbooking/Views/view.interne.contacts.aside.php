@@ -8,13 +8,10 @@ Elle a donc besoin de :
 $data['AllContacts']
             ['nom']
             ['prenom']
+            ['Ajour']
+            ['Fav']
 qui contient les noms et prénoms de tous les contacts.
 Si la liste est vide, la vue affiche une alerte et le controler ne crée pas la variable ci dessus.
-
-Si l'user clique sur un lien, le controler est appelé avec en param $_GET['nom_booker'].
-Le controler doit afficher la fiche contact correspondante en redonnant la variable $data['contact'] remplie correctement
-
-Si l'user clique sur l'icone plus, le controler est appelé et doit afficher un formulaire tout vide.
 
 A faire :
 -recherches
@@ -24,24 +21,12 @@ Améliorations :
 
 -->
 
-<div class="col-md-4">
+<div class="col-md-12">
   <div class="panel panel-info">
     <div class="panel-heading">
       <div class="row">
           <div class="col-md-10">
-            <div class="row"><h3 class="col-md-12 panel-title">Vos contacts :</h3></div>
-            <form class="row navbar-form inline-form">
-              <div class="form-group">
-                <input type="search" class="input-sm form-control" placeholder="Recherche">
-                <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span>
-                </button>
-              </div>
-            </form>
-          </div><!--col-md-9-->
-          <div class="col-md-2">
-            <a href="../Controler/contacts.ctrl.php?create=true" class="btn btn-lg btn-success pull-right boutonPlus">
-              <span class="glyphicon glyphicon-plus"></span>
-            </a>
+            <div class="row"><h3 class="col-md-12 panel-title">Mes contacts :</h3></div>
           </div>
       </div>
     </div>
@@ -58,21 +43,54 @@ Améliorations :
           else {
             foreach($data['AllContacts'] as $c ) {
             $nomPrenom = $c['nom'].' '.$c['prenom'];
-            if ($c['Ajour'] == true) //contact à jour
+            if (isset($c['Ajour']) && $c['Ajour'] == true) //contact à jour
               {
-                echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'.
-              "<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+                echo "<li class=\"list-group-item\">
+                <a href=\"../Controler/contacts.ctrl.php?selected=$nomPrenom\" >
+                </span> $nomPrenom</a>";
               }
             else  //contact pas à jour donc on affiche en ROUGE
               {
-                echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item-danger">'.
-              "<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
-
+                echo "<li class=\"list-group-item list-group-item-danger\">
+                <a href=\"../Controler/contacts.ctrl.php?selected=$nomPrenom\">
+              $nomPrenom</a>
+              <span class=\"glyphicon glyphicon-warning-sign pull-right\" style=\"color:#f85a00;\">
+              </span>";
               }
+            if (isset($c['Fav']) && $c['Fav'] == true) { //favoris ON
+                echo '<a href="#" class="btn-lg"><span class="glyphicon glyphicon-heart pull-left" style="margin-right:5px;"></span></a>';
+            }
+            else { //favoris OFF
+              echo '<a href="#" class="btn-lg "><span class="glyphicon glyphicon-heart-empty pull-left"
+              style="color:#00aa30;
+              margin-right:5px;">
+              </span> </a>';
+            }
+              echo "</li>";
             }
           }
          ?>
-        </ul>
+    </ul>
     </div><!--panel body-->
   </div><!--panel info-->
-</div><!--col md 4-->
+</div><!--col md -->
+
+<?php  if (isset($data['obsoletes'])) { //listes des contacts obscolètes?>
+<div class="panel panel-warning ">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+        Contacts obsolètes
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+       </h3>
+  </div>
+  <div class="panel-body">
+      <?php //(nom et prénom + lien vers la fiche)
+          foreach($data['obsoletes'] as $c){
+            $nomPrenom = $c['nom'].' '.$c['prenom'];
+            echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item-danger">'.
+        "<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+          }
+      ?>
+  </div><!--panel body-->
+</div><!--panel-->
+<?php  } ?>

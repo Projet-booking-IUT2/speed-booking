@@ -12,19 +12,38 @@
             </div>
             <div class=" from-group row">
                 <label for="membre" class="col-md-4 control-label">Membres du groupe : </label>
+                <a href="../Controler/groupe.ctrl.php?selectContact=true" class="btn btn-default btn-info pull-right boutonPlus col-md-1"><span class="glyphicon glyphicon-plus"></span></a>
+                <ul class="list-group list-unstyled col-md-4">
+                    <form action="../Controler/groupe.ctrl.php" method="post" class= " well form ">
+                    <?php
+                    if(isset($data['Contacts'])){
+                        echo "<form>";
+                        foreach ($data['Contacts'] as $c){
+                            $nomPrenom=$c['nom'].' '.$c['prenom'];
+                            $idM = $c['id'];
+                                echo"<li> <input type=\"checkbox\" name=\"membres[]\" value=\"$idM\">$nomPrenom</li>";
+                                echo"<br>";
+                        }
+                        echo"</from>";
+                    }
+                    ?>
+                </ul>
+            
+            </div>
+            </br>
+            <div class="form-group row">
+                <label for="mail"  class="col-md-4 control-label">Mail : </label>
+                <div class="col-md-8"><input type="email" id="mail" class="form-control" name="c_mail" placeholder="xyz@exemple.com"/></div>
             </div>
             <div class="form-group row">
-                <label for="mail"  class="col-md-2 control-label">Mail : </label>
-                <div class="col-md-10"><input type="email" id="mail" class="form-control" name="c_mail" placeholder="xyz@exemple.com"/></div>
-            </div>
-            <div class="form-group row">
-                <label for="style"  class="col-md-2 control-label">Style : </label>
-                <div class="col-md-10"><input type="text" id="mail" class="form-control" name="c_style" placeholder="Rock" /></div>
+                <label for="style"  class="col-md-4 control-label">Style : </label>
+                <div class="col-md-8"><input type="text" id="mail" class="form-control" name="c_style" placeholder="Rock" /></div>
             </div>
             <div class="from-group row">
-                <label for="textarea" class="col-md-2 control-label">Notes :</label>
-                <div class="col-md-10"><textarea id="textarea" class="form-control" rows="2" name="c_notes"></textarea></div>
+                <label for="textarea" class="col-md-4 control-label">Notes :</label>
+                <div class="col-md-8"><textarea id="textarea" class="form-control" rows="2" name="c_notes"></textarea></div>
             </div>
+            </br>
             <div class="form-group row">
                 <button type="submit" class="btn btn-success pull-right boutonPlus"><span class="glyphicon glyphicon-ok">Créer</span></button>
             </div>

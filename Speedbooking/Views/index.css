@@ -3,12 +3,20 @@ body {
     color: #533;
     background-color: #9bb
     }
-.boutonPlus {
-   margin-right:5px;
+.LienMenuDeroulant {
+   color:white;
+   text-decoration: none;
+}
+.menuDeroulant {
+
 }
 
 /*
 -structures ? + formulaire input des addresses et travailleA
--supprimer + favoris ?
-- fichiers -> partageAvec ? 
+-harmoniser le formulaire nouveau et existant
+-régler la vue avancée
+-faire les menus
+-RWD
+-Logo
+-Couleurs + footer
 */
