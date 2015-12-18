@@ -290,8 +290,8 @@ class DAO {
     }
     
     public  function ReadContactMusicienFromBokker($idG=0){
-        $booker=$this->db->quote($booker);
-        if(idG!=0){
+        //$booker=$this->db->quote($booker);
+        if($idG!=0){
             $sql = $this->db->query("SELECT c.nom,c.prenom,c.id FROM Contacts c,Membres_groupe mG WHERE metier='Musicien' AND c.id=mG.contact AND mG.groupe <> $idG");
         }
         else{

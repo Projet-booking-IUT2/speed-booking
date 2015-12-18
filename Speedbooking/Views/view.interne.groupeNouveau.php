@@ -17,14 +17,12 @@
                     <form action="../Controler/groupe.ctrl.php" method="post" class= " well form ">
                     <?php
                     if(isset($data['Contacts'])){
-                        $i=0;
                         echo "<form>";
                         foreach ($data['Contacts'] as $c){
                             $nomPrenom=$c['nom'].' '.$c['prenom'];
                             $idM = $c['id'];
                                 echo"<li> <input type=\"checkbox\" name=\"membres[]\" value=\"$idM\">$nomPrenom</li>";
                                 echo"<br>";
-                            $i++;
                         }
                         echo"</from>";
                     }

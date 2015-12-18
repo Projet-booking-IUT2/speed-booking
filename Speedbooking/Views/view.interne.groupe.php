@@ -5,12 +5,10 @@
 <?php include('../Views/view.interne.header.php'); ?>
         <li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
         <li><a href="../Controler/contacts.ctrl.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
-        <li class="active"><a href="../Controler/groupe.ctrl.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes groupes</a></li>
         <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-        <li><button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Mon Compte<span class="caret"></span></button>
+        <li class="active"><button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Mon Compte<span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <li><a href="#">Gestion des groupes</a></li>
-                <li><a href="#">Gestion des utilisateurs</a></li>
                 <li><a href="#">Gestion compte</a></li>
             </ul>
         </li>
@@ -49,7 +47,27 @@
                         }
                     ?>
                     </ul>
-                    <a href="../Controler/groupe.ctrl.php" class="btn btn-lg btn-success pull-right boutonPlus col-md-2"><span class="glyphicon glyphicon-plus"></span></a>
+                    
+                    <a href="../Controler/groupe.ctrl.php?selected=<?php echo $data['groupe'][0]['nom'];?>&selectContact=true" class="btn btn-default btn-info pull-right boutonPlus col-md-1"><span class="glyphicon glyphicon-plus"></span></a>
+                    <form action="../Controler/groupe.ctrl.php?selectContact=true" method="post" class= " well form ">
+                        <?php
+                            $idG=$data['groupe'][0]['id'];
+                            //var_dump($idG);
+                            echo"<input type=\"hidden\" name=\"idG\" value=\"$idG\">";?>
+                        <?php
+                        if(isset($data['Contacts'])){
+                            echo "<ul class=\"list-group list-unstyled col-md-4\">";
+                            echo "<form>";
+                            foreach ($data['Contacts'] as $c){
+                                $nomPrenom=$c['nom'].' '.$c['prenom'];
+                                $idM = $c['id'];
+                                    echo"<li> <input type=\"checkbox\" name=\"membres[]\" value=\"$idM\">$nomPrenom</li>";
+                                    echo"<br>";
+                            }
+                            echo"</from>";
+                            echo "</ul>";
+                        }
+                        ?>
                 </div>
                 </br>
                 <div class="form-group row">
