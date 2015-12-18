@@ -16,7 +16,7 @@ if(isset($_POST['user_id']) && isset($_POST['user_mdp'])) {
         include '../Controler/contacts.ctrl.php';                  // A remplacer par la vue correspondant à l'acceuil
     } else {
         // sinon on recharge la vue du portail
-        include '../Views/view.externe.connexion.php';
+        include '../Views/view.externe.connexion_failed.php';
     }
 } else {
     // sinon on recharge la vue du portail
