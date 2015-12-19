@@ -77,7 +77,7 @@ $data['AllFichiers'][1]['nom']="LALIHOU";
                    </div>
                 </div>
                   <div class="form-group row">
-                      <a href="#"class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
+                      <a href="#"class="btn btn-danger pull-left" data-confirm="Voulez-vous vraiment supprimer le fichier <?=$data['fichier']['nom']?>"><span class="glyphicon glyphicon-trash"></span></a>
                       <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button>
                   </div>
             </form>

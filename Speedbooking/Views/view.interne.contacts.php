@@ -1,4 +1,3 @@
-
 <?php
    if(isset ($data['contact'])) {
      ?>
@@ -85,21 +84,38 @@
                               <option>Festival</option>
                               <option>Musicien</option>";
                         }
+                        else {
+                                echo '<option>Autre</option>';
+                                echo "<option>Organisateur</option>";
+                                echo "<option>Association</option>
+                                <option>Festival</option>
+                                <option>Musicien</option>";
+                        }
+                         echo "</select></div>";
                       ?>
 
-                    <label for="orga" class="col-md-2 control-label">Travaille à: *</label>
-                    <div class="col-md-4"><select id="select" class="form-control" name="c_lieuTravail">
+                    <label for="orga" class="col-md-2 control-label">Travaille à: </label>
                       <?php
-                         if(isset($data['structures'])){
-                           foreach ($data['structures'] as $s) {
-                           if (s == $data['contact']['lieuTravail'] )
-                            echo "<option selected>$s</option>";
-                          else
-                            echo "<option>$s</option>";
-                            }
-                          }
+                      if(isset($data['structures'])){
+                        echo '<div class="col-md-3"><select id="select" class="form-control" name="lieuTravail">';
+                        echo "<option>Structure</option>";
+                        foreach ($data['structures'] as $s) {
+                        if ($s == $data['contact']['lieuTravail'] )
+                         echo "<option selected>$s</option>";
+                        else
+                         echo "<option>$s</option>";
+                         }
+                       echo "</select></div>";
+                       }
+                       else {
+                         echo "<div class=\"col-md-3\"><select id=\"select\" class=\"form-control\" name=\"lieuTravail\">";
+                         echo "<option>Structure</option></select></div>";
+                       }
                      ?>
-                    </select></div>
+
+                     <a href="" class="btn btn-xs btn-success">
+                             <span class="glyphicon glyphicon-plus"></span>
+                      </a>
             </div>
              <div class="form-group row">
                     <label for="textarea" class="col-md-2 control-label">Notes:</label>
@@ -153,7 +169,8 @@
               </div>
             </div>
             <div class="form-group row">
-                <a href="../Controler/contacts.ctrl.php?delete=true&id=<?= $data['contact']['id'] ?>" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
+                <a href="../Controler/contacts.ctrl.php?delete=confirm&id=<?= $data['contact']['id'] ?>"
+                   data-confirm="Voulez-vous vraiment supprimer le contact <?=$nomPrenom?>" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-trash"></span></a>
                 <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button>
             </div>
       </form>

@@ -47,8 +47,24 @@ View pour ajouter un nouveau contact
                     <option>Musicien</option>
                     <option>Autre</option>
                   </select></div>
-                  <label for="orga" class="col-md-2 control-label">Travaille à: *</label>
-                  <div class="col-md-4"><input required  id="orga" class="form-control" placeholder="Hellfest" name="c_lieuTravail"></div>
+                  <label for="select" class="col-md-2 control-label">Travaille à: </label>
+                    <?php
+                       if(isset($data['structures'])){
+                         echo '<div class="col-md-3"><select id="select" class="form-control" name="lieuTravail">';
+                         echo "<option>Structure</option>";
+                         foreach ($data['structures'] as $s) {
+                           echo "<option>$s</option>";
+                        }
+                        echo "</select></div>";
+                        }
+                        else {
+                          echo '<div class="col-md-3"><select id="select" class="form-control">';
+                          echo "<option>Structure</option></select></div>";
+                        }
+                   ?>
+                   <a href="" class="btn btn-xs btn-success">
+                           <span class="glyphicon glyphicon-plus"></span>
+                    </a>
               </div>
                <div class="form-group row">
                   <label for="textarea" class="col-md-2 control-label">Notes:</label>

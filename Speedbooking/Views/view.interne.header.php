@@ -35,6 +35,24 @@ Améliorations :
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       <!-- Latest compiled JavaScript -->
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <!--script pour les boites de confirmation-->
+      <script>
+
+      $(function() {
+      	$('a[data-confirm]').click(function(ev) {
+      		var href = $(this).attr('href');
+
+      		if (!$('#dataConfirmModal').length) {
+      			$('body').append('<div id="dataConfirmModal" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="dataConfirmLabel">Merci de confirmer</h3></div><div class="modal-body"></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Non</button><a class="btn btn-danger" id="dataConfirmOK">Oui</a></div></div></div></div>');
+      		}
+      		$('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
+      		$('#dataConfirmOK').attr('href', href);
+      		$('#dataConfirmModal').modal({show:true});
+
+      		return false;
+      	});
+      });
+      </script>
       <title>SpeedBooking</title>
     </head>
     <body>
@@ -42,7 +60,7 @@ Améliorations :
         <header class ="row">
           <div class="navbar navbar-default navbar-fixed-top">
               <div class="container">
-                <div class="navbar-header  col-md-4">
+                <div class="navbar-header">
                   <a class="navbar-brand" href="#">SpeedBooking</a>
                 </div>
                 <ul class=" nav navbar-nav navbar-right">
