@@ -113,10 +113,11 @@
                        }
                      ?>
 
-                     <a href="" class="btn btn-xs btn-success">
+                     <a href="" class="btn btn-xs btn-success"  data-toggle="modal" data-target="#structure">
                              <span class="glyphicon glyphicon-plus"></span>
                       </a>
-            </div>
+											<?php include '../Views/structure.nouvelle.php'; ?>
+						 </div>
              <div class="form-group row">
                     <label for="textarea" class="col-md-2 control-label">Notes:</label>
                     <div class="col-md-10"><textarea id="textarea" class="form-control" rows="2" name="c_notes"><?= $data['contact']['notes'] ?>

@@ -31,4 +31,4 @@ if(isset($_GET['selected'])) {
      $dao->deleteContactFromID($_GET['id']);
  }
      $data['AllContacts'] = $dao->readContactsFromBooker($booker);   // Pour affichage de la liste des contacts dans le menu Aside
-     include '../Views/view.interne.contacts.MAIN.php';
+     include "../Views/view.interne.contacts.MAIN.php";

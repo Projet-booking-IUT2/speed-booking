@@ -7,8 +7,8 @@ if(isset($_POST['user_id']) && isset($_POST['user_mdp'])) {
     $passwd = $_POST['user_mdp'];
     $dao = new DAO();
     $result = $dao->connexion($username,$passwd);               // On vérifie que l'utilisateur et son mot de passe correspondent à un utilisateur connu
-    
-    
+
+
     if ($result != False) {
         session_start();
         $_SESSION['id'] = $result;                              // USER_ID On stock l'id de l'utilisateur

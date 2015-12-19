@@ -39,7 +39,7 @@ Il y a une astuce en javascript pour le faire mais j'ai pas le temps tout de sui
           <div class="navbar navbar-default navbar-fixed-top">
               <div class="container">
                 <div class="navbar-header  col-md-4">
-                  <a class="navbar-brand" href="#">Logo trop beau</a>
+                  <a class="navbar-brand" href="#">SpeedBooking</a>
                 </div>
                 <ul class="col-md-4 nav navbar-nav navbar-right">
                   <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>

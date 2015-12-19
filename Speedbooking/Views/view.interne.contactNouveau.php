@@ -62,9 +62,10 @@ View pour ajouter un nouveau contact
                           echo "<option>Structure</option></select></div>";
                         }
                    ?>
-                   <a href="" class="btn btn-xs btn-success">
+                   <a href="" class="btn btn-xs btn-success"  data-toggle="modal" data-target="#structure">
                            <span class="glyphicon glyphicon-plus"></span>
                     </a>
+                    <?php include '../Views/structure.nouvelle.php'; //inclu la vue pour créer une structure?> 
               </div>
                <div class="form-group row">
                   <label for="textarea" class="col-md-2 control-label">Notes:</label>
