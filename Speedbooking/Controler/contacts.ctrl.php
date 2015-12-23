@@ -26,9 +26,15 @@ if(isset($_GET['selected'])) {
 } else if (isset($_POST['maj'])) {
     $dao->updateContactFromNomPrenom($_POST['c_nom'], $_POST['c_prenom'], $_POST['c_mail'], $_POST['c_tel'], $_POST['c_type'], $_POST['c_site'], $_POST['c_lieuTravail'], $_POST['c_notes'], $_POST['c_dureeMAJ']);
 } else if(isset($_POST['add'])){                   // $nom, $prenom, $mail, $tel, $site, $metier, $struct, $notes, $freq_maj
-        $dao->createNewContact($_POST['c_nom'], $_POST['c_prenom'], $_POST['c_mail'], $_POST['c_tel'], $_POST['c_type'], $_POST['c_lieuTravail'], $_POST['c_notes'], $_POST['c_dureeMAJ']);
+    $dao->createNewContact($_POST['c_nom'], $_POST['c_prenom'], $_POST['c_mail'], $_POST['c_tel'], $_POST['c_type'], $_POST['c_lieuTravail'], $_POST['c_notes'], $_POST['c_dureeMAJ']);
  } else if (isset($_GET['delete'])) {
-     $dao->deleteContactFromID($_GET['id']);
- }
+    $dao->deleteContactFromID($_GET['id']);
+ } 
+ 
+ if (isset($_POST['keyword'])) {
+    $data['AllContacts'] = $dao->rechercheMotCle($_POST['keyword']);
+ } else {
      $data['AllContacts'] = $dao->readContactsFromBooker($booker);   // Pour affichage de la liste des contacts dans le menu Aside
-     include "../Views/view.interne.contacts.MAIN.php";
+ }
+ 
+      include "../Views/view.interne.contacts.MAIN.php";

@@ -1,7 +1,7 @@
 <div class="btn-toolbar">
-    <form class="navbar-form btn-group">
+    <form class="navbar-form btn-group" action="../Controler/contacts.ctrl.php" method="post">
       <div class="form-group">
-        <input type="search" class="input-sm form-control" placeholder="Recherche par mots clés">
+        <input type="search" class="input-sm form-control" placeholder="Recherche par mots clés" name="keyword">
         <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span>
         </button>
       </div>

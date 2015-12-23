@@ -16,7 +16,7 @@ class DAO {
      */
     public function __construct() {
         $config = parse_ini_file('../config/config.ini');//Chemin vers le dossier config
-        //$config = parse_ini_file('../config/config_local.ini');//Chemin vers le dossier config
+//        $config = parse_ini_file('../config/config_local.ini');//Chemin vers le dossier config
         try {
             $this->db = new PDO($config['database_path'], $config['database_userRoot'], $config['database_mdpRoot']);
         } catch (PDOException $e) {
@@ -217,7 +217,7 @@ class DAO {
      * 
      * @author gorkat
      * @param string $struct le nom de la structure
-     * @return ???
+     * @return nom et prenom de chaque personne travaillant pour la structure demandée
      */
     public function readMembresFromStructure($struct) {
         $struct = $this->db->quote($struct);
@@ -260,8 +260,20 @@ class DAO {
         $this->db->exec("UPDATE Contacts SET prochaine_maj=$nvDate WHERE id=$id");
     }
     
-    // #########################################################################
-    // #########################################################################
+     #########################################################################
+     # Fonctions de recherches
+     #########################################################################
+     /**
+      * Retourne un tableau contenant les nom, prenoms et id des personnes dont les renseignements contiennent $motCle.
+      * @author gorkat
+      * @param string $motCle le mot clé pour la recherche.
+      * @return array un tableau contenant les nom, prenoms et id des personnes dont les renseignements contiennent $motCle.
+      */
+    public function rechercheMotCle($motCle) {
+        $sql = $this->db->query("Select id,nom,prenom from Contacts Where nom like '$motCle%' or prenom like '$motCle%' or metier like '$motCle%' or mail like '$motCle%' or notes like '$motCle%'");
+        $res = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
+    }
     // }}
     // {{ Manipulation des groupes   
     /**
@@ -283,7 +295,7 @@ class DAO {
         $mail = $this->db->quote($mail);
         $sql = ("update Groupes set nom=$nom, style=$style, mail=$mail where booker_associe=$booker and nom=$nom");
         $this->db->beginTransaction();
-        $this->db->exec($sql);   
+        $this->db->exec($sql);
         $this->db->commit() or die("Update Groupe ERROR : No row updated");
     }
     
