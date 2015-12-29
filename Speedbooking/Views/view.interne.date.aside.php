@@ -1,10 +1,15 @@
-<?php include('../Views/view.interne.header.php'); ?>
+<?php include('../Views/view.header.php'); ?>
 
         <li class="active"><a href="#"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
         <li><a href="../Views/view.interne.contacts.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Mes groupes</a></li>
         <li><a href="#" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-        <li><a href="#" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
+        <li><a data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Mon Compte</a>
+              <ul class="dropdown-menu">
+                  <li><a href="../Controler/groupe.ctrl.php">Gestion des groupes</a></li>
+                  <li><a href="#">Gestion compte</a></li>
+              </ul>
+        </li>
         <li><a href="#" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
       </ul>
     </div>
@@ -27,11 +32,11 @@
         <div class="panel-body">
             <!-- Afficher les infos sur la date -->
             <?php
-                
+
             ?>
         </div>
-        
+
     </div>
 </div>
 </section>
-<?php include('../Views/view.interne.footer.php'); ?>
+<?php include('../Views/view.footer.php'); ?>

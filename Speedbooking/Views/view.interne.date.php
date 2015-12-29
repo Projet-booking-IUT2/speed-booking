@@ -1,9 +1,14 @@
-<?php include('../Views/view.interne.header.php'); ?>
+<?php include('../Views/view.header.php'); ?>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
         <li class="active"><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
         <li><a href="../Controler/contacts.ctrl.php?accueil=true"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
         <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-        <li><a href="../Controler/compte.ctrl.php" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
+        <li><a data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Mon Compte</a>
+              <ul class="dropdown-menu">
+                  <li><a href="../Controler/groupe.ctrl.php">Gestion des groupes</a></li>
+                  <li><a href="#">Gestion compte</a></li>
+              </ul>
+        </li>
         <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
       </ul>
     </div><!--container nav-->
@@ -34,7 +39,7 @@
             <div class="months form-group container">
                 <ul class="nav navbar-nav nav-tabs nav-justified list-group list-unstyled">
                     <?php foreach($months as $id=>$m){ ?>
-                    <li><a href="#" id="linkMonth<?php echo $id+1 ?>"><?php echo utf8_encode(utf8_decode($m));?></a></li>       
+                    <li><a href="#" id="linkMonth<?php echo $id+1 ?>"><?php echo utf8_encode(utf8_decode($m));?></a></li>
                     <?php } ?>
                 </ul>
             </div>
@@ -80,14 +85,14 @@
                                 <?php } ?>
                             <?php } ?>
                             <?php if($end !=7) {?>
-                                <td colspan="<?php echo 7-$end; ?>"></td>       
-                            <?php } ?>           
+                                <td colspan="<?php echo 7-$end; ?>"></td>
+                            <?php } ?>
                             </tr>
                         </tbody>
-                    </table>       
+                    </table>
                 </div>
             <?php } ?>
     </div>
     </div>
 </section>
-<?php include('../Views/view.interne.footer.php'); ?>
+<?php include('../Views/view.footer.php'); ?>

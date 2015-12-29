@@ -116,7 +116,7 @@
                      <a href="" class="btn btn-xs btn-success"  data-toggle="modal" data-target="#structure">
                              <span class="glyphicon glyphicon-plus"></span>
                       </a>
-											<?php include '../Views/structure.nouvelle.php'; ?>
+
 						 </div>
              <div class="form-group row">
                     <label for="textarea" class="col-md-2 control-label">Notes:</label>
@@ -175,11 +175,11 @@
                 <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button>
             </div>
       </form>
-
+	<?php include '../Views/structure.nouvelle.php'; ?>
     </div><!--panel body-->
   </div></div><!--panel-->
       <?php
     } else {
      include '../Views/view.interne.contactNouveau.php';
     } ?>
-<?php include('../Views/view.interne.footer.php'); ?>
+<?php include('../Views/view.footer.php'); ?>

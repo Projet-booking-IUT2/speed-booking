@@ -1,16 +1,16 @@
 <!-- Page d'affichage des groupes d'un booker
-    
+
 
 -->
-<?php include('../Views/view.interne.header.php'); ?>
+<?php include('../Views/view.header.php'); ?>
         <li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
         <li><a href="../Controler/contacts.ctrl.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
         <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-        <li class="active"><button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Mon Compte<span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Gestion des groupes</a></li>
-                <li><a href="#">Gestion compte</a></li>
-            </ul>
+        <li><a data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Mon Compte</a>
+              <ul class="dropdown-menu">
+                  <li><a href="../Controler/groupe.ctrl.php">Gestion des groupes</a></li>
+                  <li><a href="#">Gestion du compte</a></li>
+              </ul>
         </li>
         <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
       </ul>
@@ -50,7 +50,7 @@
                         }
                     ?>
                     </ul>
-                    
+
                     <a href="../Controler/groupe.ctrl.php?selected=<?php echo $data['groupe'][0]['nom'];?>&selectContact=true&idG=<?php echo $idG?>" class="btn btn-default btn-info pull-right boutonPlus col-md-1"><span class="glyphicon glyphicon-plus"></span></a>
                         <?php
                         if(isset($data['Contacts'])){
@@ -98,4 +98,4 @@
         include '../Views/view.interne.groupeNouveau.php';
     }
 ?>
-<?php include('../Views/view.interne.footer.php'); ?>
+<?php include('../Views/view.footer.php'); ?>

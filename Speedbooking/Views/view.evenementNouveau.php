@@ -1,9 +1,15 @@
-<?php include('../Views/view.interne.header.php'); ?>
+<?php include('../Views/view.header.php'); ?>
 
 <li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
 <li class="active"><a href="../Controler/contacts.ctrl.php?accueil=true"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
 <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-<li><a href="../Controler/compte.ctrl.php" ><span class="glyphicon glyphicon-user"></span> Mon compte</a></li>
+<li><a data-toggle="dropdown">Mon Compte<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+          <li><a href="../Controler/groupe.ctrl.php">Gestion des groupes</a></li>
+          <li><a href="#">Gestion des utilisateurs</a></li>
+          <li><a href="#">Gestion compte</a></li>
+      </ul>
+</li>
 <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
 </ul>
 
@@ -24,7 +30,7 @@
                 <div class="col-md-8"><input type="text" id="org" class="form-control" name="c_org"></div>
             </div>
             <!-- Afficher les Noms de groupes pour les ajouter à l'event -->
-            
+
             <div class="form-group row">
                 <label for="note" class="col-md-4 control-label">Note : </label>
                 <div class="col-md-8"><input type="text" id="note" class="form-control" name="c_note"></div>

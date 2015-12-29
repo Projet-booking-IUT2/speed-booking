@@ -17,7 +17,13 @@ Améliorations :
 - Centrer le formulaire verticalement
 - Utiliser des cookies pour afficher automatiquement les variables
 -->
-<?php include('../Views/view.externe.header.php'); ?>
+<?php include('../Views/view.header.php'); ?>
+  <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
+  <li class="active"><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
+</ul>
+</div>
+</div>
+</header>
       <section class="row">
         <div class="col-md-offset-2 col-md-8 col-md-offset-2">
           <div class="panel panel-info">
@@ -25,7 +31,8 @@ Améliorations :
               <h3 class="panel-title">Connectez-vous !</h3>
             </div>
             <div class="panel-body">
-                <form action="../Controler/portail.ctrl.php" method="post" class= "form-horizontal col-md-offset-2 col-md-8 col-md-offset-2">
+              <div id="logoB" class="col-md-4"><img id="logoOver" src="../Views/logo150.png"/></div>
+              <form action="../Controler/portail.ctrl.php" method="post" class= "form-horizontal col-md-offset-1 col-md-7 ">
                 <div class="row">
                     <div class="form-group">
                       <label for="id" class="col-md-4 control-label">Identifiant : </label>
@@ -46,4 +53,4 @@ Améliorations :
           </div><!--<div class="panel panel-primary"> -->
         </div> <!--<div class="col-md-8">-->
       </section>
-<?php include('../Views/view.externe.footer.php'); ?>
+<?php include('../Views/view.footer.php'); ?>

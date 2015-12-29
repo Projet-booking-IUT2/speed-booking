@@ -25,16 +25,15 @@ Améliorations :
 $data['AllFichiers'][0]['nom']="toto";
 $data['AllFichiers'][1]['nom']="LALIHOU";
  ?>
-<?php include('../Views/view.interne.header.php');
+<?php include('../Views/view.header.php');
 ?>
         <li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
         <li class="active"><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
-        <li><a class="dropdown-toggle" data-toggle="dropdown">Mon Compte<span class="caret"></span></a>
+        <li><a data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Mon Compte</a>
               <ul class="dropdown-menu">
-                  <li><a href="#">Gestion des groupes</a></li>
-                  <li><a href="#">Gestion des utilisateurs</a></li>
-                  <li><a href="#">Gestion compte</a></li>
+                  <li><a href="../Controler/groupe.ctrl.php">Gestion des groupes</a></li>
+                  <li><a href="#">Gestion du compte</a></li>
               </ul>
         </li>
         <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
@@ -89,4 +88,4 @@ $data['AllFichiers'][1]['nom']="LALIHOU";
 </div><!--panel-->
 </div><!--row-->
 
-<?php include('../Views/view.interne.footer.php'); ?>
+<?php include('../Views/view.footer.php'); ?>

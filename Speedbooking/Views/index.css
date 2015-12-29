@@ -7,9 +7,6 @@ body {
    color:white;
    text-decoration: none;
 }
-.menuDeroulant {
-
-}
 
 .year div {
     font-size: 25px;
@@ -30,12 +27,33 @@ td, th {
     color: green;
     text-decoration: none;
 }
+
+#logoB {
+  height: 200px;
+	background: white;
+	width: 200px;
+
+}
+
+
+#logoOver {
+margin-left: auto;
+margin-right: auto;
+margin-top: 25px;
+margin-bottom: 25px;
+}
+.form-horizontal .control-label {
+    text-align: left;
+}
+
+footer {
+position:fixed;
+bottom:0;
+left:0;
+width: 100%;
+background: white;
+}
 /*
--structures ? + formulaire input des addresses et travailleA
--harmoniser le formulaire nouveau et existant
--régler la vue avancée
--faire les menus
 -RWD
--Logo
 -Couleurs + footer
 */

@@ -65,7 +65,6 @@ View pour ajouter un nouveau contact
                    <a href="" class="btn btn-xs btn-success"  data-toggle="modal" data-target="#structure">
                            <span class="glyphicon glyphicon-plus"></span>
                     </a>
-                    <?php include '../Views/structure.nouvelle.php'; //inclu la vue pour créer une structure?> 
               </div>
                <div class="form-group row">
                   <label for="textarea" class="col-md-2 control-label">Notes:</label>
@@ -82,5 +81,6 @@ View pour ajouter un nouveau contact
                       <button type="submit" class="btn btn-success pull-right boutonPlus"><span class="glyphicon glyphicon-ok"> Créer</span></button>
                 </div>
       </form>
+      <?php include '../Views/structure.nouvelle.php'; //inclu la vue pour créer une structure?>
     </div><!--panel body-->
   </div><!--panel-->
