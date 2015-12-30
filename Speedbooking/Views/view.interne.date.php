@@ -11,8 +11,10 @@
         </li>
         <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
       </ul>
+    </div><!--navbar collapse-->
     </div><!--container nav-->
-  </div><!-- nav-->
+    </nav><!-- nav-->
+  </header>
   <script type="text/javascript">
       jQuery(function($){
           $('.month').hide();

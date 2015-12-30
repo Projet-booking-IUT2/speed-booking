@@ -14,8 +14,9 @@
         </li>
         <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
       </ul>
-    </div>
-  </div>
+    </div><!--navbar collapse-->
+    </div><!--container nav-->
+    </nav><!-- nav-->
 </header>
 <?php include('../Views/view.interne.groupe.aside.php'); ?>
 <?php

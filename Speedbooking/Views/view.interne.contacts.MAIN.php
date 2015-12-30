@@ -30,20 +30,6 @@ $data['structures'] -> liste des structures de contacts existantes pour la toolb
 $data['tris']->type de tri séléctionné (éventuellement)
 
 
-
-A faire :
-
-Améliorations :
-//////////////////////////////////
-Pour les STRUCTURES lors de la création d'un contact : ///////////////////////////////////////////////////////////////////////////////////
--soit on transforme le champ "travaille à" en <option> qui propose toutes les structures existantes.
-Et à coté de ce champ, on met un petit "+" qui permet d'ajouter une nouvelle structure si besoin.
-Comme ça, l'user n'a pas besoin de créer d'abord sa structure pour ensuite retourner créer son contact
-(ça serait nul et chiant)
--soit on fait une fiche structure pour créer des structures et ensuite lui ajouter des contacts/staff, mais
-c'est nul je trouve
-
-
 -->
 <?php include('../Views/view.header.php'); ?>
 
@@ -58,8 +44,9 @@ c'est nul je trouve
 </li>
 <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
 </ul>
+</div><!--navbar collapse-->
 </div><!--container nav-->
-</div><!-- nav-->
+</nav><!-- nav-->
 </header>
 <div class="row">
   <div class="panel panel-info">

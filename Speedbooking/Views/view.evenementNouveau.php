@@ -12,7 +12,10 @@
 </li>
 <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
 </ul>
-
+</div><!--navbar collapse-->
+</div><!--container nav-->
+</nav><!-- nav-->
+</header>
 <div class="col-md-8">
   <div class="panel panel-info">
     <div class="panel-heading">

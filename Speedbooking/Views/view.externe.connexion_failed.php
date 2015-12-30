@@ -7,8 +7,9 @@ Page de connexion failed
   <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
   <li class="active"><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
 </ul>
-</div>
-</div>
+</div><!--navbar collapse-->
+</div><!--container nav-->
+</nav><!-- nav-->
 </header>
       <section class="row">
         <div class="col-md-offset-2 col-md-8 col-md-offset-2">

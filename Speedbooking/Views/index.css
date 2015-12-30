@@ -1,8 +1,11 @@
 body {
-    padding-top: 70px; /* Pour que les éléments ne disparaissent pas sous la barre de menu*/
     color: #533;
     background-color: #9bb
     }
+header nav {
+  width: 100%;
+}
+
 .LienMenuDeroulant {
    color:white;
    text-decoration: none;
@@ -12,7 +15,7 @@ body {
     font-size: 25px;
 }
 
-td, th {
+.periode td, .periode th {
     text-align: center;
     font-size: 25px;
     height: 80px;
@@ -28,32 +31,11 @@ td, th {
     text-decoration: none;
 }
 
-#logoB {
-  height: 200px;
-	background: white;
-	width: 200px;
-
+.form-horizontal .control-label{
+   text-align:left !important;
 }
 
-
-#logoOver {
-margin-left: auto;
-margin-right: auto;
-margin-top: 25px;
-margin-bottom: 25px;
+footer  {
+  font-size: 8px;
+  text-align: center;
 }
-.form-horizontal .control-label {
-    text-align: left;
-}
-
-footer {
-position:fixed;
-bottom:0;
-left:0;
-width: 100%;
-background: white;
-}
-/*
--RWD
--Couleurs + footer
-*/

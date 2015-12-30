@@ -28,7 +28,7 @@ $data['AllFichiers'][1]['nom']="LALIHOU";
 <?php include('../Views/view.header.php');
 ?>
         <li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
+        <li><a href="../Controler/contacts.ctrl.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
         <li class="active"><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
         <li><a data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Mon Compte</a>
               <ul class="dropdown-menu">
@@ -38,8 +38,9 @@ $data['AllFichiers'][1]['nom']="LALIHOU";
         </li>
         <li><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
       </ul>
+    </div><!--navbar collapse-->
     </div><!--container nav-->
-  </div><!-- nav-->
+    </nav><!-- nav-->
 </header>
 <div class="row">
   <div class="panel panel-info">
@@ -76,7 +77,7 @@ $data['AllFichiers'][1]['nom']="LALIHOU";
                    </div>
                 </div>
                   <div class="form-group row">
-                      <a href="#"class="btn btn-danger pull-left" data-confirm="Voulez-vous vraiment supprimer le fichier <?=$data['fichier']['nom']?>"><span class="glyphicon glyphicon-trash"></span></a>
+                      <a href="#"class="btn btn-danger pull-left" data-confirm="Voulez-vous vraiment supprimer ce fichier ?"><span class="glyphicon glyphicon-trash"></span></a>
                       <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span></button>
                   </div>
             </form>

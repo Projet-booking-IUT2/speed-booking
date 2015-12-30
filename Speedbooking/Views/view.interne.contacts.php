@@ -182,4 +182,3 @@
     } else {
      include '../Views/view.interne.contactNouveau.php';
     } ?>
-<?php include('../Views/view.footer.php'); ?>

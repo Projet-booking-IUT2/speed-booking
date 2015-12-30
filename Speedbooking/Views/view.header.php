@@ -37,7 +37,6 @@ Améliorations :
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
       <!--script pour les boites de confirmation-->
       <script>
-
       $(function() {
       	$('a[data-confirm]').click(function(ev) {
       		var href = $(this).attr('href');
@@ -52,15 +51,31 @@ Améliorations :
       		return false;
       	});
       });
+
+      $(function (){
+  $('#menu').on('shown.bs.collapse', function () {
+    $('#icone').removeClass('glyphicon glyphicon-sort-by-alphabet').addClass('glyphicon-folder-open');
+  })
+  $('#menu').on('hidden.bs.collapse', function () {
+    $('#icone').removeClass('glyphicon-folder-open').addClass('glyphicon-folder-close');
+  })
+});
       </script>
       <title>SpeedBooking</title>
     </head>
     <body>
       <div class="container">
         <header class ="row">
-          <div class="navbar navbar-default navbar-fixed-top">
-              <div class="container">
+          <nav class="navbar navbar-default navbar-static-top" role="navigation">
+              <div class="container-fluid">
                 <div class="navbar-header">
-                  <a class="navbar-brand" href="#">SpeedBooking</a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand hidden-xs hidden-sm" href="#">Speed Booking</a>
+                    <a class="navbar-brand hidden-md hidden-lg visible-xs visible-sm" href="#">S.Booking</a>
                 </div>
-                <ul class=" nav navbar-nav navbar-right">
+                <div class="collapse navbar-collapse">
+                  <ul class=" nav navbar-nav navbar-right">

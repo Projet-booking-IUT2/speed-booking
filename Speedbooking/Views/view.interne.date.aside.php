@@ -12,11 +12,12 @@
         </li>
         <li><a href="#" ><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
       </ul>
-    </div>
-  </div>
+    </div><!--navbar collapse-->
+    </div><!--container nav-->
+    </nav><!-- nav-->
 </header>
 
-<div class="col-md-1"
+<div class="col-md-1">
 <div class="row">
     <a class="btn btn-default" href="view.interne.date.php" role="button">Retour</a>
 </div>
