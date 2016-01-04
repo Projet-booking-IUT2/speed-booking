@@ -429,8 +429,46 @@ class DAO {
         }
         return $res;
 } // FIN CLASSE DAO
-}
 
+    public function ReadEvenementFromBooker($booker,$dates){
+     $booker=$this->db->quote($booker);
+     $i=0;
+     foreach ($dates as $d){
+         $sql = $this->db->query("SELECT * FROM Evenements WHERE nom=$d AND booker_associe=$booker");
+         $res[] = $sql->fetchAll(PDO::FETCH_ASSOC);
+         $res[$i] = $res[$i][0];
+         $i++;
+     }
+     return $res;
+    }
+    
+    public function deleteContactFromID($id){
+        $id=$this->db->quote($id);
+        $sql1="DELETE FROM Evenements WHERE id=$idG";
+        $this->db->exec($sql1);
+    }
+    
+    public function updateEvenementFromBooker($id,$nom,$date,$style){
+        $id = $this->db->quote($id);
+        $nom = $this->db->quote($nom);
+        $date = $this->db->quote($date);
+        $style = $this->db->quote($style);
+        $sql = ("update Evenements set nom=$nom, style=$style, date_evt=$date where id=$id");
+        $this->db->beginTransaction();
+        $this->db->exec($sql);
+        $this->db->commit() or die("Update Groupe ERROR : No row updated");
+    }
+    
+    public function createNewEvenement($booker,$nom,$date,$style){
+        $booker = $this->db->quote($booker);
+        $nom = $this->db->quote($nom);
+        //$membres = $this->db->quote($membres);
+        $date = $this->db->quote($date);
+        $style = $this->db->quote($style);
+        $q1 = "INSERT INTO Evenements(nom,date_evt,style,booker_associe) VALUES ($nom,$date,$style,$booker)";
+        $this->db->exec($q1) or die("erreur erreur erreur !!!!");
+    }
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Test de cout optimal pour hachage prise sur http://grunk.developpez.com/tutoriels/php/mots-de-passe-securises/#LI-C-2
