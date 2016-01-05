@@ -1,23 +1,19 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of Date
+ * Classe modélisant la date, comprenant diverses méthodes de manipulation
+ * et de formatage de dates. Utilisé notamment dans le calendrier.
  *
- * @author damien
+ * @author claudeld
  */
 class Date {
-    //put your code here
     
     var $days= array('Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche');
     var $months = array('Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre');
    
-    
+    /**
+     * ???
+     */
     public function getAll($year){
         $r=array();
         $date = new DateTime($year.'-01-01');
@@ -40,3 +36,5 @@ class Date {
          return $this->months;
     }
 }
+
+?>

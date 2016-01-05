@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Modélisation de la base de données.
+ *
+ * <p>Méthodes CRUD pour diverses tables, récupérations de données
+ * pertinentes pour les différents controleurs, manipulations des tables.</p>
+ */
 class DAO {
     
     private $db;
