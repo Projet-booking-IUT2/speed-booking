@@ -48,8 +48,8 @@ class DAO {
     /**
      * Vérifie que le login et le mot de passe identifient un utilisateur connu de la db
      * @author gorkat
-     * @param type $username le nom d'utilisateur (ou login)
-     * @param type $passwd le mot de passe entré par l'utilisateur
+     * @param string $username le nom d'utilisateur (ou login)
+     * @param  string $passwd le mot de passe entré par l'utilisateur
      * @return integer|bool l'id de l'utilisateur s'il existe, false sinon
      */
     public function connexion($username, $passwd) {
@@ -94,14 +94,14 @@ class DAO {
      * mise à jour nécessaire du contact et l'ajoute à la base de données.
      * 
      * @author gorkat
-     * @param type $nom
-     * @param type $prenom
-     * @param type $mail
-     * @param type $tel
-     * @param type $metier
-     * @param type $struct
-     * @param type $notes
-     * @param type $freq_maj
+     * @param string $nom
+     * @param string $prenom
+     * @param string $mail
+     * @param string $tel
+     * @param string $metier
+     * @param string $struct
+     * @param string $notes
+     * @param time $freq_maj
      */
     public function createNewContact($nom, $prenom, $mail, $tel, $metier, $struct, $notes, $freq_maj) {
         $nom = $this->db->quote($nom);
@@ -176,6 +176,7 @@ class DAO {
      * @param string $adresse
      * @param string $lieuTravail
      * @param string $note
+     * @param time $freq_maj
      */
     
     public function updateContactFromNomPrenom($nom,$prenom,$mail,$tel,$metier, $adresse, $lieuTravail, $note, $freq_maj) {
@@ -357,12 +358,16 @@ class DAO {
      * @author claudeld
      * @param int $booker Booker associé au groupe
      * @param string $nom Nom du groupe
-     * @param 
+     * @param array $membres
+     * @param string notes
+     * @param string $style
+     * @param string $mail
      *
      */
     public function createNewGroupe($booker,$nom, $membres, $notes,$style,$mail){
         $booker = $this->db->quote($booker);
         $nom = $this->db->quote($nom);
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //$membres = $this->db->quote($membres);
         $notes = $this->db->quote($notes);
         $style = $this->db->quote($style);
@@ -409,7 +414,7 @@ class DAO {
      * 
      * @author claudeld
      * @param int $idG Identifiant du groupe
-     *
+     * @return tableau_assoc
      */
     public  function ReadContactMusicienFromBokker($idG=0){
         //$booker=$this->db->quote($booker);
@@ -433,8 +438,14 @@ class DAO {
             $res = $sql->fetchAll(PDO::FETCH_ASSOC);
         }
         return $res;
-} // FIN CLASSE DAO
+    }
 
+    /**
+     * Renvoie l'évènement de nom et booker associé passés en paramètre.
+     * @param string $booker id du booker
+     * @param string $dates nom de l'évènement
+     * @return tableau_assoc liste des évènements et de leurs attributs.
+     */
     public function ReadEvenementFromBooker($booker,$dates){
      $booker=$this->db->quote($booker);
      $i=0;
@@ -447,12 +458,23 @@ class DAO {
      return $res;
     }
     
+    /**
+     * Supprime le contact d'ID donné
+     * @param string $id
+     */
     public function deleteContactFromID($id){
         $id=$this->db->quote($id);
         $sql1="DELETE FROM Evenements WHERE id=$idG";
         $this->db->exec($sql1);
     }
     
+    /**
+     * Modifie un évènement
+     * @param string $id identifiant de l'évènement à supprimer
+     * @param string $nom
+     * @param date $date
+     * @param string $style
+     */
     public function updateEvenementFromBooker($id,$nom,$date,$style){
         $id = $this->db->quote($id);
         $nom = $this->db->quote($nom);
@@ -463,7 +485,13 @@ class DAO {
         $this->db->exec($sql);
         $this->db->commit() or die("Update Groupe ERROR : No row updated");
     }
-    
+    /**
+     * Crée un évènement
+     * @param string $booker Booker assoié à l'évènement
+     * @param string $nom
+     * @param date $date
+     * @param string $style
+     */
     public function createNewEvenement($booker,$nom,$date,$style){
         $booker = $this->db->quote($booker);
         $nom = $this->db->quote($nom);
@@ -476,7 +504,7 @@ class DAO {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Test de cout optimal pour hachage prise sur http://grunk.developpez.com/tutoriels/php/mots-de-passe-securises/#LI-C-2
+// Test de cout optimal pour hachage, source http://grunk.developpez.com/tutoriels/php/mots-de-passe-securises/#LI-C-2
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //    function getOptimalCost($timeTarget)
 //    { 
