@@ -18,13 +18,16 @@ $dao = new DAO();
 
 if(isset($_GET['selected'])) {
     $nomG = $_GET['selected'];
-    $data['Evenements'] = $dao->ReadEvenementFromBooker($booker,$_POST['date']); 
+    foreach($_POST['date'] as $d){
+            $dates[]=$d;
+    }
+    $data['Evenements'] = $dao->ReadEvenementFromBooker($booker,$dates); 
 } 
 else if (isset($_POST['maj'])) {
-    $dao->updateEvenementFromBooker($_POST['nom'],$_POST['date_eve'],$_POST['style']);
+    $dao->updateEvenementFromBooker($_POST['id'],$_POST['nom'],$_POST['date_eve'],$_POST['style']);
 }
 else if(isset($_POST['add'])){                   // $nom, $prenom, $mail, $tel, $site, $metier, $struct, $notes, $freq_maj
-    $dao->createNewEvenement($_POST['nom'],$_POST['date_eve'],$_POST['style']);
+    $dao->createNewEvenement($booker,$_POST['nom'],$_POST['date_eve'],$_POST['style']);
 } 
 else if (isset($_GET['delete'])) {
      $dao->deleteContactFromID($_GET['id']);
