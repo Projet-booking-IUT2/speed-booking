@@ -285,7 +285,7 @@ class DAO {
       * @return array un tableau contenant les nom, prenoms et id des personnes dont les renseignements contiennent $motCle.
       */
     public function rechercheMotCle($motCle) {
-        $sql = $this->db->query("Select id,nom,prenom from Contacts Where nom like '$motCle%' or prenom like '$motCle%' or metier like '$motCle%' or mail like '$motCle%' or notes like '$motCle%'");
+        $sql = $this->db->query("Select id,nom,prenom from Contacts Where nom like '$motCle%' or prenom like '$motCle%' or metier like '$motCle%' or mail like '$motCle%' or tel like '$motCle%'");
         $res = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
