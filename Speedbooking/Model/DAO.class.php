@@ -152,7 +152,7 @@ class DAO {
      * @param string $prenom Prenom du contact
      * @return Tableau_assoc Informations sur le contact: tableau indexé par nom de champ et numéro de champ
      */
-    public function readContactFromNomPrenom($id) {
+    public function readContactFromID($id) {
         $id = $this->db->quote($id);
         $sql = $this->db->query("SELECT * FROM Contacts WHERE id=$id");
         $res = $sql->fetch();
@@ -196,11 +196,11 @@ class DAO {
         $adresse = $this->db->quote($adresse);
         $note = $this->db->quote($note);
         $lieuTravail = $this->db->quote($lieuTravail);
-        
+        $tel = $this->db->quote($tel);
         $sql = $this->db->query("SELECT id from Contacts WHERE nom=$nom and prenom=$prenom");
         $sql = $sql->fetch();
         $id = $this->db->quote($sql[0]);
-        $q1 = ("UPDATE Contacts SET mail=$mail, tel=$tel, metier=$metier, mail=$adresse, notes=$note WHERE nom=$nom AND prenom=$prenom");
+        $q1 = ("UPDATE Contacts SET nom=$nom, prenom=$prenom, mail=$mail, tel=$tel, metier=$metier, mail=$adresse, notes=$note WHERE id=$id");
         $q2 = ("UPDATE Membres_structure SET struct=$lieuTravail WHERE contact=$id");
         $this->setProchaineDateMAJ($id, $freq_maj);
         $this->db->beginTransaction();
