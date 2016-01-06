@@ -47,7 +47,9 @@
                     <?php
                         foreach($data['groupe'][1] as $g){
                             $nomPrenom = $g['nom'].' '.$g['prenom'];
-                            echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'" class="list-group-item">'."<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
+                            $id=$dao->readIdContact($g['nom'],$g['prenom']);
+                            $id=$id['id'];
+                            echo '<li><a href="../Controler/contacts.ctrl.php?selected='.$nomPrenom.'.&id='.$id.'" class="list-group-item">'."<span class=\"glyphicon glyphicon-chevron-right pull-right\"></span> $nomPrenom</a></li>";
                         }
                     ?>
                     </ul>
@@ -61,7 +63,7 @@
                                 if($c!=null){
                                     $nomPrenom=$c['nom'].' '.$c['prenom'];
                                     $idM = $c['id'];
-                                    echo"<li> <input type=\"checkbox\" name=\"membres[]\" value=\"$idM\">$nomPrenom</li>";
+                                    echo"<li> <input type=\"checkbox\" name=\"membres[]\" value=\"$idM\">$nomPrenom&id</li>";
                                     echo"<br>";
                                 }
                             }

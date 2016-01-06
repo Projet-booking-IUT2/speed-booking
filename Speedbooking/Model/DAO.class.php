@@ -135,6 +135,15 @@ class DAO {
         }
         return $res2; 
     }
+    
+    public function readIdContact($nom, $prenom){
+        $nom = $this->db->quote($nom);
+        $prenom = $this->db->quote($prenom);
+        $sql = $this->db->query("SELECT * FROM Contacts WHERE nom=$nom AND prenom=$prenom");
+        $res = $sql->fetch();
+        return $res;
+    }
+    
     /**
      * Retourne toutes les infos concernant un contact.
      * 
