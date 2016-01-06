@@ -45,7 +45,7 @@
           </div>
           <div class="form-group row">
               <label for="tel" class="col-md-2 control-label">Tel: </label>
-              <div class="col-md-4"><input type="tel" id="tel" class="form-control" name="c_tel" value ="<?= $data['contact']['tel'] ?>" /></div>
+              <div class="col-md-4"><input type="tel" id="tel" class="form-control" name="c_tel" value ="<?='0'.$data['contact']['tel'] ?>" /></div>
               <label for="site" class="col-md-2 control-label">Site-web: </label>
               <div class="col-md-4"><input type="url" id="site" class="form-control" name="c_site" value ="<?php // $data['contact']['site'] ?>" /></div>
           </div>
