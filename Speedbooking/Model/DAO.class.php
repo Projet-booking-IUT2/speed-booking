@@ -459,16 +459,6 @@ class DAO {
     }
     
     /**
-     * Supprime le contact d'ID donné
-     * @param string $id
-     */
-    public function deleteContactFromID($id){
-        $id=$this->db->quote($id);
-        $sql1="DELETE FROM Evenements WHERE id=$idG";
-        $this->db->exec($sql1);
-    }
-    
-    /**
      * Modifie un évènement
      * @param string $id identifiant de l'évènement à supprimer
      * @param string $nom

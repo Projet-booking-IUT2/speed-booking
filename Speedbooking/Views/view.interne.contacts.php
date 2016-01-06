@@ -96,18 +96,20 @@
 
                     <label for="orga" class="col-md-2 control-label">Travaille à: </label>
                       <?php
-                      if(isset($data['structures'])){
+                    if(isset($data['structures'])){
                         echo '<div class="col-md-3"><select id="select" class="form-control" name="lieuTravail">';
                         echo "<option>Structure</option>";
+                        
                         foreach ($data['structures'] as $s) {
-                        if ($s == $data['contact']['lieuTravail'] )
-                         echo "<option selected>$s</option>";
-                        else
-                         echo "<option>$s</option>";
-                         }
-                       echo "</select></div>";
+                            if ($s == $data['contact']['lieuTravail'] ) {
+                                echo "<option selected>$s</option>";
+                            } else {
+                                echo "<option>$s</option>";
+                        }
+                        echo "</select></div>";
                        }
-                       else {
+                       
+                    } else {
                          echo "<div class=\"col-md-3\"><select id=\"select\" class=\"form-control\" name=\"lieuTravail\">";
                          echo "<option>Structure</option></select></div>";
                        }
@@ -117,7 +119,7 @@
                              <span class="glyphicon glyphicon-plus"></span>
                       </a>
 
-						 </div>
+                </div>
              <div class="form-group row">
                     <label for="textarea" class="col-md-2 control-label">Notes:</label>
                     <div class="col-md-10"><textarea id="textarea" class="form-control" rows="2" name="c_notes"><?= $data['contact']['notes'] ?>
