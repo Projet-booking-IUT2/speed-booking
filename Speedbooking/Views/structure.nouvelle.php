@@ -31,7 +31,7 @@
                                     <div class="col-md-4"><input type="tel" id="tel" class="form-control" placeholder="Ex : 0600000000" name="s_tel"></div>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-success pull-right boutonPlus" data-dismiss="modal" name="addStruct">Créer</button>                              
+                                <button type="submit" class="btn btn-success pull-right boutonPlus" name="addStruct">Créer</button>                              
                             </div>
                         </form>
                     </div>
