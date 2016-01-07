@@ -101,14 +101,13 @@
                         echo "<option>Structure</option>";
                         
                         foreach ($data['structures'] as $s) {
-                            if ($s == $data['contact']['lieuTravail'] ) {
-                                echo "<option selected>$s</option>";
+                            if ($s['nom'] == $data['lieuTravail'] ) {
+                                echo '<option selected>'.$s['nom'].'</option>';
                             } else {
-                                echo "<option>$s</option>";
-                        }
-                        echo "</select></div>";
+                                echo '<option>'.$s['nom'].'</option>';
+                            } 
                        }
-                       
+                       echo "</select></div>";
                     } else {
                          echo "<div class=\"col-md-3\"><select id=\"select\" class=\"form-control\" name=\"lieuTravail\">";
                          echo "<option>Structure</option></select></div>";

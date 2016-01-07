@@ -201,12 +201,19 @@ class DAO {
         $sql = $sql->fetch();
         $id = $this->db->quote($sql[0]);
         $q1 = ("UPDATE Contacts SET nom=$nom, prenom=$prenom, mail=$mail, tel=$tel, metier=$metier, mail=$adresse, notes=$note WHERE id=$id");
-        $q2 = ("UPDATE Membres_structure SET struct=$lieuTravail WHERE contact=$id");
+        $aTravail = $this->readStructureFromContact($nom, $prenom);
+        
+        if ($aTravail){
+            $q2 = ("UPDATE Membres_structure SET struct=$lieuTravail WHERE contact=$id");
+        } else {
+            $q2 = ("INSERT INTO Membres_structure VALUES ($id,$lieuTravail)");
+        }
+        
         $this->setProchaineDateMAJ($id, $freq_maj);
         $this->db->beginTransaction();
-        $this->db->exec($q1);
-        $this->db->exec($q2);
-        $this->db->commit() or die("Update Contact ERROR : No Contact updated");
+        $this->db->exec($q1) or die("Update Contact ERROR : No Contact updated");
+        $this->db->exec($q2) or die("Update Membre_Structure ERROR : No membre_structure updated");
+        $this->db->commit();
     }
     
     /**
@@ -239,7 +246,25 @@ class DAO {
         $sql = $this->query("select c.nom,c.prenom from Membres_structure m, Contacts c Where struct =$struct and m.contact = c.id");
         $res = $sql->fetchAll(PDO::FETCH_BOTH);
     }
+    /**
+     * Crée une nouvelle structure dans la bd
+     * @param string $nom le nom de la structure ex:"HellFest"
+     * @param string $adresse l'adresse du siège social ex:"22 AVENUE DE LA CAILLERIE BP 19206 44190 CLISSON"
+     * @param string $tel un numéro de tél si besoin
+     */
+    public function createStructure($nom,$adresse,$tel){
+        $nom = $this->db->quote($nom);
+        $adresse = $this->db->quote($adresse);
+        $tel = $this->db->quote($tel);
+        
+        $this->db->exec("INSERT INTO Structures(nom,adresse_siege,tel) VALUES($nom,$adresse,$tel)") or die("CreateStructure ERROR : no structure created");
+    }
     
+    public function readAllStructures(){
+        $sql = $this->db->query("SELECT nom FROM Structures");
+        $res = $sql->fetchAll();
+        return $res;
+    }
     // #########################################################################
     // #########################################################################
     // }}
