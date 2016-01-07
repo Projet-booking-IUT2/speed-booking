@@ -2,7 +2,7 @@
 <!-- Pied de page à inclure
 
 Améliorations :
--Mettre ici les éventuelles copyrights/nom de noter startup, etc.
+-Mettre ici les éventuelles copyrights/nom de notre startup, etc.
 
 -->
   </div><!--container-->

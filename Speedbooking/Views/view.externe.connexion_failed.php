@@ -1,10 +1,9 @@
+<?php include('../Views/view.header.php'); ?>
 <!--
 Page de connexion failed
---------------------------------------------------------------
-
 -->
-<?php include('../Views/view.header.php'); ?>
-  <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
+
+<li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
   <li class="active"><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
 </ul>
 </div><!--navbar collapse-->

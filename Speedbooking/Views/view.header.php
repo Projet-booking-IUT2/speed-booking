@@ -18,7 +18,7 @@ Améliorations :
 <?php //défini l'UTF-8 comme encodage par défaut (à placer dans le fichier de configuration par exemple)
  mb_internal_encoding('UTF-8'); ?>
 <!DOCTYPE html>
-<htlm lang="fr">
+<html lang="fr">
     <head>
       <meta charset="UTF-8">
       <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">

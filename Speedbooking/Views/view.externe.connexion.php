@@ -1,6 +1,8 @@
+<?php include('../Views/view.header.php'); ?>
+
 <!--
 Page de connexion au site, destiné aux bookers et aux groupes.
---------------------------------------------------------------
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Le formulaire de connexion pointe vers le controler ../controler/ctrl.externe.connexion.php (à modifier au besoin)
 Variables envoyées par la méthode post :
 $_POST['user_id'] -> Identifiant de l'utilisateur
@@ -17,7 +19,7 @@ Améliorations :
 - Centrer le formulaire verticalement
 - Utiliser des cookies pour afficher automatiquement les variables
 -->
-<?php include('../Views/view.header.php'); ?>
+
   <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
   <li class="active"><a href="../Controler/portail.ctrl.php" ><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
 </ul>
@@ -32,6 +34,7 @@ Améliorations :
               <h3 class="panel-title">Connectez-vous !</h3>
             </div>
             <div class="panel-body">
+             <div id="logoB" class="col-md-4"><img id="logoOver" src="../Views/logo150.png"/></div>
               <form action="../Controler/portail.ctrl.php" method="post" class= "form-horizontal col-md-11 ">
                 <div class="row">
                     <div class="form-group">
