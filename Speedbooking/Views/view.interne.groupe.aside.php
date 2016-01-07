@@ -7,8 +7,8 @@
   <div class="panel panel-info">
     <div class="panel-heading">
         <div class="row">
-            <h3 class="panel-title">Vos Groupes :</h3>
-            <a href="../Controler/groupe.ctrl.php" class="btn btn-lg btn-success pull-right boutonPlus"><span class="glyphicon glyphicon-plus"></span></a>
+            <h3 class="col-md-10 panel-title">Vos Groupes :</h3>
+            <a href="../Controler/groupe.ctrl.php" class="col-md-2 btn btn-success pull-right boutonPlus"><span class="glyphicon glyphicon-plus"></span></a>
         </div>
     </div>
     <div class="panel-body">

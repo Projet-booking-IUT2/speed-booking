@@ -53,7 +53,6 @@
                         }
                     ?>
                     </ul>
-
                     <a href="../Controler/groupe.ctrl.php?selected=<?php echo $data['groupe'][0]['nom'];?>&selectContact=true&idG=<?php echo $idG?>" class="btn btn-default btn-info pull-right boutonPlus col-md-1"><span class="glyphicon glyphicon-plus"></span></a>
                         <?php
                         if(isset($data['Contacts'])){

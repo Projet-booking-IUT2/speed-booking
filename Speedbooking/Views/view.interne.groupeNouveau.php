@@ -28,7 +28,6 @@
                     }
                     ?>
                 </ul>
-            
             </div>
             </br>
             <div class="form-group row">
