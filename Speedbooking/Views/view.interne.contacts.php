@@ -99,7 +99,7 @@
                     if(isset($data['structures'])){
                         echo '<div class="col-md-3"><select id="select" class="form-control" name="lieuTravail">';
                         echo "<option>Structure</option>";
-                        
+
                         foreach ($data['structures'] as $s) {
                             if ($s['nom'] == $data['lieuTravail'] ) {
                                 echo '<option selected>'.$s['nom'].'</option>';
@@ -113,11 +113,28 @@
                          echo "<option>Structure</option></select></div>";
                        }
                      ?>
-
-                     <a href="" class="btn btn-xs btn-success"  data-toggle="modal" data-target="#structure">
-                             <span class="glyphicon glyphicon-plus"></span>
-                      </a>
-
+                     <!--javascript pour retourner les données du form au controleur :) -->
+                     <script>
+                     $(function(){
+                       $("form").submit(function(e) {
+                         e.preventDefault();
+                         var $form = $(this);
+                         $.post($form.attr("action"), $form.serialize())
+                         .done(function(data) {
+                           $("#boutonStructurePlus").html(data);
+                           $("#structure").modal("hide");
+                         })
+                         .fail(function() {
+                           alert("ça marche pas...");
+                         });
+                       });
+                     });
+                     </script>
+                     <div id="boutonStructurePlus">
+                       <a href="#structure" class="btn btn-xs btn-success"  data-toggle="modal" data-target="#structure">
+                         <span class="glyphicon glyphicon-plus"></span>
+                       </a>
+                     </div>
                 </div>
              <div class="form-group row">
                     <label for="textarea" class="col-md-2 control-label">Notes:</label>
