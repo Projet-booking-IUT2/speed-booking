@@ -53,7 +53,7 @@ View pour ajouter un nouveau contact
           echo '<div class="col-md-3"><select id="select" class="form-control" name="lieuTravail">';
           echo "<option>Structure</option>";
           foreach ($data['structures'] as $s) {
-            echo "<option>$s</option>";
+            echo "<option>".$s['nom']."</option>";
           }
           echo "</select></div>";
         }

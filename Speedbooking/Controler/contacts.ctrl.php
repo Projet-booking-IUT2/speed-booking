@@ -23,7 +23,6 @@ if(isset($_GET['selected'])) {
     $data['contact'] = $dao->readContactFromID($_GET['id']);
     $data['lieuTravail'] = $dao->readStructureFromContact($tab[0], $tab2);
     $data['Ajour'] = $dao->estAJour($_GET['id']);
-    $data['structures'] = $dao->readAllStructures();
 } else if (isset($_POST['maj'])) {
     $dao->updateContactFromNomPrenom($_POST['c_nom'], $_POST['c_prenom'], $_POST['c_mail'], $_POST['c_tel'], $_POST['c_type'], $_POST['c_site'], $_POST['lieuTravail'], $_POST['c_notes'], $_POST['c_dureeMAJ']);
 } else if(isset($_POST['add'])){                   // $nom, $prenom, $mail, $tel, $site, $metier, $struct, $notes, $freq_maj
@@ -37,5 +36,5 @@ if(isset($_GET['selected'])) {
  } else {
      $data['AllContacts'] = $dao->readContactsFromBooker($booker);   // Pour affichage de la liste des contacts dans le menu Aside
  }
- 
+$data['structures'] = $dao->readAllStructures();
       include "../Views/view.interne.contacts.MAIN.php";
