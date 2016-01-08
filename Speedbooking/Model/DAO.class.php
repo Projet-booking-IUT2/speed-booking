@@ -202,17 +202,15 @@ class DAO {
         $id = $this->db->quote($sql[0]);
         $q1 = ("UPDATE Contacts SET nom=$nom, prenom=$prenom, mail=$mail, tel=$tel, metier=$metier, mail=$adresse, notes=$note WHERE id=$id");
         $aTravail = $this->readStructureFromContact($nom, $prenom);
-        
         if ($aTravail){
             $q2 = ("UPDATE Membres_structure SET struct=$lieuTravail WHERE contact=$id");
         } else {
             $q2 = ("INSERT INTO Membres_structure VALUES ($id,$lieuTravail)");
         }
-        
         $this->setProchaineDateMAJ($id, $freq_maj);
         $this->db->beginTransaction();
-        $this->db->exec($q1) or die("Update Contact ERROR : No Contact updated");
-        $this->db->exec($q2) or die("Update Membre_Structure ERROR : No membre_structure updated");
+        $this->db->exec($q1);;
+        $this->db->exec($q2);
         $this->db->commit();
     }
     

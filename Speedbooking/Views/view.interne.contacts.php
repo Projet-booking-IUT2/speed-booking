@@ -113,23 +113,6 @@
                          echo "<option>Structure</option></select></div>";
                        }
                      ?>
-                     <!--javascript pour retourner les données du form au controleur :) -->
-                     <script>
-                     $(function(){
-                       $("form").submit(function(e) {
-                         e.preventDefault();
-                         var $form = $(this);
-                         $.post($form.attr("action"), $form.serialize())
-                         .done(function(data) {
-                           $("#boutonStructurePlus").html(data);
-                           $("#structure").modal("hide");
-                         })
-                         .fail(function() {
-                           alert("ça marche pas...");
-                         });
-                       });
-                     });
-                     </script>
                      <div id="boutonStructurePlus">
                        <a href="#structure" class="btn btn-xs btn-success"  data-toggle="modal" data-target="#structure">
                          <span class="glyphicon glyphicon-plus"></span>

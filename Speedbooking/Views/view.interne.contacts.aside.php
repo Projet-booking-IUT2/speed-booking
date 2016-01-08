@@ -32,7 +32,7 @@ Améliorations :
     <div class="panel-body">
         <ul class="list-group list-unstyled">
         <?php
-          if (!isset($data['AllContacts'])) {
+          if (!isset($data['AllContacts']) || $data['AllContacts'] == NULL) {
             echo "
             <div class=\"alert alert-info\">
             <strong>Vous n'avez pas encore enregistré de contact ! </strong>
