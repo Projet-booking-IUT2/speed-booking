@@ -200,7 +200,7 @@ class DAO {
         $sql = $this->db->query("SELECT id from Contacts WHERE nom=$nom and prenom=$prenom");
         $sql = $sql->fetch();
         $id = $this->db->quote($sql[0]);
-        $q1 = ("UPDATE Contacts SET nom=$nom, prenom=$prenom, mail=$mail, tel=$tel, metier=$metier, mail=$adresse, notes=$note WHERE id=$id");
+        $q1 = ("UPDATE Contacts SET nom=$nom, prenom=$prenom, mail=$mail, tel=$tel, metier=$metier, notes=$note WHERE id=$id");
         $aTravail = $this->readStructureFromContact($nom, $prenom);
         if ($aTravail){
             $q2 = ("UPDATE Membres_structure SET struct=$lieuTravail WHERE contact=$id");
