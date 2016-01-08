@@ -1,6 +1,6 @@
 <?php include('../Views/view.header.php'); ?>
 
-        <li class="active"><a href="#"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
+        <li class="active"><a href="#"><span class="glyphicon glyphicon-calendar"></span> Évènements</a></li>
         <li><a href="../Views/view.interne.contacts.php"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Mes groupes</a></li>
         <li><a href="#" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>

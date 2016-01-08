@@ -1,3 +1,8 @@
+
+<?php //défini l'UTF-8 comme encodage par défaut (à placer dans le fichier de configuration par exemple)
+ mb_internal_encoding('UTF-8'); ?>
+<!DOCTYPE html>
+
 <!--
 Header général à inclure en début des pages :
 view.interne.dates.php
@@ -15,9 +20,7 @@ Améliorations :
 
 
 -->
-<?php //défini l'UTF-8 comme encodage par défaut (à placer dans le fichier de configuration par exemple)
- mb_internal_encoding('UTF-8'); ?>
-<!DOCTYPE html>
+
 <html lang="fr">
     <head>
       <meta charset="UTF-8">

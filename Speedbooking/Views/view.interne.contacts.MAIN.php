@@ -33,7 +33,7 @@ $data['tris']->type de tri séléctionné (éventuellement)
 -->
 <?php include('../Views/view.header.php'); ?>
 
-<li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Mes dates</a></li>
+<li><a href="../Controler/date.ctrl.php"><span class="glyphicon glyphicon-calendar"></span> Évènements</a></li>
 <li class="active"><a href="../Controler/contacts.ctrl.php?accueil=true"><span class="glyphicon glyphicon-phone-alt"></span> Mes contacts</a></li>
 <li><a href="../Controler/fichiers.ctrl.php" ><span class="glyphicon glyphicon-file"></span> Mes fichiers</a></li>
 <li><a data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Mon Compte</a>
